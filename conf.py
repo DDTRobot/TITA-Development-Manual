@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'vulcan-robot-architecture-docs'
-copyright = '2024, Vulcan'
-author = 'Vulcan'
+project = 'TITA-Development-Manual'
+copyright = '2024, DDT'
+author = 'edward'
 release = 'v0.0.1'
 
 # -- General configuration ---------------------------------------------------
