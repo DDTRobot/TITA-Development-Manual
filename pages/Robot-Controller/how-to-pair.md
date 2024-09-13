@@ -32,12 +32,12 @@ ssh root@192.168.55.1
     ```
 
     请打开遥控器，左长按右侧按键进入`TOOLS -> ExpressLRS -> [Bind]`，手动搜索配对。
-    ![controller1](../../../_static/controller1.png)
+    ![controller1](../../_static/controller1.png)
 
 2. 遥控器开机后右边按键向左推进入界面后按键依次进入`Tools -> ExpressLRS -> bind`模式，进行配对接收机。
- ![controller2](../../../_static/controller2.JPEG)
- ![controller3](../../../_static/controller3.JPEG)
+ ![controller2](../../_static/controller2.JPEG)
+ ![controller3](../../_static/controller3.JPEG)
 
 4. 配对完成返回`pair success`。
-![controller4](../../../_static/controller4.PNG)
+![controller4](../../_static/controller4.PNG)
 

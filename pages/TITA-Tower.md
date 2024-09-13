@@ -22,8 +22,8 @@
 
 - **查看IP**
   查看IP可以通过连接热点访问导航塔设备信息网页：[http://10.42.0.1:8000](http://10.42.0.1:8000)
-  ![t1](../../_static/t1.png)
-   ![t2](../../_static/t2.png)
+  ![t1](../_static/t1.png)
+   ![t2](../_static/t2.png)
   - 注意：
     - `192.168.19.101` 为有线网口分配IP
     - `10.42.0.1` 为无线wifi分配的IP
@@ -35,7 +35,7 @@
 #### 1.2.1 测试设备通讯
 
 开机后，导航塔上电，工作指示灯为蓝色，即待机状态，使用 `ros2 topic list`，可以看到以下话题：
- ![t3](../../_static/t3.png)
+ ![t3](../_static/t3.png)
 
 ## 2. 软件控制
 
@@ -46,7 +46,7 @@ bool success
 string message
 ```
 `ros2 service call start std_srvs/srv/Trigger "{}"`
- ![t4](../../_static/t4.png)
+ ![t4](../_static/t4.png)
 
 ### 关闭软件功能
 
@@ -56,7 +56,7 @@ bool success
 string message
 ```
 `ros2 service call stop std_srvs/srv/Trigger "{}"`
- ![t5](../../_static/t5.png)
+ ![t5](../_static/t5.png)
 
 ### 实时输出
 
@@ -113,7 +113,7 @@ string message
 ```bash
 1 rviz2
 ```
- ![t6](../../_static/t6.PNG)
+ ![t6](../_static/t6.PNG)
 
 
 
