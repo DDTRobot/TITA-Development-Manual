@@ -1,11 +1,17 @@
-# 环境配置
+# Environment Configuration
 ----
-本章节讲述如何配置二次开发编译环境
+This section describes how to configure the secondary development compilation environment.
 
-- 用Debug数据线插入机器前端DBG口后连接电脑
-- 接线完成后打开命令终端，输入`ssh root@192.168.55.1`进入；
-- 通过命令行配置或通过上位机（可在说明书上了解）配置WIFI连接情况；
-- WIFI连接成功后，使用`docker pull`指令将Ubuntu docker下载；
+- After inserting the Debug data cable into the DBG port, connect it to the computer.
+- After completing the wiring, open the command terminal and enter `ssh root@192.168.55.1` to log in.
+- Configure the WIFI connection either through the command line；
+```{note}
+If use command line, you can enter this command
+nmcli dev wifi connect <wifi name> password <password>
+If connected Success will return like this:
+Device 'wlan0' successfully activated with 'a43402c8-b98d-443a-be61-e19484882a65'.
+```
+- Once the WIFI connection is successful, use the docker pull command to download the Ubuntu docker
 `docker pullregistry.cn-hangzhou.aliyuncs.com/ddt_robot/nvidia-ubuntu`
-- 下载完成后进行环境的配置，可打开`/lib/systemd/system/tita-vision.service`和`/lib/systemd/system/tita-bringup.service`这两个配置文件，修改两处变量`Environment="ROS_LOCALHOST_ONLY=0"`；
-- 配置好环境后Restart docker即可/将自己开发的ROS2代码放进docker中编译。
+- After the download is complete, proceed with the environmental configuration. You can open the two configuration files `/lib/systemd/system/tita-vision.service` and `/lib/systemd/system/tita-bringup.service`, and modify the two variables `Environment="ROS_LOCALHOST_ONLY=0"`；
+- After the environment is configured, restart the Docker to compile your developed ROS2 code inside the Docker.

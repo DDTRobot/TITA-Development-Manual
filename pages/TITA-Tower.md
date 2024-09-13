@@ -1,4 +1,4 @@
-# 导航塔使用手册
+# TITA Tower Manual
 
 ```{toctree}
 :maxdepth: 1
@@ -7,39 +7,40 @@
 
 ------
 
-## 1. 快速开始
+## 1. Quick Start
 
-### 1.1 准备工作
+### 1.1 Preparation work
 
-在使用导航塔之前，需要做以下准备工作：
+Before using the TITA Tower, the following preparations are needed：
 
-- **安装、供电**
-  导航塔通过TITA本身的DB25的外接接口供电，需要使用官方认证DB25连接线。
-  注意，禁止对DB25接口进行热插拔，否则会造成导航塔异常断电。
+- **Install the Power Supply**
+  The TITA Tower is powered through its own DB25 external interface, and an officially certified DB25 connection cable is required.<br>
+  **Warning:** Hot plugging is not recommended on DB25 interface, which may cause abnormal power loss in the TITA Tower
 
-- **调试**
-  导航塔支持以太网接口，通过网线连接导航塔和笔记本电脑，支持多机交互可视化调试。
+- **Debug**
+  TITA Tower supports Ethernet as well as  multi-machine interactive debugging. Pleasse connect TITA Tower to your laptop via an Ethernet cable.
 
-- **查看IP**
-  查看IP可以通过连接热点访问导航塔设备信息网页：[http://10.42.0.1:8000](http://10.42.0.1:8000)
+- **Check IP**
+ You can access the device information Web: [http://10.42.0.1:8000](http://10.42.0.1:8000) by connecting to the TITA Tower's hotspot.
   ![t1](../_static/t1.png)
    ![t2](../_static/t2.png)
   - 注意：
-    - `192.168.19.101` 为有线网口分配IP
-    - `10.42.0.1` 为无线wifi分配的IP
+    - `192.168.19.101` //The IP address assigned to the wired network port.
+    - `10.42.0.1` //The IP address assigned to the wireless WiFi network.
 
-### 1.2 环境配置
+### 1.2 Environment Configuration
 
-- **导航塔 ROS_DOMAIN_ID 默认是42**，实现多机交互需要对调试机的 ROS_DOMAIN_ID 也设置成42，设置完成后，执行 `source ~/.bashrc`
+Normally , TITA Tower 's `ROS_DOMAIN_ID`  is **42** .<br>
+To achieve multi-machine interaction ,  you need set the Debug Machine's `ROS_DOMAIN_ID` to **42** , and then `soure ~/.bashrc`
+#### 1.2.1 Test Machine Status
 
-#### 1.2.1 测试设备通讯
-
-开机后，导航塔上电，工作指示灯为蓝色，即待机状态，使用 `ros2 topic list`，可以看到以下话题：
+When the TITA Tower is  powered on, the working light turns blue ,  indicating its standby mode.<br>
+Open the terminal and use `ros2 topic list`, you can see the following topics:
  ![t3](../_static/t3.png)
 
-## 2. 软件控制
+## 2. TITA Tower Software
 
-### 开启软件功能
+### Start software
 
 ```bash
 bool success
@@ -48,7 +49,7 @@ string message
 `ros2 service call start std_srvs/srv/Trigger "{}"`
  ![t4](../_static/t4.png)
 
-### 关闭软件功能
+### Stop Software
 
 ```bash
 ---
@@ -58,57 +59,51 @@ string message
 `ros2 service call stop std_srvs/srv/Trigger "{}"`
  ![t5](../_static/t5.png)
 
-### 实时输出
+### Real-time output
 
-- **能够提供一个高精度的里程计信息**
+- **It can provide high-precision odometry information**
   ```bash
   nav_msgs/msg/Odometry
   ros2 topic echo mapping/odometry
   ```
 
-- **RTK的经纬度信息（国内）**
-  ```bash
-  sensor_msgs/msg/NavSatFix
-  ros2 topic echo rtk/gnss_soln
-  ```
-
-- **GPS的经纬度信息（国外）**
+- **GPS latitude and longitude information**
   ```bash
   sensor_msgs/msg/NavSatFix
   ros2 topic echo gps/gnss_soln
   ```
 
-- **彩色建图点云数据**
+- **Color PointCloud**
   ```bash
   sensor_msgs/msg/PointCloud2
   ros2 topic echo cloud_colored
   ```
 
-- **左侧相机压缩数据**
+- **Left Camera CompressData**
   ```bash
   sensor_msgs/msg/CompressedImage
   ros2 topic echo camera/left/jpeg
   ```
 
-- **右侧相机压缩数据**
+- **Right Camera CompressData**
   ```bash
   sensor_msgs/msg/CompressedImage
   ros2 topic echo camera/right/jpeg
   ```
 
-- **左侧相机预览数据**
+- **Left Camera PreviewData**
   ```bash
   sensor_msgs/msg/Image
   ros2 topic echo camera/left/preview
   ```
 
-- **右侧相机预览数据**
+- **Right Camera PreviewData**
   ```bash
   sensor_msgs/msg/Image
   ros2 topic echo camera/right/preview
   ```
 
-### 启动rviz
+### Start rviz
 
 ```bash
 1 rviz2

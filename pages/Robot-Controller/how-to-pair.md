@@ -1,4 +1,4 @@
-# 遥控手柄配对指南
+# Robot Controller Pairing
 
 ```{toctree}
 :maxdepth: 1
@@ -6,38 +6,28 @@
 ```
 
 ------
-该操作指南用于遥控器第一次配对机器人时的步骤指南。
+This manual is for teaching the pairing of the robot controller with the robo
 
-## 配对步骤
-
-```shell
-调试线必须插入DBG口，并且数据线A面朝外。
-连接终端
+## Pairing Steps
+```{note}
+Pairing the remote control requires connecting to a terminal.
 ssh root@192.168.55.1
+Debug wire have to connect DBG count and  face A should be facing outwards
 ```
-
-1. 主控执行以下指令
-
-    ```shell
-    crsf-app -bind
-    ```
-
-    可以观察到返回：
-
+1. Terminal execute command `crsf-app -bind` ，will back：
     ```
     正在检查串口通讯状态...
     uart connect success
     正在进入配对模式...
     bind mode success
-    ```
-
     请打开遥控器，左长按右侧按键进入`TOOLS -> ExpressLRS -> [Bind]`，手动搜索配对。
+    ```
     ![controller1](../../_static/controller1.png)
 
-2. 遥控器开机后右边按键向左推进入界面后按键依次进入`Tools -> ExpressLRS -> bind`模式，进行配对接收机。
+2. Power on the robot controller , Push the button on the right side to the left. Press the buttons in sequence to enter `Tools -> ExpressLRS -> bind mode`.
  ![controller2](../../_static/controller2.JPEG)
  ![controller3](../../_static/controller3.JPEG)
 
-4. 配对完成返回`pair success`。
+3. If success will back this massage :`pair success`。
 ![controller4](../../_static/controller4.PNG)
 
