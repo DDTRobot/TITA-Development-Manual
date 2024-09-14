@@ -9,3 +9,6 @@
 `docker pullregistry.cn-hangzhou.aliyuncs.com/ddt_robot/nvidia-ubuntu`
 - 下载完成后进行环境的配置，可打开`/lib/systemd/system/tita-vision.service`和`/lib/systemd/system/tita-bringup.service`这两个配置文件，修改两处变量`Environment="ROS_LOCALHOST_ONLY=0"`；
 - 配置好环境后Restart docker即可/将自己开发的ROS2代码放进docker中编译。
+```{note}
+随机器人包装的Type-C线束为刷机线，接入机器人中会自动进入recovery模式，故不能作为debug线使用，如要进行debug请使用其他USBType C线束。
+```
