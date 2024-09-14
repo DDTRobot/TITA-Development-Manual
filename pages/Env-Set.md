@@ -15,3 +15,6 @@ Device 'wlan0' successfully activated with 'a43402c8-b98d-443a-be61-e19484882a65
 `docker pullregistry.cn-hangzhou.aliyuncs.com/ddt_robot/nvidia-ubuntu`
 - After the download is complete, proceed with the environmental configuration. You can open the two configuration files `/lib/systemd/system/tita-vision.service` and `/lib/systemd/system/tita-bringup.service`, and modify the two variables `Environment="ROS_LOCALHOST_ONLY=0"`；
 - After the environment is configured, restart the Docker to compile your developed ROS2 code inside the Docker.
+```{note}
+The Type-C cable included with the robot is a flashing cable, which will automatically enter recovery mode when connected to the robot, hence it cannot be used as a debug cable. For debugging purposes, please use another USB Type-C cable.
+```

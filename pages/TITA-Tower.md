@@ -22,7 +22,7 @@ Before using the TITA Tower, the following preparations are needed：
 
 - **Check IP**
  You can access the device information Web: [http://10.42.0.1:8000](http://10.42.0.1:8000) by connecting to the TITA Tower's hotspot.
-  ![t1](../_static/t1.png)
+  ![t1](../_static/t11.png)
    ![t2](../_static/t2.png)
   - 注意：
     - `192.168.19.101` //The IP address assigned to the wired network port.
