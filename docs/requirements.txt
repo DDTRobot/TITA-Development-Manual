@@ -1,0 +1,5 @@
+alabaster==0.7.12
+numpy
+myst_nb
+sphinx_rtd_theme
+myst-parser
