@@ -2,7 +2,6 @@
 
 ```{toctree}
 :maxdepth: 1
-pages/Env-Set
 pages/Robot-API
 pages/Robot-Controller
 pages/TITA-Tower
