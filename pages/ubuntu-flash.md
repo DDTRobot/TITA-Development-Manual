@@ -11,16 +11,19 @@
 3. 目前刷机的版本为先行版本，仅用于系统更换，内置功能API较少如下：ToF数据、运动控制功能；后续请关注本末科技官网（）其他功能API的更新。
 
 ## 准备工作
-1. Download apollo-ubuntu-${date}.tar
-2. mkdir apollo-ubuntu（可在任意位置）
-3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu
+硬件准备：TITA随包装的刷机线（标志A朝外插入DBG口，先插线再上电）；Ubuntu系统电脑
+此操作需要将刷机包下载至电脑（必须Linux系统）中，并创建新的文件夹，将刷机包解压至新建的文件夹中。
+1. Download apollo-ubuntu-${date}.tar （下载对应日期的系统软件包）
+2. mkdir apollo-ubuntu（可在电脑系统的任意位置创建文件夹）
+3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （解压系统软件包至新建文件夹中）
 
 ## 开始刷机
+进入刚刚创建的文件夹
 1. cd  apollo-ubuntu
 2. sudo ./flash_robot.sh
 注意！部分Ubuntu中可能缺少sshpass和nfs-kernel-server两个插件，缺哪个装哪个
-![f1](../../_static/flash1.JPEG)
-![f2](../../_static/flash2.JPEG)
+![f1](.././_static/flash1.JPEG)
+![f2](.././_static/flash2.JPEG)
 
 ## 结束标志
 刷机完成时可以看到以下信息
@@ -31,7 +34,7 @@
 4. Log is saved to Linux_for_Tegra/initrdlog/flash_3-1_0_20240821-140503.log
 ``` 
 并且输入指令`lsusb`能看到这个信息
-![f3](../../_static/flash3.JPEG)
+![f3](.././_static/flash3.JPEG)
 
 ## 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
@@ -62,21 +65,22 @@ sudo dpkg -i tita-ros2-20240823000305.deb
 
 ## 设置ROS2环境
 若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境。
-1. 输入 `sudo vim /usr/lib/systemed/system/tita-bringup.service`
+1. 输入 `sudo vim /usr/lib/systemd/system/tita-bringup.service`
 2. 确保`ROS_DOMAIN_ID=42`,并将`ROS_LOCALHOST_ONLY=1`改成`ROS_LOCALHOST_ONLY=0`，如图
-![f4](../../_static/flash4.JPEG)
+![f4](.././_static/flash4.JPEG)
 3. 修改完成后需要输入指令，`source /opt/ros/humble/local_setup.bash
 4. 除此之外，需要在`~/bashrc`和`/opt/ros/humble/setup.bash`,设置输入`export ROS_DOMAIN_ID=42`,如图
-![f5](../../_static/flash5.JPEG)
-![f6](../../_static/flash6.jpeg)
-5. 设置完成后，分别`source /opt/ros/humble/setup.bash`和`source ~/.bashrc`
-6.所有设置完成后，输入`ros2 topic list`检验一下，若出现如图输出即设置OK
-![f7](../../_static/flash7.jpeg)
+![f5](.././_static/flash5.JPEG)
+![f6](.././_static/flash6.jpeg)
+5. 并在`~/.bashrc`中输入`source /opt/ros/humble/setup.bash`并保存
+6. 设置完后，分别 `source /opt/ros/humble/setup.bash`;`source ~/.bashrc`
+7. 所有设置完成后，输入`ros2 topic list`检验一下，若出现如图输出即设置OK
+![f7](.././_static/flash7.jpeg)
 ## 如何修改WIFI
 1.首先 `sudo vim /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf`
 2.修改图中，ssid= "WIFI name"; psk="PassWord"
 3.修改完后reboot
-![f8](../../_static/flash8.jpeg)
+![f8](.././_static/flash8.jpeg)
 ## 如何配对遥控器
 1. 使用`git clone` 将遥控器配对脚本克隆下来
 `git clone http://git.ddt.dev:9281/wuyunzhou/crsf-app.git`
@@ -92,9 +96,9 @@ uart connect success
  bind mode success   
 请打开遥控器,左长按右侧按键进入TOOLS->ExpressLRS->[Bind],手动搜索配对
 ```
-![f9](../../_static/flash9.png)
+![f9](.././_static/flash9.png)
 6. 遥控器开机后 右边按键向左推进入界面后 按键依次进入Tools ->ExpressLRS-> bind模式，进行配对接收机.
- ![controller2](../../_static/controller2.JPEG)
- ![controller3](../../_static/controller3.JPEG)
+ ![controller2](./../_static/controller2.JPEG)
+ ![controller3](.././_static/controller3.JPEG)
 7. 配对完成返回pair success
-![controller4](../../_static/controller4.PNG)
+![controller4](.././_static/controller4.PNG)

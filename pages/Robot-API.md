@@ -3,13 +3,14 @@
 ```{toctree}
 :maxdepth: 1
 :glob:
-Robot-API/light
-Robot-API/control
 Robot-API/battery
-Robot-API/Motor
-Robot-API/music
-Robot-API/slam
-Robot-API/sensor
+Robot-API/commond
+Robot-API/device
+Robot-API/passiv_commonde
+Robot-API/rgb
+Robot-API/teleop
+Robot-API/tita_interface
+Robot-API/wendu
 ```
 
 ------

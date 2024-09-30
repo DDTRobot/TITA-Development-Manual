@@ -7,7 +7,5 @@ Robot-Controller/how-to-pair
 Robot-Controller/how-cal
 ```
 
-------
-
-机器人的运动控制单元、维护 `tf` 坐标系，并发布关节信息到 `ros` 系统中。
+机器人遥控器单元，其包含手柄配对及校准手柄。
 
