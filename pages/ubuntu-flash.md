@@ -82,6 +82,7 @@ sudo dpkg -i tita-ros2-20240823000305.deb
 3.修改完后reboot
 ![f8](.././_static/flash8.jpeg)
 ## 如何配对遥控器
+（在机器人中执行这个操作）
 1. 使用`git clone` 将遥控器配对脚本克隆下来
 `git clone http://git.ddt.dev:9281/wuyunzhou/crsf-app.git`
 2. `cd crsf-app`
@@ -102,3 +103,19 @@ uart connect success
  ![controller3](.././_static/controller3.JPEG)
 7. 配对完成返回pair success
 ![controller4](.././_static/controller4.PNG)
+## 如何在Ubuntu系统中升级运控和电机
+1. 在机器人系统中先执行以下操作
+```bash
+sudo git clone git@git.ddt.dev:wuyunzhou/motor_upgrade.git /usr
+sudo cp /usr/motor_upgrade/ota_lib/*.so /usr/lib
+sudo cp /usr/motor_upgrade/ota_lib/otafifth_demo /usr/bin
+sudo pip install pycryptodome
+sudo pip install crcmod
+```
+2. 完成以上步骤后，需要运行升级脚本
+```bash
+cd ~/motor-patch/
+chmod 777 run.sh
+sudo ./run.sh
+```
+3.升级完成后重新对机器上下电重启
