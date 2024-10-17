@@ -1,4 +1,4 @@
-# TITA Tower使用手册
+# TITA Tower User Manual
 
 ```{toctree}
 :maxdepth: 1
@@ -33,7 +33,7 @@ To view the IP, you can connect to the navigation tower's device information web
 ### 1.2 Environmental Configuration
 
 - **TITA Tower's ROS_DOMAIN_ID defult value is 42**，to implement multi-machine interaction, you need to set the ROS_DOMAIN_ID on the debugging machine to 42 as well. After setting it, execute source ~/.bashrc.
-- If you are using TITA in conjunction with Tower, you need to properly configure the ROS2 environment for TITA. For detailed operations, please refer to the relevant documentation《[Ubuntu System Flashing Process](https://tita-development-manual-uc.readthedocs.io/zh-cn/latest/pages/ubuntu-flash.html)》
+- If you are using TITA in conjunction with Tower, you need to properly configure the ROS2 environment for TITA. For detailed operations, please refer to the relevant documentation《[Ubuntu System Flashing Process](https://tita-ubuntu-manual-english.readthedocs.io/en/latest/pages/ubuntu-flash.html)》
 
 #### 1.2.1 Testing Device Communication
 

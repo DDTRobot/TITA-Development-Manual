@@ -17,5 +17,5 @@ TITA is the second-generation bipedal-wheeled robot developed by Direct Drive Te
 ### Acknowledgments
 Thank you very much for choosing our products. We promise to provide you with the highest quality products and services. Your satisfaction is our greatest pursuit. If you have any questions or need help during use, please feel free to contact us, and we will serve you wholeheartedly. Thank you again for your trust and support!
 
-**If you want to quick start with TITA, please click the link to jump.**[Quick Start](https://tita-development-manual-uc.readthedocs.io/zh-cn/latest/pages/quickstart.html)
+**If you want to quick start with TITA, please click the link to jump.**[Quick Start](https://tita-ubuntu-manual-english.readthedocs.io/en/latest/pages/quickstart.html)
 
