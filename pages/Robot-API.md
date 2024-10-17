@@ -1,4 +1,4 @@
-# 机器人本体API明细
+# Robot Body API 
 
 ```{toctree}
 :maxdepth: 1
@@ -18,4 +18,4 @@ Robot-API/locomotion
 
 ------
 
-这是一个通过`ROS2`订阅`Topic or Service`实现对应功能调用，比如灯效、控制、电源、电机、感知系统、传感器等；详情可进各个分页中查看。
+This is an implementation of corresponding function calls through `ROS2` by subscribing to `Topic or Service`, such as lighting effects, control, power supply, motors, perception systems, sensors, etc.; details can be found in the respective sub-pages.

@@ -10,7 +10,7 @@
 <p align="center"><strong>tita_locomotion_interfaces</strong></p>
 
 
-​	机器人运动控制相关的自定义消息接口。
+​	Description:Custom message interface related to robot motion control.
 
 ## Basic Information
 
@@ -24,10 +24,10 @@
 
 |         Type          |    Name    |       Description        |
 | :-------------------: | :--------: | :----------------------: |
-|   `std_msgs/Header`   |  `header`  |     ROS2 标准消息头      |
-|       `string`        | `fsm_mode` |        机器人状态        |
-| `geometry_msgs/Pose`  |   `pose`   | 机器人躯干的姿态控制信息 |
-| `geometry_msgs/Twist` |  `twist`   | 机器人底盘的速度控制信息 |
+|   `std_msgs/Header`   |  `header`  |     ROS2 Standard Message Header      |
+|       `string`        | `fsm_mode` |        Robot Status        |
+| `geometry_msgs/Pose`  |   `pose`   | Posture control information for the robot's torso |
+| `geometry_msgs/Twist` |  `twist`   | Velocity control information for the robot's chassis |
 
 ## Build Package
 
@@ -40,7 +40,8 @@ colcon build --packages-select tita_locomotion_interfaces
 
 <p align="center"><strong>tita_perception_interfaces</strong></p>
 
-​	机器人感知相关的自定义接口。
+​	Description:Custom interfaces related to robot perception.
+
 
 ## Basic Information
 
@@ -54,26 +55,26 @@ colcon build --packages-select tita_locomotion_interfaces
 
 |       Type        |   Name   |       Description        |
 | :---------------: | :------: | :----------------------: |
-| `std_msgs/Header` | `header` |     ROS2 标准消息头      |
-|     `float64`     | `x_min`  | Bounding box 中 x 最小值 |
-|     `float64`     | `y_min`  | Bounding box 中 y 最小值 |
-|     `float64`     | `x_max`  | Bounding box 中 x 最大值 |
-|     `float64`     | `y_max`  | Bounding box 中 y 最大值 |
-|     `string`      | `label`  |         识别 ID          |
+| `std_msgs/Header` | `header` |     ROS2 Standard Message       |
+|     `float64`     | `x_min`  | Minimum value of x in the bounding box. |
+|     `float64`     | `y_min`  | Minimum value of y in the bounding box. |
+|     `float64`     | `x_max`  | Maximum value of x in the bounding box. |
+|     `float64`     | `y_max`  | Maximum value of y in the bounding box |
+|     `string`      | `label`  |         Identification ID          |
 
 ## BoundingBox.msg
 
 |       Type        |   Name   |          Description           |
 | :---------------: | :------: | :----------------------------: |
-| `std_msgs/Header` | `header` |        ROS2 标准消息头         |
-|  `BoundingBox[]`  | `boxes`  | 由 Bounding box 消息组成的数组 |
+| `std_msgs/Header` | `header` |         ROS2 Standard Message        |
+|  `BoundingBox[]`  | `boxes`  | An array composed of bounding box messages |
 
 ## ObjectDetection.srv
 
 |        Type         |   Name   |   Description    |
 | :-----------------: | :------: | :--------------: |
-| `sensor_msgs/Image` | `image`  | 请求发送一张图片 |
-| `BoundingBoxArray`  | `result` |  返回识别的结果  |
+| `sensor_msgs/Image` | `image`  | request to send a picture |
+| `BoundingBoxArray`  | `result` |   Return the recognition results |
 
 ## 
 
@@ -87,8 +88,7 @@ colcon build --packages-select tita_perception_interfaces
 ---
 <p align="center"><strong>tita_system_interfaces</strong></p>
 
-​	机器人系统控制相关的自定义消息接口。
-
+Description:Custom message interface related to robot system control.
 ## Basic Information
 
 | Installation method | Supported platform[s]    |
@@ -101,141 +101,145 @@ colcon build --packages-select tita_perception_interfaces
 
 |         Type          |    Name    |       Description        |
 | :-------------------: | :--------: | :----------------------: |
-|   `std_msgs/Byte`   |  `fan_mode`  |     风扇模式      |
-| `bool` |  `success`   | 返回的结果 |
+|   `std_msgs/Byte`   |  `fan_mode`  |     Fan mode      |
+| `bool` |  `success`   | return result |
 
 风扇模式取值：
 
 | fan_mode | Description |
 | :--: | :---------: |
-|  0   |  自动档位   |
-|  1   |  关闭风扇   |
-|  2   |  风速1档   |
-|  3   |  风速2档   |
-|  4   |  风速3档   |
-|  5   |  风速4档   |
+|  0   | Automatic mode   |
+|  1   | Turn off fan   |
+|  2   | Speed level 1   |
+|  3   | Speed level 2   |
+|  4   | Speed level 3   |
+|  5   | Speed level 4   |
 
 ## HeadLightControlSrv.srv
 
 |         Type          |    Name    |       Description        |
 | :-------------------: | :--------: | :----------------------: |
-|   `bool`   |  `is_control`  |     采取控制      |
-|   `uint32[48]`   |  `light_rgbl_value`  |     灯珠RGBL值      |
-| `bool` |  `success`   | 返回的结果 |
+bool | is_control | Take control |
+| uint32[48] | light_rgbl_value | Light bead RGBL value |
+| bool | success | Return result |
 
-采取控制取值：
+**the value for take control：**
 
 | is_control | Description |
 | :--: | :---------: |
-|  false   |  放弃控制   |
-|  true   |  采取控制   |
 
-灯珠RGBL值取值：
+| false | Relinquish control |
+| true | Take control |
+
+**Light bead RGBL value range:**
 
 | light_rgbl_value | Description |
 | :--: | :---------: |
-|  uint32[0]   |  第一个灯珠的RGBL取值   |
-|  uint32[1]   |  第二个灯珠的RGBL取值   |
-|  uint32[2]   |  第三个灯珠的RGBL取值   |
-|  uint32[...]   |  省略   |
-|  uint32[45]   |  第四十五个灯珠的RGBL取值   |
-|  uint32[46]   |  第四十六个灯珠的RGBL取值   |
-|  uint32[47]   |  第四十七个灯珠的RGBL取值   |
+| uint32[0] | RGBL value of the first light bead |
+| uint32[1] | RGBL value of the second light bead |
+| uint32[2] | RGBL value of the third light bead |
+| uint32[...] | Omitted |
+| uint32[45] | RGBL value of the forty-fifth light bead |
+| uint32[46] | RGBL value of the forty-sixth light bead |
+| uint32[47] | RGBL value of the forty-seventh light bead |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+**Assuming uint32[0] = 0x12345678, the specific meaning of the RGBL values 
+for the first LED bead is:**
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x34   |  第一个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x56   |  第一个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
-|  0x78   |  第一个灯珠的Lightness取值为0x78,Lightness取值范围为0x00~0xFF  |
+| 0x12 | The Red value for the first LED bead is set to 0x12, with a range of 0x00 to 0xFF. |
+| 0x34 | The Green value for the first LED bead is set to 0x34, with a range of 0x00 to 0xFF. |
+| 0x56 | The Blue value for the first LED bead is set to 0x56, with a range of 0x00 to 0xFF. |
+| 0x78 | The Lightness value for the first LED bead is set to 0x78, with a range of 0x00 to 0xFF. |
 
-其余灯珠取值含义同理
+The meaning of the values for the other LED beads follows the same logic.
 
 ## TailLightControlSrv.srv
 
 |         Type          |    Name    |       Description        |
 | :-------------------: | :--------: | :----------------------: |
-|   `bool`   |  `is_control`  |     采取控制      |
-|   `uint32[36]`   |  `light_rgbl_value`  |     灯珠RGBL值      |
-| `bool` |  `success`   | 返回的结果 |
+bool | is_control | Take control |
+| uint32[48] | light_rgbl_value | Light bead RGBL value |
+| bool | success | Return result |
 
-采取控制取值：
+**the value for take control：**
 
 | is_control | Description |
 | :--: | :---------: |
-|  false   |  放弃控制   |
-|  true   |  采取控制   |
+| false | Relinquish control |
+| true | Take control |
 
-灯珠RGBL值取值：
+**Light bead RGBL value range:**
 
 | light_rgbl_value | Description |
 | :--: | :---------: |
-|  uint32[0]   |  第一个灯珠的RGBL取值   |
-|  uint32[1]   |  第二个灯珠的RGBL取值   |
-|  uint32[2]   |  第三个灯珠的RGBL取值   |
-|  uint32[...]   |  省略   |
-|  uint32[33]   |  第三十三个灯珠的RGBL取值   |
-|  uint32[34]   |  第三十四个灯珠的RGBL取值   |
-|  uint32[35]   |  第三十五个灯珠的RGBL取值   |
+| uint32[0] | The RGBL value for the first LED bead |
+| uint32[1] | The RGBL value for the second LED bead |
+| uint32[2] | The RGBL value for the third LED bead |
+| uint32[...] | Omitted |
+| uint32[33] | The RGBL value for the thirty-third LED bead |
+| uint32[34] | The RGBL value for the thirty-fourth LED bead |
+| uint32[35] | The RGBL value for the thirty-fifth LED bead |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+**Assuming uint32[0] = 0x12345678, the specific meaning of the RGBL values 
+for the first LED bead is:**
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x34   |  第一个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x56   |  第一个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
-|  0x78   |  第一个灯珠的Lightness取值为0x78,Lightness取值范围为0x00~0xFF  |
+| 0x12 | The Red value for the first LED bead is 0x12, with a range of 0x00 to 0xFF. |
+| 0x34 | The Green value for the first LED bead is 0x34, with a range of 0x00 to 0xFF. |
+| 0x56 | The Blue value for the first LED bead is 0x56, with a range of 0x00 to 0xFF. |
+| 0x78 | The Lightness value for the first LED bead is 0x78, with a range of 0x00 to 0xFF. |
 
-其余灯珠取值含义同理
+The same applies to the values for the other LED beads.
 
 ## LegLightControlSrv.srv
 
 |         Type          |    Name    |       Description        |
 | :-------------------: | :--------: | :----------------------: |
-|   `bool`   |  `is_control`  |     采取控制      |
-|   `uint8`   |  `target_leg_light`  |     目标腿灯      |
-|   `uint32[10]`   |  `light_rgbl_value`  |     灯珠RGBL值      |
-| `bool` |  `success`   | 返回的结果 |
+| bool | is_control | Take control |
+| uint8 | target_leg_light | Target leg light |
+| uint32[10] | light_rgbl_value | LED bead RGBL values |
+| bool | success | Result returned |
 
-采取控制取值：
+**the value for take control：**
 
 | is_control | Description |
 | :--: | :---------: |
-|  false   |  放弃控制   |
-|  true   |  采取控制   |
+| false | Relinquish control |
+| true | Take control |
 
-目标腿灯取值：
+**target leg liget range：**
 
 | target_leg_light | Description |
 | :--: | :---------: |
-|  1   |  左腿灯   |
-|  2   |  右腿灯   |
+| 1 | Left leg light |
+| 2 | Right leg light |
 
-灯珠RGBL值取值：
+**Light bead RGBL value range:**
 
 | light_rgbl_value | Description |
 | :--: | :---------: |
-|  uint32[0]   |  第一个灯珠的RGBL取值   |
-|  uint32[1]   |  第二个灯珠的RGBL取值   |
-|  uint32[2]   |  第三个灯珠的RGBL取值   |
-|  uint32[...]   |  省略   |
-|  uint32[7]   |  第七个灯珠的RGBL取值   |
-|  uint32[8]   |  第八个灯珠的RGBL取值   |
-|  uint32[9]   |  第九个灯珠的RGBL取值   |
+| uint32[0] | RGBL value for the first LED bead |
+| uint32[1] | RGBL value for the second LED bead |
+| uint32[2] | RGBL value for the third LED bead |
+| uint32[...] | Omitted |
+| uint32[7] | RGBL value for the seventh LED bead |
+| uint32[8] | RGBL value for the eighth LED bead |
+| uint32[9] | RGBL value for the ninth LED bead |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+**Assuming uint32[0] = 0x12345678, the specific meaning of the RGBL values 
+for the first LED bead is:**
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  取值无意义，仅占符位  |
-|  0x34   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x56   |  第二个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x78   |  第三个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
+| 0x12 | Placeholder value, no meaning |
+| 0x34 | Red value for the first LED bead is 0x12, with a range of 0x00 to 0xFF |
+| 0x56 | Green value for the second LED bead is 0x34, with a range of 0x00 to 0xFF |
+| 0x78 | Blue value for the third LED bead is 0x56, with a range of 0x00 to 0xFF |
 
-其余灯珠取值含义同理
+The same applies to the values for the other LED beads.
 
 ## Build Package
 
