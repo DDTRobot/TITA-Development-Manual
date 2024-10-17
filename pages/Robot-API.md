@@ -11,6 +11,9 @@ Robot-API/rgb
 Robot-API/teleop
 Robot-API/tita_interface
 Robot-API/wendu
+Robot-API/zhangai
+Robot-API/system_status
+Robot-API/locomotion
 ```
 
 ------
