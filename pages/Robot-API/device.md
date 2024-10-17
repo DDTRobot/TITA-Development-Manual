@@ -40,7 +40,7 @@ colcon build --packages-select dual_tof_device
 ---
 <p align="center"><strong>ultrawave_device</strong></p>
 
-​	这是一个超声波模块的设备节点，用于读取超声波模块的数据，并发布出来。 
+​	这是一个超声波模块的设备节点，用于读取超声波模块的数据，并发布出来。该功能未是完成体，仍在在持续更新中。 
 
 ## Basic Information
 
@@ -69,7 +69,7 @@ colcon build --packages-select ultrawave_device
 <p align="center"><strong>stereo_camera_device</strong></p>
 
 
-​	这是一个双目相机的设备节点，用于读取双目相机的数据，并发布出来。 
+​	这是一个双目相机的设备节点，用于读取双目相机的数据，并发布出来。该功能未是完成体，仍在在持续更新中。
 
 ## Basic Information
 

@@ -36,51 +36,98 @@
 并且输入指令`lsusb`能看到这个信息
 ![f3](.././_static/flash3.JPEG)
 
-## 安装ROS依赖
+## Connect TITA Robot System
+可以使用USB3.0的USB-TypeC线插入标志为“DBG”接口使用SSH指令进入机器人系统（注意！随包装的TypeC线为刷机线，不可作为调试线使用）
+```bash
+ssh robot@192.168.42.1
+password: apollo
+```
+
+## 如何连接WIFI
+刷机过后需要下载ROS包和其他依赖，所以需要先将机器人连接网络，以下是连接当前所在地的WIFI教程：
+1.首先 `sudo vim /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf`
+2.修改图中，ssid= "WIFI name"; psk="PassWord"
+3.修改完后reboot
+4.当机器人重启后会自动连接上述步骤所设置的WIFI
+![f8](.././_static/flash8.jpeg)
+
+## 安装依赖
+在目前的新系统中为了确保ROS2包能正常运行，所以需要安装以下的依赖：
+#### 安装g2o
+在机器人系统中执行以下步骤：
+1. `sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ubuntu_deb/g2o-1.2.23-Linux.deb`
+2. `sudo dpkg -i g2o-1.2.23-Linux.deb`
+3. 除此之外也需要安装以下依赖：`sudo apt install libeigen3-dev libspdlog-dev libsuitesparse-dev qtdeclarative5-dev qt5-qmake libqglviewer-dev-qt5`
+#### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
-2. 下载ROS依赖包：`sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20240823000305.deb`（依赖包以实际情况而定）
+2. 下载ROS2包：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb`（版本号以实际情况而定）
 3. 执行 `sudo apt-get update`，更新源
-4. 执行`sudo dpkg -i tita-ros2-20240823000305.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
+4. 执行`sudo dpkg -i tita-ros2-20241017000618.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
 5. 执行`sudo apt install -f`，下载包中所需依赖
-6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20240823000305.deb`，成功安装即可。
+6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20241017000618.deb`，成功安装即可。
 7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行
 ```{bash} 
 #!/bin/bash
 
 # 下载deb包
-sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20240823000305.deb
+sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb
 
 # 更新APT源
 sudo apt-get update
 
 # 尝试安装deb包，让系统识别依赖
-sudo dpkg -i tita-ros2-20240823000305.deb
+sudo dpkg -i tita-ros2-20241017000618.deb
 
 # 安装deb包所需依赖
 sudo apt install -f
 
 # 再次安装deb包
-sudo dpkg -i tita-ros2-20240823000305.deb
+sudo dpkg -i tita-ros2-20241017000618.deb
 ```
 
 ## 设置ROS2环境
-若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境。
-1. 输入 `sudo vim /usr/lib/systemd/system/tita-bringup.service`
-2. 确保`ROS_DOMAIN_ID=42`,并将`ROS_LOCALHOST_ONLY=1`改成`ROS_LOCALHOST_ONLY=0`，如图
-![f4](.././_static/flash4.JPEG)
-3. 修改完成后需要输入指令，`source /opt/ros/humble/local_setup.bash
-4. 除此之外，需要在`~/bashrc`和`/opt/ros/humble/setup.bash`,设置输入`export ROS_DOMAIN_ID=42`,如图
+若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要对三个文件做操作，分别是 `~/.bashrc`；`local_setup.bash`；`tita-bringup.service`。
+####  1. ~/.bashrc
+- 输入:`sudo vim ~/.bashrc`
+- 进入~/.bashrc后在最后的位置添加两个字段
+```bash
+export ROS_DOMAIN_ID=42
+source /opt/ros/humble/setup.bash
+```
+- 保存退出后需要 `source ~/.bashrc`
 ![f5](.././_static/flash5.JPEG)
+#### 2. tita-bringip.service
+- 输入 `sudo vim /usr/lib/systemd/system/tita-bringup.service`
+- 确保`ROS_DOMAIN_ID=42`,并将`ROS_LOCALHOST_ONLY=1`改成`ROS_LOCALHOST_ONLY=0`，如图
+- 修改完成保存退出
+![f4](.././_static/flash4.JPEG)
+#### 3. local_setup.bash
+- 输入指令，`sudo vim /opt/ros/humble/local_setup.bash
+- 在最后的位置加入字段 `export ROS_DOMAIN_ID=42`
+- 设置完成后保存退出并执行 `source local_setup.bash`
 ![f6](.././_static/flash6.jpeg)
-5. 并在`~/.bashrc`中输入`source /opt/ros/humble/setup.bash`并保存
-6. 设置完后，分别 `source /opt/ros/humble/setup.bash`;`source ~/.bashrc`
-7. 所有设置完成后，输入`ros2 topic list`检验一下，若出现如图输出即设置OK
+#### 4. 自检
+- 如果以上操作都完成后可以执行 `sudo systemctl restart tita-bringup.service`
+- 让ROS2服务重启后可以输入 `ros2 topic list`查看是否能print机器里的ros2 topic，如图
 ![f7](.././_static/flash7.jpeg)
-## 如何修改WIFI
-1.首先 `sudo vim /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf`
-2.修改图中，ssid= "WIFI name"; psk="PassWord"
-3.修改完后reboot
-![f8](.././_static/flash8.jpeg)
+
+## 网络配置
+该网络配置针对于 TITA Tower配件的网络分配，可以通过此设置分配独立IP用于TITA Tower与机器人配合使用。
+1. 安装依赖
+```bash
+sudo apt install network-manager
+sudo apt install systemd-networkd
+```
+2. 安装完依赖后需要克隆AutoNetworkManager的仓
+` git clone http://git.ddt.dev:9281/wuyunzhou/AutoNetworkManager.git`
+3. 通过AutoNetworkManager的脚本安装
+```bash
+cd AutoNetworkManager
+chmod 777 install.sh
+./install.sh
+```
+完成以上步骤后，通过`ifconfig`能看到eth0自动分配IP 192.168.19.97，并且可以ping TITA Tower上默认IP 192.168.19.97。
+
 ## 如何配对遥控器
 （在机器人中执行这个操作）
 1. 使用`git clone` 将遥控器配对脚本克隆下来

@@ -1,4 +1,4 @@
-# TITA-interface
+# TITA-Interface
 
 ```{toctree}
 :maxdepth: 1
