@@ -6,6 +6,7 @@ pages/Robot-API
 pages/Robot-Controller
 pages/TITA-Tower
 pages/ubuntu-flash
+pages/quickstart
 ```
 
 ## 简介

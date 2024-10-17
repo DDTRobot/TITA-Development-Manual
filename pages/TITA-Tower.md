@@ -110,7 +110,7 @@ TITA开机后会对TITA Tower上电，待TITA Tower指示灯变为蓝色时，�
  ![t6](./../_static/t6.PNG)
 
 
-# TITA Tower 更新固件步骤
+## TITA Tower 更新固件步骤
 
 
 
