@@ -13,9 +13,14 @@
 ## Preparation Work
 Hardware Preparation: The flashing cable that comes with TITA (with logo A facing outwards, insert into the DBG port, plug in the cable before powering on); an Ubuntu system computer.
 This operation requires downloading the flashing package to the computer (a Linux system is required), creating a new folder, and extracting the flashing package into the newly created folder.
+```bash
+0. sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler dosfstools
+        lbzip2 libxml2-utils nfs-kernel-server openssl python3-yaml qemu-user-static
+        sshpass udev uuid-runtime whois rsync zstd lz4 (in your computer system which to flash the robot)
 1. Download apollo-ubuntu-${date}.tar （Download the system software package corresponding to the date）
 2. mkdir apollo-ubuntu（You can create a folder at any location in your computer's system）
 3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （Extract the system software package into the newly created folder）
+```
 
 ## Begin the flashing process.
 Navigate into the folder you just created.
