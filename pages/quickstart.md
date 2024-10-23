@@ -11,6 +11,8 @@ TITA Demo in GitHub：https://github.com/DDTRobot/TITA-SDK-ROS2
 ## SDK Operation Steps
 
 - First, we need to access the TITA system
+connect usb-c cable on the robot , like this
+![sdk3](./../_static/sdk3.jpg)
 ```bash
 ssh robot@192.168.42.1
 password : apollo
@@ -20,7 +22,7 @@ password : apollo
 mkdir -p tita-sdk/src
 cd tita-sdk/src
 ```
-![sdk1](./../_static/sdk1.jpg)
+![sdk1](./../_static/sdk4.jpg)
 - After entering the folder, we need to clone our SDK repository and then compile it.
 ```bash
 git clone https://github.com/DDTRobot/TITA-SDK-ROS2.git
