@@ -36,7 +36,19 @@ Notice:在执行编译时可能会出现 colcon commond not found，我们就需
 ```bash
 source install/setup.bash
 ```
-- 最后我们就可以开始执行SDK啦！欢迎来到TITA的世界！
+- 这样我们就可以开始执行SDK啦！
 ```bash
 ros2 launch tita_bringup sdk_launch.py
+```
+- 接下来我们需要使用遥控器将机器人控制处于站立状态
+- 然后按下遥控器小屏幕右边的小按钮，朝中间按下，届时显示屏会出现名为 “mode select” 的界面。
+![sdk4](./../_static/sdk4)
+- 使用按钮往下推，选中"use-sdk mode"按下，机器人将自动执行，由刚刚执行的SDK接管控制权限，此时遥控器将无法控制机器人，但除了使机器人站立或趴下按钮。 
+![sdk5](./../_static/sdk5)
+
+```{note}
+1. 如果ros2 launch tita_bringup sdk_launch.py退出后，机器人仍然会自动执行，除非释放use-sdk控制权限，届时就需要将遥控器的use-sdk模式关掉
+2. 如果出现机器人没有反应，sdk_command_node.cpp中angular.z值给太小了，应当加大angular.z的值。
+3. sdk_speed 值范围:±6 rad/s
+4. turn_speed 值范围：±3 m/s
 ```
