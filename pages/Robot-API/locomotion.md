@@ -53,7 +53,7 @@ Topic type: `geometry_msgs/msg/PoseStamped`
 
 3. `/${tita_ns}/command/manager/cmd_twist` 
 Topic type: `geometry_msgs/msg/Twist`
-机器人速度控制指令,包括`linear`, `angular`等, 仅`linear.x`和`angular.z`有效
+机器人速度控制指令,包括`linear（线速度）`, `angular（角速度）`等, 仅`linear.x（前进后退，取正负数值）`和`angular.z（左转右转，取正负数值）`有效
     ``` bash
     ros2 topic pub -1 /${tita_ns}/command/manager/cmd_twist geometry_msgs/msg/Twist "{
         linear: {x: 0.1, y: 0.0, z: 0.0}, 
