@@ -23,8 +23,8 @@
 （4）随后按下开关机键重启手柄，按下右边按钮，朝中间按下，会出现`mode select`界面
 ![cup8](../../_static/cup8.JPEG)
 ### 3.更新接收机
-完成以上步骤就是完成了第一阶段固件更新！
-接下来就是更新接收机的时候。
+完成以上步骤就是完成了第一阶段固件更新！  
+接下来就是更新接收机的时候。  
 （1）首先遥控器开机后，右边按键向左推进入界面后 按键依次进入Tools ->ExpressLRS->wifi connectiving->Enable wifi
 ![cup8](../../_static/cup8.PNG)
 ![cup8](../../_static/cup9.PNG)
