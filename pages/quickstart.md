@@ -39,7 +39,19 @@ Notice:During compilation, you may encounter the error "colcon command not found
 ```bash
 source install/setup.bash
 ```
-- Finally, you can start executing the SDK! Welcome to the world of TITA!
+- Finally, you can start executing the SDK! 
 ```bash
 ros2 launch tita_bringup sdk_launch.py
+```
+- Next, we need to use the remote control to put the robot in a standing position.
+- Then press the small button on the right side of the remote control's small screen towards the center, and a screen named "mode select" will appear on the display.
+![sdk5](./../_static/sdk5.jpg)
+- Push the button downwards to select "use-sdk mode" and press it. The robot will then automatically execute the transition, handing over control to the SDK that was just run. At this point, the remote control will no longer be able to control the robot, except for the buttons that make the robot stand up or lie down.
+![sdk5](./../_static/sdk6.jpg)
+
+```{note}
+1. If the robot continues to operate automatically after ros2 launch tita_bringup sdk_launch.py exits, it means that the use-sdk control authority has not been released. In this case, you will need to turn off the use-sdk mode on the remote control.
+2. If the robot does not respond, it may be because the angular.z value in sdk_command_node.cpp is set too low. You should increase the value of angular.z.
+3. The range for sdk_speed should be: ±6 rad/s
+4. The range for turn_speed should be: ±3 m/s
 ```
