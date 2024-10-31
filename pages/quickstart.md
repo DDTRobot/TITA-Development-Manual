@@ -41,7 +41,7 @@ source install/setup.bash
 ros2 launch tita_bringup sdk_launch.py
 ```
 - 接下来我们需要使用遥控器将机器人控制处于站立状态
-- 然后按下遥控器小屏幕右边的小按钮，朝中间按下，届时显示屏会出现名为 “mode select” 的界面。
+- 然后按下遥控器小屏幕右边的小按钮，朝中间按下，届时显示屏会出现名为 “mode select” 的界面。  
 ![sdk4](./../_static/sdk4)
 - 使用按钮往下推，选中"use-sdk mode"按下，机器人将自动执行，由刚刚执行的SDK接管控制权限，此时遥控器将无法控制机器人，但除了使机器人站立或趴下按钮。 
 ![sdk5](./../_static/sdk5)
