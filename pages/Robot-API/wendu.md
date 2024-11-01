@@ -48,10 +48,3 @@ data取1为关闭风扇，取2～5会逐级加大风扇档位。
 | system/temperature/fan_mode_set  | std_msgs::msg::Byte | std_msgs::msg::Bool |    一个service的案例     |
 
 
-
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select temperature_controller 

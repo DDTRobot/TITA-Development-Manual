@@ -78,9 +78,3 @@ ros2 service call /system/light_control/leg_light_control_srv tita_system_interf
 
 
 
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select rgb_light_controller 

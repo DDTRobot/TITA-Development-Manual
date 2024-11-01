@@ -105,11 +105,3 @@ ros2 launch power_controller power_controller_node.launch.py
 | service name | tita_system_interfaces::srv::PowerHeartBeatSrv |    请求电源心跳包客户端     |
 | service name | tita_system_interfaces::srv::PowerSelfTestSrv |    请求电源状态自检客户端     |
 
-
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select power_controller
-

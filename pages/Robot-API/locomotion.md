@@ -45,7 +45,7 @@ Topic type: `geometry_msgs/msg/PoseStamped`
             frame_id: 'world'}, 
         pose: 
         {
-            position: {x: 1.0, y: 2.0, z: 3.0}, 
+            position: {x: 0.0, y: 0.0, z: 0.1}, # only valid in z , range in 0.1 to 0.3
             orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
         }
         }"
@@ -167,34 +167,4 @@ Topic type: `sensor_msgs/msg/Imu`
     - 0.0
     ---
     ```
-
-## Build Package
-
-```bash
-# if have extra dependencies
-# apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-pinocchio 
-colcon build --packages-up-to locomotion_bringup robot_inertia_calculator template_ros2_controller tita_controller
-source install/setup.bash
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=none ctrl_mode:=mcu #　不正常启动　使用　killall -9 gzserver
-
-```
-
-## Simulation with GAZEBO or WEBOTS
-
-```bash
-echo 'export SIM_COMPILE=true' >> ~/.bashrc # 因为on board不需要编译仿真,
-source ~/.bashrc
-# 导出urdf和mesh到绝对位置,方便webots找到
-cd tita_description
-chmod +x copy_meshes.sh
-./copy_meshes.sh
-# cd到src目录的上一级目录
-source /opt/ros/humble/setup.bash
-colcon build --packages-up-to gazebo_bridge webots_bridge
-source install/setup.bash
-# gazebo
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=gazebo ctrl_mode:=wbc
-# webots
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=webots ctrl_mode:=wbc # 使用的控制器都为tita_controller
-```
 

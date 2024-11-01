@@ -60,10 +60,3 @@
 | `SpeedButton`  | `a|b` \|`0-7`  |  `b7`   | 对应消息中第八个数值，开关量，速度调节 |
 |   `AxesBias`   |    `浮点数`    | 0.0013  |        遥控器模拟量轴的死区范围        |
 
-## Build Package
-
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select teleop_command
-```
-

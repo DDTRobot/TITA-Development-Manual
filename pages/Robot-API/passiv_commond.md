@@ -42,10 +42,5 @@
 | :-----------------------: | :----------------------------------------------: | :-----------: | :------------------------------: |
 | `command/passive/command` | `tita_locomotion_interfaces::msg::LocomotionCmd` | `passive_joy` | 用于描述当前机器人的运动能力上限 |
 
-## Build Package
 
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select passive_command
-```
 

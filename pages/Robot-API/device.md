@@ -90,11 +90,3 @@ colcon build --packages-select ultrawave_device
 
 
 
-## Build Package
-
-```bash
-# if have extra dependencies
-apt install ros-humble-pcl-conversions libopencv-dev ros-humble-cv-bridge
-colcon build --packages-select stereo_camera_device
-```
-

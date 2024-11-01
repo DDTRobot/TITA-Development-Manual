@@ -48,10 +48,4 @@
 | `obstacle_bias`  |     `\`      | `0.01`  | 用于手动调整，补偿传感器的测量偏差 |
 
 
-## Build Package
-
-```bash
-# if have extra dependencies
-colcon build --packages-select obstacle_detector
-```
 

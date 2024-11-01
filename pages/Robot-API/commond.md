@@ -42,10 +42,4 @@
 | `command/manager/cmd_pose`  | `geometry_msgs::msg::PoseStamped` |   `/`    | 机器人主体姿态最终控制指令 |
 |  `command/manager/cmd_key`  |      `std_msgs::msg::String`      |   `/`    |   机器人状态最终控制指令   |
 
-## Build Package
-
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select command_manager tita_locomotion_interfaces
-```
 

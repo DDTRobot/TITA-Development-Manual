@@ -35,11 +35,3 @@
 | `imu_sensor_broadcaster/imu` | `diagnostic_msgs::msg::DiagnosticArray` |   `/`    | 系统状态信息 |
 
 
-
-## Build Package
-
-```bash
-# if have extra dependencies
-colcon build --packages-select system_status
-```
-

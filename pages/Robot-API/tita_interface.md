@@ -237,11 +237,4 @@ colcon build --packages-select tita_perception_interfaces
 
 其余灯珠取值含义同理
 
-## Build Package
-
-```bash
-# if have extra dependencies
-# apt install <libdepend-dev>
-colcon build --packages-select tita_system_interfaces
-```
 
