@@ -21,16 +21,16 @@
   导航塔支持以太网接口，通过网线连接导航塔和笔记本电脑，支持多机交互可视化调试。
 
 - **查看IP**
-  查看IP可以通过连接热点访问导航塔设备信息网页：[http://10.42.0.1:8000](http://10.42.0.1:8000)
-  ![t1](./../_static/t1.png)
-   ![t2](./../_static/t2.png)
+  查看IP可以通过连接热点访问导航塔设备信息网页：[http://10.42.0.1](http://10.42.0.1)
+  ![t1](./../_static/t10.jpg)
   - 注意：
+    - 可以在该网页上更改TITA Tower的 `ROS_DOMAIN_ID`
     - `192.168.19.101` 为有线网口分配IP
     - `10.42.0.1` 为无线wifi分配的IP
 
 ### 1.2 环境配置
 
-- **导航塔 ROS_DOMAIN_ID 默认是42**，实现多机交互需要对调试机的 ROS_DOMAIN_ID 也设置成42，设置完成后，执行 `source ~/.bashrc`
+- **导航塔 ROS_DOMAIN_ID 默认是42**，实现多机交互需要对调试机的 `ROS_DOMAIN_ID` 也设置成`42`，设置完成后，执行 `source ~/.bashrc`
 - 如果是使用TITA和Tower结合，需要将TITA的ROS2环境配置好，详细操作查阅《[Ubuntu系统刷机流程](https://tita-development-manual-uc.readthedocs.io/zh-cn/latest/pages/ubuntu-flash.html)》
 
 #### 1.2.1 测试设备通讯
@@ -43,13 +43,15 @@ TITA开机后会对TITA Tower上电，待TITA Tower指示灯变为蓝色时，�
  
 ### 开启软件功能
 
-
-`ros2 service call start std_srvs/srv/Trigger {}`
+```bash
+ros2 service call start std_srvs/srv/Trigger {}
+```
  ![t4](./../_static/t4.png)
 
 ### 关闭软件功能
-
-`ros2 service call stop std_srvs/srv/Trigger {}`
+```bash
+ros2 service call stop std_srvs/srv/Trigger {}
+```
  ![t5](./../_static/t5.png)
 
 ### 实时输出
@@ -103,14 +105,14 @@ TITA开机后会对TITA Tower上电，待TITA Tower指示灯变为蓝色时，�
   ```
 
 ### 启动rviz
-
+可以在你的电脑（需要装有`rviz2`的电脑并且`ROS_DOMAIN_ID`与机器人的一致)启用rviz2并如图添加TITA Tower彩云的topic查看TITA Tower建图情况。
 ```bash
-1 rviz2
+rviz2
 ```
  ![t6](./../_static/t6.PNG)
 
 
-## TITA Tower 更新固件步骤
+
 
 
 
