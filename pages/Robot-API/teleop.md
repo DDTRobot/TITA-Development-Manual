@@ -46,11 +46,3 @@
 | JumpButton   | a/b \| 0-7     | b6      | Corresponding to the seventh numerical value in the message, switch quantity, jump switch |
 | SpeedButton  | a/b \| 0-7     | b7      | Corresponding to the eighth numerical value in the message, switch quantity, speed adjustment  |
 | AxesBias     | float       | 0.0013  | Dead zone range of the remote control analog axis              |
-
-## Build Package
-
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select teleop_command
-```
-

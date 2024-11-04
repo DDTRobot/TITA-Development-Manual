@@ -32,10 +32,3 @@
 | `command/manager/cmd_pose`  | `geometry_msgs::msg::PoseStamped` |   `/`    | Final control commands for the robot's main body posture |
 |  `command/manager/cmd_key`  |      `std_msgs::msg::String`      |   `/`    |   Final control commands for the robot's status   |
 
-## Build Package
-
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select command_manager tita_locomotion_interfaces
-```
-

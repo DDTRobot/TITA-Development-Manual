@@ -77,11 +77,3 @@ Please refrain from sending requests to the leg light strips at excessively high
 ------
 
 
-
-
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select rgb_light_controller 

@@ -37,10 +37,4 @@ Description: Subscribe to data nodes from various devices within the system, ass
 
 
 
-## Build Package
-
-```bash
-# if have extra dependencies
-colcon build --packages-select system_status
-```
 

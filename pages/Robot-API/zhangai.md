@@ -47,11 +47,3 @@
 | obstacle_start | `true/false` | true | The switch for the node's functionality |
 | obstacle_bias | `\` | 0.01 | Used for manual adjustment to compensate for sensor measurement bias |
 
-
-## Build Package
-
-```bash
-# if have extra dependencies
-colcon build --packages-select obstacle_detector
-```
-

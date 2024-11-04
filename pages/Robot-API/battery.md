@@ -17,14 +17,14 @@ The battery device module implements the "battery data topic" and the "power man
 ## Preparation
 
 Run the battery device module：
-```
+``` bash
 ros2 run battery_device battery_device_node
-or
+
 ros2 launch battery_device battery_device_node.launch.py
 ```
 
 Print battery device data：
-```
+``` bash
 ros2 topic echo /your_tita_name/system/batteries/left
 
 ros2 topic echo /your_tita_name/system/batteries/right
@@ -32,30 +32,15 @@ ros2 topic echo /your_tita_name/system/batteries/right
 
 Where `your_tita_name` refers to the specific naming of the robot device, for example, `tita1234567`.
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## Published
 
 | ROS Topic |       Interface        | Frame ID | Description |
 | :-------: | :--------------------: | :------: | :---------: |
-| `../system/batteries/left`  | sensor_msgs::msg::BatteryState |  left_battery_info  |  left battery data 5Hz  |
-| `../system/batteries/right`  | sensor_msgs::msg::BatteryState |  right_battery_info  |  right battery data 5Hz |
-| `../system/battery_diagnostic/left`  | diagnostic_msgs::msg::DiagnosticArray |  left_battery_diagnostic_info  |  left battery diagnostic data 5Hz |
-| `../system/battery_diagnostic/right`  | diagnostic_msgs::msg::DiagnosticArray |  right_battery_diagnostic_info  |  right battery diagnostic data 5hz |
+| `../system/batteries/left`  | `sensor_msgs::msg::BatteryState` |  left_battery_info  |  left battery data 5Hz  |
+| `../system/batteries/right`  | `sensor_msgs::msg::BatteryState` |  right_battery_info  |  right battery data 5Hz |
+| `../system/battery_diagnostic/left`  | `diagnostic_msgs::msg::DiagnosticArray` |  left_battery_diagnostic_info  |  left battery diagnostic data 5Hz |
+| `../system/battery_diagnostic/right`  | `diagnostic_msgs::msg::DiagnosticArray` |  right_battery_diagnostic_info  |  right battery diagnostic data 5hz |
 
-
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select battery_device
-```
 
 

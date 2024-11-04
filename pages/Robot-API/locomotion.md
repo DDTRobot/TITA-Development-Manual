@@ -45,7 +45,7 @@ Robot head position and posture control commands, including adjusting height and
             frame_id: 'world'}, 
         pose: 
         {
-            position: {x: 1.0, y: 2.0, z: 3.0}, 
+            position: {x: 0.0, y: 0.0, z: 0.1}, 
             orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
         }
         }"
@@ -167,35 +167,3 @@ Print robot IMU sensor information, include`orientation`, `angular_velocity`, `l
     - 0.0
     ---
     ```
-
-## Build Package
-
-```bash
-# if have extra dependencies
-# apt install ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-pinocchio 
-colcon build --packages-up-to locomotion_bringup robot_inertia_calculator template_ros2_controller tita_controller
-source install/setup.bash
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=none ctrl_mode:=mcu #　if can not bringup, use　killall -9 gzserver
-
-```
-
-## Simulation with GAZEBO or WEBOTS
-
-```bash
-echo 'export SIM_COMPILE=true' >> ~/.bashrc # Because on board does not require compilation for simulation
-source ~/.bashrc
-# Export URDF and mesh files to an absolute path to make it easier for Webots to locate them.
-
-cd tita_description
-chmod +x copy_meshes.sh
-./copy_meshes.sh
-# Navigate to the parent directory of the src directory.
-source /opt/ros/humble/setup.bash
-colcon build --packages-up-to gazebo_bridge webots_bridge
-source install/setup.bash
-# gazebo
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=gazebo ctrl_mode:=wbc
-# webots
-ros2 launch locomotion_bringup tita_controllers.launch.py sim_env:=webots ctrl_mode:=wbc # controller all is tita_controller
-```
-

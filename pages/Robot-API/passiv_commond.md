@@ -31,10 +31,3 @@ Description: The passive command module is designed to receive sensor informatio
 | `command/passive/command` | `tita_locomotion_interfaces::msg::LocomotionCmd` | `passive_joy` | Used to describe the current maximum motion capabilities of the robot.
  |
 
-## Build Package
-
-```bash
-# apt install ros-humble-joy
-colcon build --packages-select passive_command
-```
-

@@ -48,11 +48,3 @@ Setting data to 1 turns off the fan, while setting data to 2 through 5 will prog
 | :-----------: | :--------------------: | :--------------------: | :----------------------: |
 | system/temperature/fan_mode_set  | std_msgs::msg::Byte | std_msgs::msg::Bool |    one case of service     |
 
-
-
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select temperature_controller 

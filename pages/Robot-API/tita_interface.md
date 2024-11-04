@@ -241,11 +241,5 @@ for the first LED bead is:**
 
 The same applies to the values for the other LED beads.
 
-## Build Package
 
-```bash
-# if have extra dependencies
-# apt install <libdepend-dev>
-colcon build --packages-select tita_system_interfaces
-```
 
