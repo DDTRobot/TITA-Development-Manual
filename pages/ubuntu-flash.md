@@ -121,7 +121,6 @@ source /opt/ros/humble/setup.bash
 1. 安装依赖
 ```bash
 sudo apt install network-manager
-sudo apt install systemd-networkd
 ```
 2. 安装完依赖后需要克隆AutoNetworkManager的仓
 ` git clone http://git.ddt.dev:9281/wuyunzhou/AutoNetworkManager.git`
@@ -129,7 +128,7 @@ sudo apt install systemd-networkd
 ```bash
 cd AutoNetworkManager
 chmod 777 install.sh
-./install.sh
+sudo ./install.sh
 ```
 完成以上步骤后，通过`ifconfig`能看到eth0自动分配IP 192.168.19.97，并且可以ping TITA Tower上默认IP 192.168.19.97。
 
