@@ -37,10 +37,10 @@ ros2 topic echo /your_tita_name/system/batteries/right
 
 | ROS Topic |       Interface        | Frame ID | Description |
 | :-------: | :--------------------: | :------: | :---------: |
-| `../system/batteries/left`  | sensor_msgs::msg::BatteryState |  left_battery_info  |  左侧电池数据 5Hz  |
-| `../system/batteries/right`  | sensor_msgs::msg::BatteryState |  right_battery_info  |  右侧电池数据 5Hz |
-| `../system/battery_diagnostic/left`  | diagnostic_msgs::msg::DiagnosticArray |  left_battery_diagnostic_info  |  左侧电池诊断数据 5Hz |
-| `../system/battery_diagnostic/right`  | diagnostic_msgs::msg::DiagnosticArray |  right_battery_diagnostic_info  |  右侧电池诊断数据 5hz |
+| `../system/batteries/left`  | `sensor_msgs::msg::BatteryState` |  `left_battery_info`  |  左侧电池数据 5Hz  |
+| `../system/batteries/right`  | `sensor_msgs::msg::BatteryState` |  `right_battery_info`  |  右侧电池数据 5Hz |
+| `../system/battery_diagnostic/left`  | `diagnostic_msgs::msg::DiagnosticArray` |  `left_battery_diagnostic_info`  |  左侧电池诊断数据 5Hz |
+| `../system/battery_diagnostic/right`  | `diagnostic_msgs::msg::DiagnosticArray` |  `right_battery_diagnostic_info`  |  右侧电池诊断数据 5hz |
 
 
 ---
