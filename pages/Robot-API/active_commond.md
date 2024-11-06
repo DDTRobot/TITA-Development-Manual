@@ -6,13 +6,6 @@
 ------
 主动指令管理器，其中包含了用户的SDK输入和遥控器的输入。将遥控器的输入数值映射成机器人的实际输入。
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## Subscribed
 

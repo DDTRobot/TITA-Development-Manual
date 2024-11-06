@@ -17,14 +17,14 @@
 ## Preparation
 
 运行电池设备模块：
-```
+```bash
 ros2 run battery_device battery_device_node
 或者
 ros2 launch battery_device battery_device_node.launch.py
 ```
 
 打印电池设备数据：
-```
+```bash
 ros2 topic echo /your_tita_name/system/batteries/left
 或者
 ros2 topic echo /your_tita_name/system/batteries/right
@@ -32,13 +32,6 @@ ros2 topic echo /your_tita_name/system/batteries/right
 
 其中`your_tita_name`为具体的机器人设备命名，例如 `tita1234567`。
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## Published
 
@@ -50,13 +43,6 @@ ros2 topic echo /your_tita_name/system/batteries/right
 | `../system/battery_diagnostic/right`  | diagnostic_msgs::msg::DiagnosticArray |  right_battery_diagnostic_info  |  右侧电池诊断数据 5hz |
 
 
-## Build Package
-
-```bash
-# If you haven't installed can-utils
-# apt-get install can-utils
-colcon build --merge-install --packages-select battery_device
-```
 ---
 # 电源控制器
 
@@ -69,39 +55,31 @@ colcon build --merge-install --packages-select battery_device
 ## Preparation
 
 运行电源控制器模块：
-```
+```bash
 ros2 run power_controller power_controller_node 
 或者
 ros2 launch power_controller power_controller_node.launch.py
 ```
 
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
-
 ## Subscribed
 
 | ROS Topic |       Interface        | Frame ID | Description |
 | :-------: | :--------------------: | :------: | :---------: |
-| `system/battery/left`  | sensor_msgs::msg::BatteryState |  left_battery_info  |  接收左侧电池数据  |
-| `system/battery/right`  | sensor_msgs::msg::BatteryState |  right_battery_info  |  接收右侧电池数据  |
+| `system/battery/left`  | `sensor_msgs::msg::BatteryState` |  `left_battery_info`  |  接收左侧电池数据  |
+| `system/battery/right`  | `sensor_msgs::msg::BatteryState` |  `right_battery_info`  |  接收右侧电池数据  |
 
 ## Service
 
 | Service Topic |   Service Interface    |       Description        |
 | :-----------: | :--------------------: | :----------------------: |
-| service name | std_srvs::srv::Trigger |    关机触发服务     |
+| `service name` | `std_srvs::srv::Trigger` |    关机触发服务     |
 
 ## Client
 
 | Client Topic |   Client Interface    |       Description        |
 | :-----------: | :--------------------: | :----------------------: |
-| service name | tita_system_interfaces::srv::PowerStateSetSrv |    请求设置电源状态客户端     |
-| service name | tita_system_interfaces::srv::PowerHeartBeatSrv |    请求电源心跳包客户端     |
-| service name | tita_system_interfaces::srv::PowerSelfTestSrv |    请求电源状态自检客户端     |
+| `service name` | `tita_system_interfaces::srv::PowerStateSetSrv` |    请求设置电源状态客户端     |
+| `service name` | `tita_system_interfaces::srv::PowerHeartBeatSrv` |    请求电源心跳包客户端     |
+| `service name` | `tita_system_interfaces::srv::PowerSelfTestSrv` |    请求电源状态自检客户端     |
 
