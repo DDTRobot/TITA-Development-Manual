@@ -9,11 +9,11 @@
 ​
 机器人运动控制管理。主要分为以下4个模块:
 
-- **device**：硬件bridge, 目前处理遥控器下发mcu, 读取mcu的motors及imu sensor信息．
+- **device**：硬件`bridge`, 目前处理遥控器下发mcu, 读取mcu的`motors`及`imu sensor`信息．
 - **libraries**：第三方库, ．
 - **locomotion_bringup**：机器人运动控制启动文件．
 - **locomotion_msgs**: 机器人运动控制消息定义, 目前仅为调试信息。
-- **tita_controllers**：继承于ros2_control框架中`controller_interface`，处理`hardware_interface`数据并得到控制指令发送到`hardware_interface`。
+- **tita_controllers**：继承于`ros2_control`框架中`controller_interface`，处理`hardware_interface`数据并得到控制指令发送到`hardware_interface`。
 - **tita_description**：机器人描述文件存放位置。
 - **tita_webots_ros2**：存放机器人仿真环境的位置, 托管在`git@git.ddt.dev:rbt/alg/tita_webots_ros2.git`
 
@@ -113,7 +113,7 @@ Topic type: `sensor_msgs/msg/JointState`
 
 1. `/${tita_ns}/imu_sensor_broadcaster/imu`
 Topic type: `sensor_msgs/msg/Imu`
-打印机器人imu sensor信息, 包含`orientation`, `angular_velocity`, `linear_acceleration`
+打印机器人`imu sensor`信息, 包含`orientation`, `angular_velocity`, `linear_acceleration`
 
     ``` bash
     # ros2 topic echo /${tita_ns}/imu_sensor_broadcaster/imu

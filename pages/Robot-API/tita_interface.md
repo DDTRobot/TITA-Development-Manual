@@ -10,15 +10,7 @@
 <p align="center"><strong>tita_locomotion_interfaces</strong></p>
 
 
-​	机器人运动控制相关的自定义消息接口。
-
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
+​**机器人运动控制相关的自定义消息接口。**
 
 ## LocomotionCmd.msg
 
@@ -29,26 +21,12 @@
 | `geometry_msgs/Pose`  |   `pose`   | 机器人躯干的姿态控制信息 |
 | `geometry_msgs/Twist` |  `twist`   | 机器人底盘的速度控制信息 |
 
-## Build Package
-
-```bash
-# if have extra dependencies
-# apt install <libdepend-dev>
-colcon build --packages-select tita_locomotion_interfaces
-```
 ---
 
 <p align="center"><strong>tita_perception_interfaces</strong></p>
 
-​	机器人感知相关的自定义接口。
+​**机器人感知相关的自定义接口。**
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## BoundingBox.msg
 
@@ -75,27 +53,13 @@ colcon build --packages-select tita_locomotion_interfaces
 | `sensor_msgs/Image` | `image`  | 请求发送一张图片 |
 | `BoundingBoxArray`  | `result` |  返回识别的结果  |
 
-## 
 
-## Build Package
-
-```bash
-# if have extra dependencies
-# apt install <libdepend-dev>
-colcon build --packages-select tita_perception_interfaces
-```
 ---
 <p align="center"><strong>tita_system_interfaces</strong></p>
 
-​	机器人系统控制相关的自定义消息接口。
+​	**机器人系统控制相关的自定义消息接口。**
 
-## Basic Information
 
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## FanModeSetSrv.srv
 
@@ -142,14 +106,14 @@ colcon build --packages-select tita_perception_interfaces
 |  uint32[46]   |  第四十六个灯珠的RGBL取值   |
 |  uint32[47]   |  第四十七个灯珠的RGBL取值   |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+假设`uint32[0] = 0x12345678`, 则第一个灯珠的RGBL取值的具体含义为：
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x34   |  第一个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x56   |  第一个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
-|  0x78   |  第一个灯珠的Lightness取值为0x78,Lightness取值范围为0x00~0xFF  |
+|  0x12   |  第一个灯珠的`Red`取值为`0x12`,`Red`取值范围为`0x00~0xFF`  |
+|  0x34   |  第一个灯珠的`Green`取值`0x34`,`Green`取值范围为`0x00~0xFF`  |
+|  0x56   |  第一个灯珠的`Blue`取值为`0x56`,`Blue`的取值范围为`0x00~0xFF`  |
+|  0x78   |  第一个灯珠的`Lightness`取值为`0x78`,`Lightness`取值范围为`0x00~0xFF`  |
 
 其余灯珠取值含义同理
 
@@ -165,29 +129,29 @@ colcon build --packages-select tita_perception_interfaces
 
 | is_control | Description |
 | :--: | :---------: |
-|  false   |  放弃控制   |
-|  true   |  采取控制   |
+|  `false`   |  放弃控制   |
+|  `true`   |  采取控制   |
 
 灯珠RGBL值取值：
 
 | light_rgbl_value | Description |
 | :--: | :---------: |
-|  uint32[0]   |  第一个灯珠的RGBL取值   |
-|  uint32[1]   |  第二个灯珠的RGBL取值   |
-|  uint32[2]   |  第三个灯珠的RGBL取值   |
-|  uint32[...]   |  省略   |
-|  uint32[33]   |  第三十三个灯珠的RGBL取值   |
-|  uint32[34]   |  第三十四个灯珠的RGBL取值   |
-|  uint32[35]   |  第三十五个灯珠的RGBL取值   |
+|  `uint32[0]`   |  第一个灯珠的RGBL取值   |
+|  `uint32[1]`   |  第二个灯珠的RGBL取值   |
+|  `uint32[2]`   |  第三个灯珠的RGBL取值   |
+|  `uint32[...]`   |  省略   |
+|  `uint32[33]`   |  第三十三个灯珠的RGBL取值   |
+|  `uint32[34]`   |  第三十四个灯珠的RGBL取值   |
+|  `uint32[35]`   |  第三十五个灯珠的RGBL取值   |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+假设`uint32[0] = 0x12345678`, 则第一个灯珠的RGBL取值的具体含义为：
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x34   |  第一个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x56   |  第一个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
-|  0x78   |  第一个灯珠的Lightness取值为0x78,Lightness取值范围为0x00~0xFF  |
+|  `0x12`   |  第一个灯珠的`Red`取值为`0x12`,`Red`取值范围为`0x00~0xFF`  |
+|  `0x34`   |  第一个灯珠的`Green`取值`0x34`,`Green`取值范围为`0x00~0xFF` |
+|  `0x56`   |  第一个灯珠的`Blue`取值为`0x56`,`Blue`的取值范围为`0x00~0xFF`  |
+|  `0x78`   |  第一个灯珠的`Lightness`取值为`0x78`,`Lightness`取值范围为`0x00~0xFF`  |
 
 其余灯珠取值含义同理
 
@@ -204,8 +168,8 @@ colcon build --packages-select tita_perception_interfaces
 
 | is_control | Description |
 | :--: | :---------: |
-|  false   |  放弃控制   |
-|  true   |  采取控制   |
+|  `false`  |  放弃控制   |
+|  `true`   |  采取控制   |
 
 目标腿灯取值：
 
@@ -218,22 +182,22 @@ colcon build --packages-select tita_perception_interfaces
 
 | light_rgbl_value | Description |
 | :--: | :---------: |
-|  uint32[0]   |  第一个灯珠的RGBL取值   |
-|  uint32[1]   |  第二个灯珠的RGBL取值   |
-|  uint32[2]   |  第三个灯珠的RGBL取值   |
-|  uint32[...]   |  省略   |
-|  uint32[7]   |  第七个灯珠的RGBL取值   |
-|  uint32[8]   |  第八个灯珠的RGBL取值   |
-|  uint32[9]   |  第九个灯珠的RGBL取值   |
+|  `uint32[0]`   |  第一个灯珠的RGBL取值   |
+|  `uint32[1]`   |  第二个灯珠的RGBL取值   |
+|  `uint32[2]`   |  第三个灯珠的RGBL取值   |
+|  `uint32[...]`   |  省略   |
+|  `uint32[7]`   |  第七个灯珠的RGBL取值   |
+|  `uint32[8]`   |  第八个灯珠的RGBL取值   |
+|  `uint32[9]`   |  第九个灯珠的RGBL取值   |
 
-假设uint32[0] = 0x12345678, 则第一个灯珠的RGBL取值的具体含义为：
+假设`uint32[0] = 0x12345678`, 则第一个灯珠的RGBL取值的具体含义为：
 
 | uint32[0] | Description |
 | :--: | :---------: |
-|  0x12   |  取值无意义，仅占符位  |
-|  0x34   |  第一个灯珠的Red取值为0x12,Red取值范围为0x00~0xFF  |
-|  0x56   |  第二个灯珠的Green取值0x34,Green取值范围为0x00~0xFF  |
-|  0x78   |  第三个灯珠的Blue取值为0x56,Blue的取值范围为0x00~0xFF  |
+|  `0x12`   |  取值无意义，仅占符位  |
+|  `0x34`   |  第一个灯珠的`Red`取值为`0x12`,`Red`取值范围为`0x00~0xFF`  |
+|  `0x56`   |  第二个灯珠的`Green`取值`0x34`,`Green`取值范围为`0x00~0xFF`  |
+|  `0x78`   |  第三个灯珠的`Blue`取值为`0x56`,`Blue`的取值范围为`0x00~0xFF`  |
 
 其余灯珠取值含义同理
 

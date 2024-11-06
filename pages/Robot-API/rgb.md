@@ -10,14 +10,14 @@ RGB灯效控制器用于控制整机所有可见RGB灯，包括TITA机器人前�
 
 由于本接口采用自定义消息，因此对此接口做详尽的说明。
 
-其中前脸灯条由48个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色和亮度共四个维度的共同控制，因此每个灯珠可以被uint32_t类型的数据控制，其中每个维度占据8位。整个灯条可以被含有48个元素的uint32_t类型的数组数据控制。
+其中前脸灯条由48个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色和亮度共四个维度的共同控制，因此每个灯珠可以被`uint32_t`类型的数据控制，其中每个维度占据8位。整个灯条可以被含有48个元素的`uint32_t`类型的数组数据控制。
 
-尾部灯条由36个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色和亮度共四个维度的共同控制，因此每个灯珠可以被uint32_t类型的数据控制，其中每个维度占据8位。整个灯条可以被含有36个元素的uint32_t类型的数组数据控制。
+尾部灯条由36个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色和亮度共四个维度的共同控制，因此每个灯珠可以被`uint32_t`类型的数据控制，其中每个维度占据8位。整个灯条可以被含有36个元素的`uint32_t`类型的数组数据控制。
 
-左腿/右腿灯条分别由10个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色共三个维度的共同控制，因此每个灯珠可以被uint32_t类型的数据控制，其中每个维度占据8位，剩余的八位数字无意义。整个灯条可以被含有10个元素的uint32_t类型的数组数据控制，左腿和右腿需要分开控制。
+左腿/右腿灯条分别由10个RGB灯珠组成，每个灯珠接受红色、绿色、蓝色共三个维度的共同控制，因此每个灯珠可以被`uint32_t`类型的数据控制，其中每个维度占据8位，剩余的八位数字无意义。整个灯条可以被含有10个元素的`uint32_t`类型的数组数据控制，左腿和右腿需要分开控制。
 
 具体举例来说：
-```
+```bash
 uint32_t head_rgb_light[48];
 uint32_t tail_rgb_light[36];
 uint32_t left_leg_rgb_light[10];
@@ -40,7 +40,7 @@ right_leg_rgb_light[0] = 0x12345678U;
 ## Preparation
 
 运行RGB灯效控制器模块：
-```
+```bash
 ros2 run rgb_light_controller rgb_light_controller_node 
 或者
 ros2 launch rgb_light_controller rgb_light_controller_node.launch.py
@@ -50,7 +50,7 @@ ros2 launch rgb_light_controller rgb_light_controller_node.launch.py
 灯效控制器以服务的形式提供控制接口，用户有两种方法来实现控制。
 
 **第一种是直接调用调试指令，实现单次控制：**
-```
+```bash
 例如要控制前灯：
 ros2 service call /system/light_control/head_light_control_srv tita_system_interfaces/srv/HeadLightControlSrv "{is_control: true, light_rgbl_value: [0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00,0xff00ff00]}"
 
@@ -67,13 +67,6 @@ ros2 service call /system/light_control/leg_light_control_srv tita_system_interf
 
 请不要为腿部灯条发送过高频率的请求，过高频率的请求可能会影响腿部电机通信。
 
-## Basic Information
-
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 
 

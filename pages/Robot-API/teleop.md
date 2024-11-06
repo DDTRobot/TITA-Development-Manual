@@ -6,20 +6,7 @@
 ```
 
 ------
-
-<p align="center"><strong>teleop_command</strong></p>
-<p align="center"><a href="https://github.com/${YOUR_GIT_REPOSITORY}/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-orange"/></a>
-<img alt="language" src="https://img.shields.io/badge/language-c++-red"/>
-<img alt="platform" src="https://img.shields.io/badge/platform-linux-l"/>
-</p>
-
-
-
-<p align="center">
-    语言：<a href="./docs/docs_en/README_EN.md"><strong>English</strong></a> / <strong>中文</strong>
-</p>
-
-​	用于解析接收机的数据，动态设置各个功能模块的参数。该节点可以通过修改配置文件，改变按键的映射关系。
+​**功能描述**：用于解析接收机的数据，动态设置各个功能模块的参数。该节点可以通过修改配置文件，改变按键的映射关系。
 
 ## Basic Information
 
@@ -48,15 +35,15 @@
 
 |     Param      |     Range      | Default |              Description               |
 | :------------: | :------------: | :-----: | :------------------------------------: |
-|  `DebugMode`   |  `true|false`  | `false` |              调试使用开关              |
+|  `DebugMode`   |  `true/false`  | `false` |              调试使用开关              |
 |   `AxesSize`   |     `1-8`      |   `8`   |            被处理的按键数量            |
-|   `MoveAxes`   | `a|b` \| `0-7` |  `a0`   |  对应消息中第一个数值，模拟量，前进轴  |
-|   `TurnAxes`   | `a|b` \|`0-7`  |  `a1`   |  对应消息中第二个数值，模拟量，转向轴  |
-|  `PitchAxes`   |  `a|b`\|`0-7`  |  `a2`   |  对应消息中第三个数值，模拟量，俯仰角  |
-|   `RollAxes`   | `a|b` \|`0-7`  |  `a3`   |  对应消息中第四个数值，模拟量，滚动轴  |
-|   `StandUp`    | `a|b` \|`0-7`  |  `b4`   | 对应消息中第五个数值，开关量，站立开关 |
-| `HeightSwitch` | `a|b` \|`0-7`  |  `b5`   | 对应消息中第六个数值，开关量，高度调节 |
-|  `JumpButton`  | `a|b` \|`0-7`  |  `b6`   | 对应消息中第七个数值，开关量，跳跃开关 |
-| `SpeedButton`  | `a|b` \|`0-7`  |  `b7`   | 对应消息中第八个数值，开关量，速度调节 |
+|   `MoveAxes`   | `a/b` \| `0-7` |  `a0`   |  对应消息中第一个数值，模拟量，前进轴  |
+|   `TurnAxes`   | `a/b` \|`0-7`  |  `a1`   |  对应消息中第二个数值，模拟量，转向轴  |
+|  `PitchAxes`   |  `a/b`\|`0-7`  |  `a2`   |  对应消息中第三个数值，模拟量，俯仰角  |
+|   `RollAxes`   | `a/b` \|`0-7`  |  `a3`   |  对应消息中第四个数值，模拟量，滚动轴  |
+|   `StandUp`    | `a/b` \|`0-7`  |  `b4`   | 对应消息中第五个数值，开关量，站立开关 |
+| `HeightSwitch` | `a/b` \|`0-7`  |  `b5`   | 对应消息中第六个数值，开关量，高度调节 |
+|  `JumpButton`  | `a/b` \|`0-7`  |  `b6`   | 对应消息中第七个数值，开关量，跳跃开关 |
+| `SpeedButton`  | `a/b` \|`0-7`  |  `b7`   | 对应消息中第八个数值，开关量，速度调节 |
 |   `AxesBias`   |    `浮点数`    | 0.0013  |        遥控器模拟量轴的死区范围        |
 

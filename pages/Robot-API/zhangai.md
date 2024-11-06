@@ -6,15 +6,9 @@
 ```
 ------
 
-​	功能描述：机器人对障碍物检测节点。ROS2 订阅机器人的红外 TOF 传感器，结合机器人的姿态，求出机器人沿水平方向的障碍距离信息。  
+​**功能描述**：机器人对障碍物检测节点。ROS2 订阅机器人的红外 TOF 传感器，结合机器人的姿态，求出机器人沿水平方向的障碍距离信息。  
 
-## Basic Information
 
-| Installation method | Supported platform[s]    |
-| ------------------- | ------------------------ |
-| Source              | Jetpack 6.0 , ros-humble |
-
-------
 
 ## Subscribed
 
@@ -44,7 +38,7 @@
 |   `limit_zmin`   | `(-0.1,0.0)` | `-0.5`  |     检测点云 Z 轴，的最小范围      |
 |   `limit_zmax`   | `(0.0,1.0)`  |  `0.5`  |     检测点云 Z 轴，的最大范围      |
 |    `pub_freq`    |   `(0,15)`   |  `15`   |         障碍检测的发布频率         |
-| `obstacle_start` | `true|false` | `true`  |            节点功能开关            |
+| `obstacle_start` | `true/false` | `true`  |            节点功能开关            |
 | `obstacle_bias`  |     `\`      | `0.01`  | 用于手动调整，补偿传感器的测量偏差 |
 
 
