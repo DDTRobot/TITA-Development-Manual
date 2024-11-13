@@ -10,6 +10,10 @@
 
 ## SDK操作步骤
 
+```{note}
+如何让机器人连接WIFI可跳转连接[WIFI](ubuntu-flash.md)查看如何连接WIFI教程！
+```
+
 - 首先我们要进入TITA的系统中
 ```bash
 ssh robot@192.168.42.1
