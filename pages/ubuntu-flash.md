@@ -63,7 +63,6 @@ In the new system, to ensure that the ROS2 packages can run properly, you need t
 Execute the following steps in the robot system:
 1. `sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ubuntu_deb/g2o-1.2.23-Linux.deb`
 2. `sudo dpkg -i g2o-1.2.23-Linux.deb`
-3. In addition, you also need to install the following dependencies：`sudo apt install libeigen3-dev libspdlog-dev libsuitesparse-dev qtdeclarative5-dev qt5-qmake libqglviewer-dev-qt5`
 #### Install ROS Dependencies
 1. Open Terminal and input：`ssh robot@192.168.42.1`，Password: `apollo`, connect Robot
 2. Download ROS2 package：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb`

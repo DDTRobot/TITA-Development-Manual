@@ -21,11 +21,11 @@ Note that hot-plugging of the DB25 interface is prohibited, as it may cause abno
 The navigation tower supports Ethernet interfaces, and can be connected to a laptop via an Ethernet cable, supporting multi-machine interactive visual debugging.
 
 **Viewing IP**
-To view the IP, you can connect to the navigation tower's device information webpage through a hotspot: http://10.42.0.1:8000
-  ![t1](./../_static/t1.png)
-   ![t2](./../_static/t2.png)
+To view the IP, you can connect to the navigation tower's device information webpage through a hotspot: http://10.42.0.1
+  ![t10](./../_static/t10.jpg)
 
 - Notes:
+  - You can change the `ROS_DOMAIN_ID` for TITA Tower on that webpage.
   - 192.168.19.101 is the IP assigned to the wired network port
   - 10.42.0.1 is the IP assigned to the wireless WiFi
 
@@ -38,7 +38,7 @@ To view the IP, you can connect to the navigation tower's device information web
 #### 1.2.1 Testing Device Communication
 
 After TITA is powered on, it will power up the TITA Tower. When the indicator light on the TITA Tower turns blue, it is in standby mode. At this point, you can enter the command ros2 topic list in the robot system or computer terminal, and you should see the following topics:
- ![t3](./../_static/t3.png)
+ ![t3](./../_static/t3.jpg)
 
 ## 2. software control
 
@@ -47,12 +47,12 @@ After TITA is powered on, it will power up the TITA Tower. When the indicator li
 
 
 `ros2 service call start std_srvs/srv/Trigger {}`
- ![t4](./../_static/t4.png)
+ ![t4](./../_static/t4.jpg)
 
 ### Disable TITA Tower
 
 `ros2 service call stop std_srvs/srv/Trigger {}`
- ![t5](./../_static/t5.png)
+ ![t5](./../_static/t5.jpg)
 
 ### Real-Time output
 
