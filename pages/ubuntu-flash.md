@@ -18,7 +18,7 @@
         lbzip2 libxml2-utils nfs-kernel-server openssl python3-yaml qemu-user-static
         sshpass udev uuid-runtime whois rsync zstd lz4`
         (这是NVIDIA刷机所需要的依赖，请首先将以上依赖安装在刷机的电脑中，而不是机器人)
-1. Download apollo-ubuntu-${date}.tar （下载对应日期的系统软件包）
+1. Download apollo-ubuntu-${date}.tar （下载对应日期的系统软件包；目前最新系统包可找我司FAE同事获取)
 2. mkdir apollo-ubuntu（可在电脑系统的任意位置创建文件夹）
 3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （解压系统软件包至新建文件夹中）
 
@@ -58,35 +58,35 @@ password: apollo
 
 ## 安装依赖
 在目前的新系统中为了确保ROS2包能正常运行，所以需要安装以下的依赖：
-#### 安装g2o
+<!-- #### 安装g2o
 在机器人系统中执行以下步骤：
 1. `sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ubuntu_deb/g2o-1.2.23-Linux.deb`
-2. `sudo dpkg -i g2o-1.2.23-Linux.deb`
+2. `sudo dpkg -i g2o-1.2.23-Linux.deb` -->
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
-2. 下载ROS2包：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb`（版本号以实际情况而定）
+2. 下载ROS2包：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241218101915.deb`（版本号以实际情况而定）
 3. 执行 `sudo apt-get update`，更新源
-4. 执行`sudo dpkg -i tita-ros2-20241017000618.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
+4. 执行`sudo dpkg -i tita-ros2-20241218101915.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
 5. 执行`sudo apt install -f`，下载包中所需依赖
-6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20241017000618.deb`，成功安装即可。
+6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20241218101915.deb`，成功安装即可。
 7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行
 ```{bash} 
 #!/bin/bash
 
 # 下载deb包
-sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb
+sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241218101915.deb
 
 # 更新APT源
 sudo apt-get update
 
 # 尝试安装deb包，让系统识别依赖
-sudo dpkg -i tita-ros2-20241017000618.deb
+sudo dpkg -i tita-ros2-20241218101915.deb
 
 # 安装deb包所需依赖
 sudo apt install -f
 
 # 再次安装deb包
-sudo dpkg -i tita-ros2-20241017000618.deb
+sudo dpkg -i tita-ros2-20241218101915.deb
 ```
 
 ## 设置ROS2环境
