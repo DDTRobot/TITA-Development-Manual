@@ -14,10 +14,13 @@
 硬件准备：TITA随包装的刷机线（标志A朝外插入DBG口，先插线再上电）；Ubuntu系统电脑
 此操作需要将刷机包下载至电脑（必须Linux系统）中，并创建新的文件夹，将刷机包解压至新建的文件夹中。
 
-0. `sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler dosfstools
+0. 
+```bash
+sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler dosfstools
         lbzip2 libxml2-utils nfs-kernel-server openssl python3-yaml qemu-user-static
-        sshpass udev uuid-runtime whois rsync zstd lz4`
-        (这是NVIDIA刷机所需要的依赖，请首先将以上依赖安装在刷机的电脑中，而不是机器人)
+        sshpass udev uuid-runtime whois rsync zstd lz4
+        (全部复制，这是NVIDIA刷机所需要的依赖，请首先将以上依赖安装在刷机的电脑中，而不是机器人)
+```
 1. Download apollo-ubuntu-${date}.tar （下载对应日期的系统软件包；目前最新系统包可找我司FAE同事获取)
 2. mkdir apollo-ubuntu（可在电脑系统的任意位置创建文件夹）
 3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （解压系统软件包至新建文件夹中）
