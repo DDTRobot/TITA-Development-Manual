@@ -157,18 +157,13 @@ uart connect success
 7. 配对完成返回pair success
 ![controller4](.././_static/controller4.PNG)
 ## 如何在Ubuntu系统中升级运控和电机
-1. 在机器人系统中先执行以下操作
 ```bash
-sudo git clone git@git.ddt.dev:wuyunzhou/motor_upgrade.git /usr
-sudo cp /usr/motor_upgrade/ota_lib/*.so /usr/lib
-sudo cp /usr/motor_upgrade/ota_lib/otafifth_demo /usr/bin
-sudo pip install pycryptodome
-sudo pip install crcmod
+1. 首先安装OTA应用程序
+sudo apt-get install motor-upgrade
+Ps.注意电脑中是否安装python3-pip
+2. 升级运控板&电机程序指令
+otafifth_demo -f $BIN_PATH
+3. 升级完成后可查询运控版本
+can-app -Version
+Ps. 请注意！为保证升级正常,请先确定机器人运行正常(8个电机都通讯正常),并将机器调为趴下状态。
 ```
-2. 完成以上步骤后，需要运行升级脚本
-```bash
-cd ~/motor-patch/
-chmod 777 run.sh
-sudo ./run.sh
-```
-3.升级完成后重新对机器上下电重启
