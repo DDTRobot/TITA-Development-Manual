@@ -28,8 +28,8 @@ The naming of firmware is case-insensitive; sometimes the provided firmware name
 
 （4）Then restart and press the small button on the right side of the small screen, press towards the center to display the "mode select" interface.
 ![u8](../../_static/up8.JPEG)
-<h3>Congratulations, you have completed the first stage of firmware update!</h3>  
-（5） After the remote control is turned on, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> wifi connectiving -> Enable wifi.
+==Congratulations, you have completed the first stage of firmware update!==
+（5） After the remote control is turned on, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> wifi connectiving -> Enable wifi.  
 ![u9](../../_static/up9.PNG)
 ![u10](../../_static/up10.jpg)
 ![u11](../../_static/up11.png)
