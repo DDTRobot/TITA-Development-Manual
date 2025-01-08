@@ -160,7 +160,7 @@ Please enter TOOLS->ExpressLRS->[Bind] and binding in remote control
 2. Connect the data cable to the EXT port on the robot and the data port on the remote control, like this:
 ![f12](.././_static/flash12.jpg)
 ![f13](.././_static/flash13.jpg)
-```note
+```{note}
 The robot and the controller must be powered on.
 ```
 3. The remote control will display the `Select mode` interface, and select the third option `USB Serial`.
