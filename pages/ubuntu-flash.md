@@ -59,23 +59,19 @@ After flashing, you will need to download ROS packages and other dependencies, s
 
 ## Install Dependencies
 In the new system, to ensure that the ROS2 packages can run properly, you need to install the following dependencies:
-#### Install g2o
-Execute the following steps in the robot system:
-1. `sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ubuntu_deb/g2o-1.2.23-Linux.deb`
-2. `sudo dpkg -i g2o-1.2.23-Linux.deb`
 #### Install ROS Dependencies
 1. Open Terminal and input：`ssh robot@192.168.42.1`，Password: `apollo`, connect Robot
-2. Download ROS2 package：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb`
+2. Download ROS2 package：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241227153817.deb
 3. Execute `sudo apt-get update` to update the package sources.
-4. Execute `sudo dpkg -i tita-ros2-20241017000618.deb`. This installation will not succeed, but it will inform the system of the dependencies needed.
+4. Execute `sudo dpkg -i tita-ros2-20241227153817.deb`. This installation will not succeed, but it will inform the system of the dependencies needed.
 5. Execute `sudo apt install -f` to download the required dependencies.
-Run the installation command again with `sudo dpkg -i tita-ros2-20241017000618.deb`. If successful, the installation is complete.
+Run the installation command again with `sudo dpkg -i tita-ros2-20241227153817.deb`. If successful, the installation is complete.
 7. If you find it troublesome to copy each command separately, you can create a bash script from the following code and run it:
 ```{bash} 
 #!/bin/bash
 
 # download deb
-sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241017000618.deb
+sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241227153817.deb
 
 # update package source
 sudo apt-get update
@@ -135,40 +131,39 @@ After completing the above steps, you should be able to see that eth0 has been a
 
 
 ## How to pair Controller
-（Perform this operation in the robot）
-1. Use git clone to clone the remote control pairing script git clone 
-`git clone http://git.ddt.dev:9281/wuyunzhou/crsf-app.git`
-2. `cd crsf-app`
-3. `chmod 777 install_ubuntu.sh`
-4. `sudo ./install_ubuntu.sh`
-5. Execute the command `crsf-app -bind`, you can observe the return：   
-```{bash}
-root@apollo-nx:~# crsf-app -bind   
-正在检查串口通讯状态...   
-uart connect success   
-正在进入配对模式...  
- bind mode success   
-请打开遥控器,左长按右侧按键进入TOOLS->ExpressLRS->[Bind],手动搜索配对
+**（Perform this operation in the robot）**
+The latest robotic systems now come with built-in remote control pairing software, and there are two methods to quickly pair the remote control.
+```{note}
+For older system versions, you can contact the FAE to obtain the remote control pairing software installation package.
 ```
-![f9](.././_static/flash9.png)
-6. After powering on the remote control, push the button on the right side to the left to enter the interface, then press the buttons in sequence to go to `Tools -> ExpressLRS -> bind mode` for pairing the receiver.
+**Method One**
+1. sudo dpkg -i crsf_deb.deb   (If it is already included or installed, please skip this step.)
+2. Execute the command `crsf-app -bind`, you can observe the return：   
+```{bash}
+robot@tita:~$ crsf-app -bind
+Checking uart status...
+Uart connect success
+Entering bind mode...
+Bind mode success
+Please enter TOOLS->ExpressLRS->[Bind] and binding in remote control
+```
+![f9](.././_static/flash9.jpg)
+3. After powering on the remote control, push the button on the right side to the left to enter the interface, then press the buttons in sequence to go to `Tools -> ExpressLRS -> bind mode` for pairing the receiver.
  ![controller2](./../_static/controller2.JPEG)
  ![controller3](.././_static/controller3.JPEG)
-7. Pairing completed, return "pair success"
-![controller4](.././_static/controller4.PNG)
-## How to upgrade motion control and motors in the Ubuntu system
-1. Perform the following operations first in the robotic system
-```bash
-sudo git clone git@git.ddt.dev:wuyunzhou/motor_upgrade.git /usr
-sudo cp /usr/motor_upgrade/ota_lib/*.so /usr/lib
-sudo cp /usr/motor_upgrade/ota_lib/otafifth_demo /usr/bin
-sudo pip install pycryptodome
-sudo pip install crcmod
+4. Pairing completed, return "pair success"
+![controller4](.././_static/controller4.jpg)
+
+**Method Two**
+1. First, you need a dual-headed Type-C data cable, like this:
+![f11](.././_static/flash11.jpg)
+2. Connect the data cable to the EXT port on the robot and the data port on the remote control, like this:
+![f12](.././_static/flash12.jpg)
+![f13](.././_static/flash13.jpg)
+```note
+The robot and the controller must be powered on.
 ```
-2. After completing the aforementioned steps, you need to run the upgrade script.
-```bash
-cd ~/motor-patch/
-chmod 777 run.sh
-sudo ./run.sh
-```
-3.After the upgrade is complete, restart the machine by powering it down and then back up.
+3. The remote control will display the `Select mode` interface, and select the third option `USB Serial`.
+![f14](.././_static/flash16.jpg)
+4.Wait patiently for the pairing. If the pairing is successful, the robot's battery information will be displayed in the upper right corner of the remote control interface.
+![f14](.././_static/flash15.jpg)
