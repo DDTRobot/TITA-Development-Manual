@@ -4,20 +4,20 @@
 :glob:
 ```
 ------
-**Tool Preparation:** Windows 11, USB to Type-C cable
-**SoftWare:** You can contact FAE to obtain it.
+**Tool Preparation:** Windows 11, USB to Type-C cable  
+**SoftWare:** You can contact FAE to obtain it.  
 **Operation Process:**
-1. Enter firmware update mode for the controller:
-(1) Press the buttons in the following two places simultaneously.
+1. Enter firmware update mode for the controller:  
+(1) Press the buttons in the following two places simultaneously.  
 ![u1](../../_static/up1)
 ![u2](../../_static/up2)
-（2） Successfully enter the firmware update mode.
+（2） Successfully enter the firmware update mode.  
 ![u3](../../_static/up3.PNG)
 
-2. Start the update:
-（1）Connect the flashing computer to the controller with a USB to Type-C cable, at this point, a disk will pop up!
+2. Start the update:  
+（1）Connect the flashing computer to the controller with a USB to Type-C cable, at this point, a disk will pop up!  
 ![u4](../../_static/up4.PNG)
-（2）Place the latest firmware.bin into the `FIRMWARE` directory, as shown above.
+（2）Place the latest firmware.bin into the `FIRMWARE` directory, as shown above.  
 ```{note}
 The naming of firmware is case-insensitive; sometimes the provided firmware name may be in lowercase FIRMWARE.
 ```
@@ -28,7 +28,7 @@ The naming of firmware is case-insensitive; sometimes the provided firmware name
 
 （4）Then restart and press the small button on the right side of the small screen, press towards the center to display the "mode select" interface.
 ![u8](../../_static/up8.JPEG)
-**Congratulations, you have completed the first stage of firmware update!**
+**Congratulations, you have completed the first stage of firmware update!**  
 （5） After the remote control is turned on, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> wifi connectiving -> Enable wifi.
 ![u9](../../_static/up9.PNG)
 ![u10](../../_static/up10.jpg)
@@ -46,4 +46,4 @@ The naming of firmware is case-insensitive; sometimes the provided firmware name
  ![u17](../../_static/u17.png)
  (11) push down to 1:8, press the middle to confirm, configuration is complete, restart once!
   ![u18](../../_static/up18.png)
-  <h3>**With this, the remote joystick upgrade process is successfully completed.**</h3>
+  <h3>With this, the remote joystick upgrade process is successfully completed.</h3>
