@@ -20,3 +20,16 @@
 7. 配对完成返回pair success
 ![controller4](../../_static/controller4.jpg)
 
+## 方法二
+1. 首先，您需要一根双头Type-C数据线，如下所示：
+![flash11](../../_static/flash11.jpg)
+2. 将数据线连接到机器人上的EXT端口和遥控器上的数据端口，如下所示：
+![flash12](../../_static/flash12.jpg)
+![flash13](../../_static/flash13.jpg)
+```{note}
+机器人和控制器必须处于开启状态。
+```
+3. 遥控器和机器人连接后，遥控器会出现`Select mode`的界面，并选择第三个选项`USB Serial`
+![flash16](../../_static/flash16.jpg)
+4. 耐心等待配对。如果配对成功，机器人的电池信息将显示在遥控器界面的右上角。
+![flash15](../../_static/flash15.jpg)
