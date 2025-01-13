@@ -135,27 +135,19 @@ sudo ./install.sh
 完成以上步骤后，通过`ifconfig`能看到eth0自动分配IP 192.168.19.97，并且可以ping TITA Tower上默认IP 192.168.19.97。
 
 ## 如何配对遥控器
-（在机器人中执行这个操作）
-1. 使用`git clone` 将遥控器配对脚本克隆下来
-`git clone http://git.ddt.dev:9281/wuyunzhou/crsf-app.git`
-2. `cd crsf-app`
-3. `chmod 777 install_ubuntu.sh`
-4. `sudo ./install_ubuntu.sh`
-5. 执行指令 `crsf-app -bind` ，可以观察到返回：   
-```{bash}
-root@apollo-nx:~# crsf-app -bind   
-正在检查串口通讯状态...   
-uart connect success   
-正在进入配对模式...  
- bind mode success   
-请打开遥控器,左长按右侧按键进入TOOLS->ExpressLRS->[Bind],手动搜索配对
+（在机器人上执行此操作）最新的机器人系统现在配备了内置的遥控配对软件，有两种快速配对遥控器的方法。
+```{note}
+对于较旧的系统版本，您可以联系FAE获取远程控制配对软件的安装包。
 ```
-![f9](.././_static/flash9.png)
+## 方法一
+1. 使用`sudo dpkg -i crsf_deb.deb`（如果已经包含或已安装，请跳过此步骤。）
+2. 执行指令`crsf-app -bind`，可以观察到返回：
+![f9](./../_static/flash9.jpg)
 6. 遥控器开机后 右边按键向左推进入界面后 按键依次进入Tools ->ExpressLRS-> bind模式，进行配对接收机.
  ![controller2](./../_static/controller2.JPEG)
- ![controller3](.././_static/controller3.JPEG)
+ ![controller3](./../_static/controller3.JPEG)
 7. 配对完成返回pair success
-![controller4](.././_static/controller4.PNG)
+![controller4](./../_static/controller4.jpg)
 ## 如何在Ubuntu系统中升级运控和电机
 ```bash
 1. 首先安装OTA应用程序
