@@ -7,6 +7,7 @@ pages/Robot-Controller
 pages/TITA-Tower
 pages/ubuntu-flash
 pages/quickstart
+pages/TITA-Arm
 ```
 
 ## 简介
