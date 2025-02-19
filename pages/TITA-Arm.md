@@ -9,17 +9,6 @@
 上层SOC和下层MCU通过CANBUS实现通信。此方法通过上层计算好 `set_tilt`通过CANBUS发送到下层，实现一定的底盘稳定控制。
 ![arm1](../_static/arm1.png)
 
-## SOC Board
-目前粗略适配了三种机械臂，**Airbot** 、**RM_65** 以及 **Piper** ，目前 Airbot无法直接安装在 Ubuntu22.04上，适配较为麻烦，其他两种适配较为简单
-||  aibot | RM_65 | Piper |
-|-------|-------|-------|---------|
-| ros api | ros1/noetic | ros1/noetic<br>ros2/humble | ros1/noetic<br>ros2/humble |
-
-配置的仓库地址：
-
-- Airbot on TITA: https://github.com/DDTRobot/airbot_on_tita
-- airbot joy: https://github.com/DDTRobot/airbot_joy
-
 ## AIRBOT（求之）
 ### 配置
 Airbot原生在ubuntu20.04下支持, 且提供支持ros1, 因此在NX上安装docker, 安装docker教程如下[Docker在ARM安装](docker_on_arm.md), 如果后续系统默认带有docker, 则无需安装  
@@ -76,7 +65,7 @@ ssh robot@192.168.42.1 # wire connected to host, if use wifi, check your tita ip
 ```bash
 cd 
 mkdir manipulator && cd manipulator
-git clone http://git.ddt.dev:9281/lkx8421/manipulator_ws.git
+git clone https://github.com/DDTRobot/airbot_on_tita
 cd airbot_ws
 chmod +x *.bash
 ./docker_run.bash
@@ -101,7 +90,7 @@ catkin_make
 使用以下指令更改遥控器控制权限
 ```bash
 mkdir -p airbot_joy/src && cd airbot_joy/src
-git clone https://git.ddt.dev:9281/rbt/manipulator/aibot_joy
+git clone https://github.com/DDTRobot/airbot_joy
 cd ..
 colcon build 
 source install/setup.bash
