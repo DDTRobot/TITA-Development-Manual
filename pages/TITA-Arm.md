@@ -28,17 +28,24 @@ docker image load -i ./arm-control.tar
 docker run -it --rm --name airbot --privileged --cap-add=SYS_PTRACE -v $HOME/.ssh:/root/.ssh --network=host -v ~/manipulator:/workspace --workdir /workspace registry.qiuzhi.tech/airbot-play/arm-control:2.9.0 /bin/bash
 ```
 ```{note}
-需要额外安装ros2-humble 以及ros1_bridge
-- ros2-humble安装: https://blog.csdn.net/m0_62353836/article/details/129730981
-- ros1-bridge安装: https://zhuanlan.zhihu.com/p/651809579
+需要额外安装ros2-humble以及ros1_bridge
+- ros2-humble安装: <https://blog.csdn.net/m0_62353836/article/details/129730981>
+
+- ros1-bridge安装: <https://zhuanlan.zhihu.com/p/651809579>
 ```
-- 在docker内，需要配置一下环境变量
+
+- 参照上面适配好ros2-humble和ros1-bridge后在，docker内，需要配置一下环境变量
 ```bash
-1. echo 'export ROS_DOMAIN_ID=69' >> ~/.bashrc # 取决与你的tita的实际domain_id
-2. echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
-3. echo 'export ROS1_PATH=/opt/ros/noetic/setup.bash' >> ~/.bashrc
-4. echo 'export ROS2_PATH=~/ros2_humble/install/setup.bash' >> ~/.bashrc
-5. echo 'export ROS_BRIDGE=~/ros1_bridge/install/setup.bash' >> ~/.bashrc #取决与你的ros2及bridge实际安装位置
+echo 'export ROS_DOMAIN_ID=42' >> ~/.bashrc # 取决与你的tita的实际domain_id
+echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
+echo 'export ROS1_PATH=/opt/ros/noetic/setup.bash' >> ~/.bashrc
+echo 'export ROS2_PATH=~/ros2_humble/install/setup.bash' >> ~/.bashrc
+echo 'export ROS_BRIDGE=~/ros1_bridge/install/setup.bash' >> ~/.bashrc #取决与你的ros2及bridge实际安装位置
+```
+配置好`docker`后，对修改后的docker进行保存
+``` bash
+# in tita host
+docker commit airbot modify_airbot
 ```
 ```{note}
 以上配置如果后续NX镜像自带, 则无需额外配置
@@ -66,14 +73,13 @@ ssh robot@192.168.42.1 # wire connected to host, if use wifi, check your tita ip
 cd 
 mkdir manipulator && cd manipulator
 git clone https://github.com/DDTRobot/airbot_on_tita
-cd airbot_ws
-chmod +x *.bash
-./docker_run.bash
+cd airbot_on_tita
+bash docker_run.bash
 # in docker container
 source /opt/ros/noetic/setup.bash
 catkin_make
-./can_up.bash # success if print "can1 up success"
-./ros_run.bash # launch ros_interface of airbot
+bash can_up.bash # success if print "can1 up success"
+bash ros_run.bash # launch ros_interface of airbot
 # if in terminal print such as : 
 # terminate called after throwing an instance of 'std::runtime_error'
 # what():  AIRBOT Play needs to be calibrated. Please run airbot_auto_set_zero or airbot_set_zero
@@ -81,13 +87,13 @@ catkin_make
 # more information of airbot please refer to https://discover-robotics.github.io/docs/latest/AIRBOT-Play/tutorials/env/
 ```
 ```{note}
-配置完以上步骤后，机械臂类似 '喀嗒'声响, 正常启动成功, 在正常编译好程序后, 可以在`host`内`./one_start.bash`启动
+配置完以上步骤后，机械臂类似 '喀嗒'声响, 正常启动成功, 在正常编译好程序后, 可以在`host`内`bash one_start.bash`启动
 ```
-- 可以使用机器人遥控器控制机械臂
+- 使用机器人遥控器控制机械臂（可选）
 ```{note}
 使用机器人操控机械臂时，遥控器无法控制机器人。
 ```
-使用以下指令更改遥控器控制权限
+新建一个终端，ssh进入tita后
 ```bash
 mkdir -p airbot_joy/src && cd airbot_joy/src
 git clone https://github.com/DDTRobot/airbot_joy
