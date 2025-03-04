@@ -8,6 +8,7 @@ pages/TITA-Tower
 pages/ubuntu-flash
 pages/quickstart
 pages/TITA-Arm
+pages/four-foot
 ```
 
 ## 简介
