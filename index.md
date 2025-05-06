@@ -9,6 +9,7 @@ pages/ubuntu-flash
 pages/quickstart
 pages/TITA-Arm
 pages/four-foot
+pages/pic-back
 ```
 
 ## 简介
