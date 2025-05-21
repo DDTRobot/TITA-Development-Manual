@@ -32,7 +32,7 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 注意！部分Ubuntu中可能缺少sshpass和nfs-kernel-server两个插件，缺哪个装哪个
 ![f1](.././_static/flash1.JPEG)
 ![f2](.././_static/flash2.JPEG)
-三
+
 ## 结束标志
 刷机完成时可以看到以下信息
 ```{bash}
@@ -67,11 +67,11 @@ password: apollo
 2. `sudo dpkg -i g2o-1.2.23-Linux.deb` -->
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
-2. 下载ROS2包：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241218101915.deb`（版本号以实际情况而定）
+2. 下载ROS2包：`sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20250515153729.deb`（版本号以实际情况而定）
 3. 执行 `sudo apt-get update`，更新源
-4. 执行`sudo dpkg -i tita-ros2-20241218101915.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
+4. 执行`sudo dpkg -i tita-ros2-20250515153729.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
 5. 执行`sudo apt install -f`，下载包中所需依赖
-6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20241218101915.deb`，成功安装即可。
+6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20250515153729.deb`，成功安装即可。
 7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行
 ```{bash} 
 #!/bin/bash
