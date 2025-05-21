@@ -32,7 +32,7 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 注意！部分Ubuntu中可能缺少sshpass和nfs-kernel-server两个插件，缺哪个装哪个
 ![f1](.././_static/flash1.JPEG)
 ![f2](.././_static/flash2.JPEG)
-
+三
 ## 结束标志
 刷机完成时可以看到以下信息
 ```{bash}
@@ -143,4 +143,9 @@ otafifth_demo -f $BIN_PATH
 3. 升级完成后可查询运控版本
 can-app -Version
 Ps. 请注意！为保证升级正常,请先确定机器人运行正常(8个电机都通讯正常),并将机器调为趴下状态。
+```
+
+```{note}
+FQA
+由于机器人相机状态检测较慢，会在一开机时反馈“Camera timeout”的情况，但是过一小会检测完成后会反馈“Camera OK”；如果长时间未听到正确状态反馈请立即联系我司FAE!
 ```
