@@ -14,41 +14,27 @@
 Airbot原生在ubuntu20.04下支持, 且提供支持ros1, 因此在NX上安装docker, 安装docker教程如下[Docker在ARM安装](docker_on_arm.md), 如果后续系统默认带有docker, 则无需安装  
 
 ### Docker镜像
-- Airbot官方提供镜像配置
-以下两个为Airbot提供原生的docker镜像链接和网盘链接，可选择其中一个下载docker：
-1. https://repo.ddt.dev/static/manipulator/airbot/image/arm-control.tar
-2. https://pan.baidu.com/s/1FHfqTxuFpB5MVb9BkKS9kA?pwd=ddt1 提取码: ddt1
-
-安装好docker后，通过如下命令安装：
+- pull docker image
 ```bash
-docker image load -i ./arm-control.tar
+docker pull registry.cn-guangzhou.aliyuncs.com/ddt_robot/airbot_on_tita:v1.0
 ```
-- 默认此镜像内带有ros-noetic，通过类似如下的命令来进入docker
+- 默认此镜像内带有ros-noetic，ros2-humble, 通过类似如下的命令来进入docker
 ```bash
-docker run -it --rm --name airbot --privileged --cap-add=SYS_PTRACE -v $HOME/.ssh:/root/.ssh --network=host -v ~/manipulator:/workspace --workdir /workspace registry.qiuzhi.tech/airbot-play/arm-control:2.9.0 /bin/bash
+docker run -it --rm --name airbot --privileged --cap-add=SYS_PTRACE -v $HOME/.ssh:/root/.ssh --network=host -v ~/manipulator:/workspace --workdir /workspace registry.cn-guangzhou.aliyuncs.com/ddt_robot/airbot_on_tita:v1.0 /bin/bash
 ```
 ```{note}
-需要额外安装ros2-humble以及ros1_bridge
-- ros2-humble安装: <https://blog.csdn.net/m0_62353836/article/details/129730981>
-
-- ros1-bridge安装: <https://zhuanlan.zhihu.com/p/651809579>
+- docker内的ros环境变量配置已经配好ros2-humble和ros1-bridge，无需再次配置
 ```
-
-- 参照上面适配好ros2-humble和ros1-bridge后在，docker内，需要配置一下环境变量
+### 启动
+修改docker内的ROS_DOMAIN_ID变量
+`sudo vim ~/.bashrc`
 ```bash
-echo 'export ROS_DOMAIN_ID=42' >> ~/.bashrc # 取决与你的tita的实际domain_id
-echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> ~/.bashrc
-echo 'export ROS1_PATH=/opt/ros/noetic/setup.bash' >> ~/.bashrc
-echo 'export ROS2_PATH=~/ros2_humble/install/setup.bash' >> ~/.bashrc
-echo 'export ROS_BRIDGE=~/ros1_bridge/install/setup.bash' >> ~/.bashrc #取决与你的ros2及bridge实际安装位置
+export ROS_DOMAIN_ID=69 # 取决与你的tita的实际domain_id
 ```
 配置好`docker`后，对修改后的docker进行保存
 ``` bash
 # in tita host
 docker commit airbot modify_airbot
-```
-```{note}
-以上配置如果后续NX镜像自带, 则无需额外配置
 ```
 
 ## 启动
