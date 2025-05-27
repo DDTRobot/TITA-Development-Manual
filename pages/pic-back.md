@@ -33,7 +33,7 @@ sudo apt install ./tita-ros2-20250311164048.deb
 ```{note}
 完成以上步骤后；
 启动index.html , 在 TITA Broker IP 窗口输入局域网IP地址，用户名密码为空
-连接可看到事实图传，当前版本自定义音频暂不开放。
+连接可看到实时图传，当前版本自定义音频暂不开放。
 ```
 
 获取安装包和网页可以跳转该链接：https://pan.baidu.com/s/14xZ87vO32fzI3aSUFQnyOw?pwd=p552
