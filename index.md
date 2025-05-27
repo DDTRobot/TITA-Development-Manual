@@ -10,6 +10,8 @@ pages/quickstart
 pages/TITA-Arm
 pages/four-foot
 pages/pic-back
+pages/docker_on_arm
+pages/tita-faq
 ```
 
 ## 简介
