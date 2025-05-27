@@ -11,7 +11,7 @@ pages/TITA-Arm
 pages/four-foot
 pages/pic-back
 pages/docker_on_arm
-pages/tita-faq
+pages/FAQ
 ```
 
 ## 简介
