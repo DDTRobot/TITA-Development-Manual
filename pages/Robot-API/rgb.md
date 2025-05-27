@@ -122,6 +122,11 @@ rgb_parameters:
 ---
 **第二种是在程序构建Client向Service发送请求，实现更高效灵活的控制**
 
+**example:**
+```
+https://github.com/lrz8080/Light_audio_ctrl_demo.git
+```
+
 ```{note}
 请不要为腿部灯条发送过高频率的请求，过高频率的请求可能会影响腿部电机通信。
 ```
