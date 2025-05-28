@@ -13,16 +13,6 @@
 
 <u>**不建议**</u>用户对电源管理命令的服务做任何请求，因为电源管理命令服务用于响应TITA机器人其他内部模块的请求，并非设计作为用户接口。
 
-
-## Preparation
-
-运行电池设备模块：
-```bash
-ros2 run battery_device battery_device_node
-或者
-ros2 launch battery_device battery_device_node.launch.py
-```
-
 打印电池设备数据：
 ```bash
 ros2 topic echo /your_tita_name/system/batteries/left
@@ -52,14 +42,6 @@ ros2 topic echo /your_tita_name/system/batteries/right
 
 请注意，**这个接口并非设计给用户使用的，不建议用这个服务实现所谓“急停”意义的功能**，因此不建议用户对这个服务做任何请求，因为这个接口被设计给机器人内部模块的系统管理层。
 
-## Preparation
-
-运行电源控制器模块：
-```bash
-ros2 run power_controller power_controller_node 
-或者
-ros2 launch power_controller power_controller_node.launch.py
-```
 
 
 ## Subscribed
