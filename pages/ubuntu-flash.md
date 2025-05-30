@@ -72,7 +72,7 @@ password: apollo
 4. 执行`sudo dpkg -i tita-ros2-20250515153729.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
 5. 执行`sudo apt install -f`，下载包中所需依赖
 6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20250515153729.deb`，成功安装即可。
-7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行
+7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行0
 ```{bash} 
 #!/bin/bash
 
