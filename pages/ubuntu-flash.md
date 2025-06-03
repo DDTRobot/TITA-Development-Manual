@@ -66,7 +66,7 @@ password: apollo
 
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: apollo,进入机器
-```{bash} 
+```
 sudo apt-get update
 sudo apt install tita-sound
 sudo apt install libopencv-dev=4.5.4+dfsg-9ubuntu4
