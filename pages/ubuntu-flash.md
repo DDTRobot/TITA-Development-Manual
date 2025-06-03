@@ -67,63 +67,50 @@ password: apollo
 2. `sudo dpkg -i g2o-1.2.23-Linux.deb` -->
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
-2. 下载ROS2包：`sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20250515153729.deb`（版本号以实际情况而定）
-3. 执行 `sudo apt-get update`，更新源
-4. 执行`sudo dpkg -i tita-ros2-20250515153729.deb`，此次安装是不会成功的，目的是让系统知道需要装什么依赖
-5. 执行`sudo apt install -f`，下载包中所需依赖
-6. 再执行一次安装指令`sudo dpkg -i tita-ros2-20250515153729.deb`，成功安装即可。
-7. 如果嫌上面一条条复制麻烦，可以将下面代码生成bash脚本运行
-```{bash} 
-#!/bin/bash
-
-# 下载deb包
-sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20250515153729.deb
-
-# 更新APT源
-sudo apt-get update
-
-# 尝试安装deb包，让系统识别依赖
-sudo dpkg -i tita-ros2-20250515153729.deb
-
-# 安装deb包所需依赖
-sudo apt install -f
-
-# 再次安装deb包
-sudo dpkg -i tita-ros2-20250515153729.deb
 ```
+sudo apt-get update
+sudo apt install tita-sound
+sudo apt install libopencv-dev=4.5.4+dfsg-9ubuntu4
+sudo apt install tita-ros2
 
+```
 ## 设置ROS2环境
-若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要对两个文件做操作，分别是 `~/.bashrc`；`tita-bringup.service`。
+若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要对两个文件做操作，分别是 `~/.bashrc`；`/opt/ros/humble/local_setup.bash `。
 ####  1. ~/.bashrc
 - 输入:`sudo vim ~/.bashrc`
-- 进入~/.bashrc后在最后的位置添加两个字段
+- 进入~/.bashrc后在最后的位置添加字段
 ```bash
-export ROS_DOMAIN_ID=42
 source /opt/ros/humble/setup.bash
 ```
 - 保存退出后需要 `source ~/.bashrc`
-![f5](.././_static/flash5.JPEG)
-#### 2. tita-bringip.service
-- 输入 `sudo vim /usr/lib/systemd/system/tita-bringup.service`
-- 确保`ROS_DOMAIN_ID=42`,并将`ROS_LOCALHOST_ONLY=1`改成`ROS_LOCALHOST_ONLY=0`，如图
-- 修改完成保存退出
-![f4](.././_static/flash4.JPEG)
+### 修改ROS_DOMAIN_ID
+- 输入:`sudo vim /opt/ros/humble/local_setup.bash`
+- 进入/opt/ros/humble/local_setup.bash后找到添加ROS_DOMAIN_ID字段，例如：
+```bash
+export ROS_DOMAIN_ID=42
+```
+- 保存退出后需要 `source /opt/ros/humble/local_setup.bash`
 #### 3. 自检
-- 如果以上操作都完成后可以执行 `sudo systemctl restart tita-bringup.service`
+- 如果以上操作都完成后可以执行 `sudo systemctl restart tita-bringup.service`和`systemctl restart tita-perception.service `
 - 让ROS2服务重启后可以输入 `ros2 topic list`查看是否能print机器里的ros2 topic，如图
 ![f7](.././_static/flash7.jpeg)
 
 ## 网络配置
+**注意：** 此配置自针对购买TITA Tower的客户或者想对机器人进行网络配置的客户。若您是仅购买TITA的客户，请忽略此部分。
 ```bash
 sudo apt install network-manager
 ```
 2. 安装完依赖后需要克隆AutoNetworkManager的仓
-` git clone http://git.ddt.dev:9281/wuyunzhou/AutoNetworkManager.git`
+```
+sudo apt-get install git  #如果没有安装git，请先安装
+git clone https://github.com/DDTRobot/TowerNetworkManager.git
+```
 3. 通过AutoNetworkManager的脚本安装
 ```bash
-cd AutoNetworkManager
+ cd TowerNetworkManager/
 chmod 777 install.sh
 sudo ./install.sh
+sudo rm -rf /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf #删除原有wifi配置文件,以免影响网络连接,后续联网使用 sudo nmcli device wifi connect "example" password "1111111" 方式连接
 ```
 完成以上步骤后，通过`ifconfig`能看到eth0自动分配IP 192.168.19.97，并且可以ping TITA Tower上默认IP 192.168.19.97。
 
