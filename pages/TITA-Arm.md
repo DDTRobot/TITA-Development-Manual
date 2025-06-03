@@ -102,3 +102,8 @@ ros2 launch airbot_joy airbot_joy.launch.py
 ```{note}
 如果需要重新启动机械臂，可重新按照 `one_start`来执行即可。
 ```
+
+### 常见问题：
+- can0 和can1 设备号分配问题导致canbus通信失败
+解决办法：
+1.机器人上电，等待机器人启动完成，然后在连接type-c 线

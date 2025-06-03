@@ -21,7 +21,7 @@ sudo apt install apt-transport-https ca-certificates curl software-properties-co
 2. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 3. sudo apt update
 ```
-- 阿里云
+- 阿里云(强烈建议)
 ```bash
 1. curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 2. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -38,38 +38,70 @@ apt-cache policy docker-ce
 ```bash
 sudo apt install docker-ce
 ```
-## 5. 运行测试
-可以使用以下指令测试Docker是否正确安装和运行：
-```bash
-sudo docker run hello-world
-```
-```{note}
-- 如果你使用的是 Raspberry Pi 等 ARMv7 架构设备，Docker 的某些镜像可能不支持该架构，因此需要确保使用支持 ARM 架构的镜像。
-- 对于 Ubuntu 版本的差异（如 Ubuntu Server 或 Raspberry Pi OS），命令可能略有不同。
-```
-也可以将当前用户添加到`docker`组，以避免每次运行Docker时使用`sudo`：
+## 5.添加当前用户到docker组
+当前用户添加到`docker`组，以避免每次运行Docker时使用`sudo`：
 ```bash
 sudo usermod -aG docker ${USER}
 ```
 
 ## 6.配置镜像仓库
 ```bash
-mkdir /etc/docker
-cat > /etc/docker/daemon.json << EOF
+sudo vim /etc/docker/daemon.json
+```
+将内容修改为：
+```
 {
     "registry-mirrors": [
         "https://docker.mirrors.ustc.edu.cn/"
     ]
 }
-EOF
-# 设置完成后重启
-sudo systemctl daemon-reload
-sudo systemctl restart docker
 
-#检查
+```
+## 7.切换到`iptables-legacy`
+某些系统使用`nftables`作为默认`iptables`后端，这可能导致与Docker的兼容性问题。你可以尝试切换到`iptables-legacy`：
+```bash
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+```
+然后重新启动Docker服务：
+```bash
+sudo systemctl restart docker
+```
+## 8.查看Docker service状态
+```bash
+sudo systemctl status docker
+```
+如果服务状态为`active (running)`，则说明Docker安装成功。
+如下：
+```
+ docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2025-05-26 08:17:43 UTC; 25s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 93199 (dockerd)
+      Tasks: 13
+     Memory: 25.6M
+        CPU: 384ms
+     CGroup: /system.slice/docker.service
+             └─93199 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.029580417Z" level=info msg="[graphdriver] using prior storage driver: overlay2"
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.029899791Z" level=info msg="Loading containers: start."
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.033214594Z" level=warning msg="Could not load necessary modules for IPSEC rules: protocol not supported"
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.343225573Z" level=info msg="Loading containers: done."
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.362581504Z" level=info msg="Docker daemon" commit=01f442b containerd-snapshotter=false storage-driver=overlay2 version=28.1.1
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.362841131Z" level=info msg="Initializing buildkit"
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.407169339Z" level=info msg="Completed buildkit initialization"
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.419361273Z" level=info msg="Daemon has completed initialization"
+May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.419651429Z" level=info msg="API listen on /run/docker.sock"
+May 26 08:17:43 tita systemd[1]: Started Docker Application Container Engine.
+
+```
+## 9.测试Docker
+```bash
 sudo docker run hello-world
 ```
-
 ## 常见问题
 安装Docker常见的报错如下：
 ```bash

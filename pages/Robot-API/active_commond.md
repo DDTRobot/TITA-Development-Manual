@@ -37,3 +37,41 @@
 |   `height_max`    |   `(0.0,0.3]`   |  `0.3`  | 对应遥控器最高高度挡位，轮轴与机身中心的距离 0.3 m |
 |   `height_mid`    |   `(0.0,0.3]`   |  `0.2`  | 对应遥控器中间高度挡位，轮轴与机身中心的距离 0.2 m |
 |   `height_min`    |   `(0.0,0.3]`   |  `0.1`  | 对应遥控器最低高度挡位，轮轴与机身中心的距离 0.1 m |
+
+
+开发者仅需要使用用户指令实现机器人运动，以下对控制API的详细介绍。
+
+## 控制API
+
+**功能概述**
+
+**Topic:**/tita_spacename/command/user/command 
+
+**Message Type:** tita_locomotion_interfaces/msg/LocomotionCmd
+
+**命令示例**：
+
+```
+ros2 topic pub /tita3231679/command/user/command tita_locomotion_interfaces/msg/LocomotionCmd "
+{
+  twist: {linear: {x: 0.0}, angular: {z: 0.5}},
+  pose: {position: {z: 0.1}},
+  fsm_mode: 'transform_up'
+}"
+```
+**Notices:** 
+- 每台机器人都有自己的命名空间，请根据实际情况修改命名空间。
+- 不使用（保留为空）：pose.orientation.x, pose.orientation.y, pose.orientation.z, pose.orientation.w
+- 机器人状态：fsm_mode，控制取值范围：'transform_up', 'transform_down', ‘jump’
+
+**取值范围：**
+inear x ±3.0
+twist.angular.z ±6.0
+height(position.z) min: 0.1 max: 0.3 mid: 0.2
+pitch ±1.0
+pub_freq: 100--170.0Hz
+
+**相关示例程序：**
+```
+https://github.com/DDTRobot/TITA-SDK-ROS2.git
+```
