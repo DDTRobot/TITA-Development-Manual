@@ -74,7 +74,7 @@ sudo apt install tita-ros2
 
 ```
 ## 设置ROS2环境
-若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要对两个文件做操作，分别是 `~/.bashrc`；`/opt/ros/humble/local_setup.bash `。
+若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要修改 `/opt/ros/humble/local_setup.bash `。
 ####  1. ~/.bashrc
 - 输入:`sudo vim ~/.bashrc`
 - 进入~/.bashrc后在最后的位置添加字段
