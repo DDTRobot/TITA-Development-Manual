@@ -53,18 +53,17 @@ password: apollo
 
 ## 如何连接WIFI
 刷机过后需要下载ROS包和其他依赖，所以需要先将机器人连接网络，以下是连接当前所在地的WIFI教程：
+```
 1.首先 `sudo vim /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf`
 2.修改图中，ssid= "WIFI name"; psk="PassWord"
 3.修改完后reboot
+```
 4.当机器人重启后会自动连接上述步骤所设置的WIFI
 ![f8](.././_static/flash8.jpeg)
 
 ## 安装依赖
 在目前的新系统中为了确保ROS2包能正常运行，所以需要安装以下的依赖：
-<!-- #### 安装g2o
-在机器人系统中执行以下步骤：
-1. `sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ubuntu_deb/g2o-1.2.23-Linux.deb`
-2. `sudo dpkg -i g2o-1.2.23-Linux.deb` -->
+
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: `apollo`, 进入机器
 ```
