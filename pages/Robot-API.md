@@ -15,6 +15,7 @@ Robot-API/zhangai
 Robot-API/system_status
 Robot-API/locomotion
 Robot-API/active_commond
+Robot-API/perception_msg
 ```
 
 ------
