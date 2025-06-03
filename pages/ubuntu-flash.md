@@ -94,6 +94,7 @@ export ROS_DOMAIN_ID=42
 - 让ROS2服务重启后可以输入 `ros2 topic list`查看是否能print机器里的ros2 topic，如图
 ![f7](.././_static/flash7.jpeg)
 
+
 ## 网络配置
 **注意：** 此配置自针对购买TITA Tower的客户或者想对机器人进行网络配置的客户。若您是仅购买TITA的客户，请忽略此部分。
 ```bash
