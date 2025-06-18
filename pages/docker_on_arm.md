@@ -1,4 +1,4 @@
-# Docker 在 ARM安装
+# Docker Installation on ARM
 <!-- ```{toctree}
 :maxdepth: 1
 :glob:
@@ -7,48 +7,48 @@
 
 Ref：https://blog.csdn.net/hbhgyu/article/details/131745528
 
-## 1.更新系统包&安装依赖项
-首先确保系统环境最新的
+## 1.Update System Packages & Install Dependencies
+First ensure the system environment is up-to-date
 ```bash
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 ```
 
-## 2.添加 Docker GPG密钥及源
-- 官方源（速度比较慢）
+## 2.Add Docker GPG Key and Source
+- Official source (slow)
 ```bash
 1. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 2. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 3. sudo apt update
 ```
-- 阿里云(强烈建议)
+- Aliyun (Recommended)
 ```bash
 1. curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 2. echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 3. sudo apt update
 ```
-## 3. 更新APT包索引
-确保 APT从Docker 仓库安装，而不是从默认的Ubuntu仓库安装：
+## 3. Update APT Package Index
+Ensure APT installs from Docker repository instead of default Ubuntu repository:
 ```bash
 apt-cache policy docker-ce
 ```
 
-## 4. 安装Docker
-使用以下指令安装Docker：
+## 4. Install Docker
+Install Docker using:
 ```bash
 sudo apt install docker-ce
 ```
-## 5.添加当前用户到docker组
-当前用户添加到`docker`组，以避免每次运行Docker时使用`sudo`：
+## 5.Add Current User to Docker Group
+Add current user to `docker` group to avoid using `sudo` for every Docker command:
 ```bash
 sudo usermod -aG docker ${USER}
 ```
 
-## 6.配置镜像仓库
+## 6.Configure Image Registry
 ```bash
 sudo vim /etc/docker/daemon.json
 ```
-将内容修改为：
+Modify content to:
 ```
 {
     "registry-mirrors": [
@@ -57,22 +57,21 @@ sudo vim /etc/docker/daemon.json
 }
 
 ```
-## 7.切换到`iptables-legacy`
-某些系统使用`nftables`作为默认`iptables`后端，这可能导致与Docker的兼容性问题。你可以尝试切换到`iptables-legacy`：
+## 7.Switch to`iptables-legacy`
+Some systems use `nftables` as default backend which may cause compatibility issues:
 ```bash
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 ```
-然后重新启动Docker服务：
+Then restart Docker service:
 ```bash
 sudo systemctl restart docker
 ```
-## 8.查看Docker service状态
+## 8.Check Docker Service Status
 ```bash
 sudo systemctl status docker
 ```
-如果服务状态为`active (running)`，则说明Docker安装成功。
-如下：
+If status shows `active (running)`, Docker is successfully installed:
 ```
  docker.service - Docker Application Container Engine
      Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
@@ -98,12 +97,12 @@ May 26 08:17:43 tita dockerd[93199]: time="2025-05-26T08:17:43.419651429Z" level
 May 26 08:17:43 tita systemd[1]: Started Docker Application Container Engine.
 
 ```
-## 9.测试Docker
+## 9.Test Docker
 ```bash
 sudo docker run hello-world
 ```
-## 常见问题
-安装Docker常见的报错如下：
+## Common Issues
+Common Docker installation errors:
 ```bash
 robot@tita:~/docker$ sudo systemctl restart docker
 Job for docker.service failed because the control process exited with error code.
@@ -137,31 +136,31 @@ failed to start daemon: Error initializing network controller: error obtaining c
 
 ```
 ```{note}
-根据日志信息，Docker 服务启动失败是因为 `iptables` 配置出现了问题。错误信息指出了 `iptables` 在添加规则时的失败，具体是无法在 `DOCKER-ISOLATION-STAGE-1` 链中添加规则。
+Based on the logs, Docker service failed to start due to `iptables` configuration issues. The error specifically indicates failure to add rules in the `DOCKER-ISOLATION-STAGE-1` chain.
 ```
-这种问题通常与`iptables`的配置或版本有关。以下是一些可能的解决方案：
-### 1. 确认`iptabels`版本
-确保你的`iptables`版本与系统和Docker版本兼容。你可以查询`iptables`版本：
+This issue is typically related to `iptables` configuration or version. Possible solutions:
+### 1. Confirm`iptabels`Version
+Ensure your `iptables` version is compatible with the system and Docker:
 ```bash
 sudo iptables --version
 ```
-如果`iptables`版本较旧，考虑更新：
+If outdated, update:
 ```bash
 sudo apt update
 sudo apt install iptables
 ```
-### 2.切换到`iptables-legacy`
-某些系统使用`nftables`作为默认`iptables`后端，这可能导致与Docker的兼容性问题。你可以尝试切换到`iptables-legacy`：
+### 2.Switch to `iptables-legacy`
+Some systems use nftables as the default backend for iptables, which may cause compatibility issues with Docker. You can try switching to iptables-legacy:
 ```bash
 sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
 sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 ```
-然后重新启动Docker服务：
+Restart Docker service：
 ```bash
 sudo systemctl restart docker
 ```
-### 3.清理旧的 `iptables`规则
-Sometimes，清理了旧的`iptables`规则可以解决问题
+### 3.Clean Old `iptables` Rules
+Clearing old rules may resolve the issue:
 ```bash
 sudo iptables -t filter -F
 sudo iptables -t nat -F
@@ -169,26 +168,26 @@ sudo iptables -t mangle -F
 sudo iptables -t raw -F
 ```
 ```{note}
-注意：这会清空当前的 iptables 配置，可能影响系统的网络设置，请根据实际情况使用。
+Warning: This will clear current iptables configuration and may affect network settings.
 ```
-### 4.检查其他防火墙或网络工具
-确保没有其他防火墙或网络工具干扰 `iptables` 配置。例如，`ufw（Uncomplicated Firewall）`可能会与 Docker 发生冲突。如果你使用 `ufw`，尝试禁用它：
+### 4.Check Other Firewalls or Network Tools
+Ensure no other tools like `ufw` are interfering:
 ```bash
 sudo ufw disable
 ```
-### 5.重新安装Docker
-如果上述步骤无效，可以尝试重新安装docker
+### 5.Reinstall Docker
+If previous steps fail:
 ```bash
 sudo apt remove --purge docker-ce docker-ce-cli containerd.io
 sudo apt update
 sudo apt install docker-ce
 ```
-### 6.更新系统
-确保你的操作系统是最新的，这样可以确保所有软件包和依赖项都是最新的：
+### 6.Update System
+Ensure OS is fully updated:
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 ```{note}
-执行这些步骤后，再次尝试启动 Docker 服务。如果问题依然存在，请提供更多细节给我司FAE，以便进一步排查。
+If issues persist after these steps, contact our FAE with detailed logs for further troubleshooting.
 ```

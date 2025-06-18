@@ -4,55 +4,54 @@
 :glob:
 ```
 ------
-针对一些新手用户我们提供了为TITA Ubuntu系统量身打造的Demo，该Demo是通过ROS2控制机器人进行简单动作并熟悉TITA系统的开发流程、系统框架、功能特点等。接下来就让我们快速上手TITA！
+For novice users, we have provided a tailored Demo for the TITA Ubuntu system. This Demo allows you to control the robot to perform simple actions and become familiar with the development process, system framework, and functional features of the TITA system. Let's quickly get started with TITA!
 
-这是TITA Demo在github上的仓连接：https://github.com/DDTRobot/TITA-SDK-ROS2
+TITA Demo in GitHub：https://github.com/DDTRobot/TITA-SDK-ROS2
 
-## SDK操作步骤
+## SDK Operation Steps
 
-```{note}
-如何让机器人连接WIFI可跳转连接[WIFI](ubuntu-flash.md)查看如何连接WIFI教程！
-```
-
-- 首先我们要进入TITA的系统中
+- First, we need to access the TITA system
+connect usb-c cable on the robot , like this
+![sdk3](./../_static/sdk3.jpg)
 ```bash
 ssh robot@192.168.42.1
 password : apollo
 ```
-- 进入系统后我们为需要克隆的代码仓建一个文件夹并进入,如图
+- After entering the system, we need to create a folder for the code repository we want to clone and then enter it, as shown in the figure.
 ```bash
 mkdir -p tita-sdk/src
 cd tita-sdk/src
 ```
-![sdk1](./../_static/sdk1.jpg)
-- 进入文件夹后需要将我们SDK的仓克隆下来并编译
+![sdk1](./../_static/sdk4.jpg)
+- After entering the folder, we need to clone our SDK repository and then compile it.
 ```bash
 git clone https://github.com/DDTRobot/TITA-SDK-ROS2.git
 colcon build
 
-Notice:在执行编译时可能会出现 colcon commond not found，我们就需要安装一下 colcon 工具，执行 sudo apt install python3-colcon-common-extensions
+Notice:During compilation, you may encounter the error "colcon command not found." In this case, you will need to install the colcon tool by running the command sudo apt install python3-colcon-common-extensions.
 
 ```
-- 编译完成后会有以下打印信息，如图
+- After the compilation is complete, you will see the following printed information, as shown in the figure.
+
 ![sdk2](./../_static/sdk2.jpg)
 
-- 一切准备好后，我们先要`source` SDK中的setup.bash
+- Once everything is ready, you first need to `source` the setup.bash in the SDK.
 ```bash
 source install/setup.bash
 ```
-- 这样我们就可以开始执行SDK啦！
+- Finally, you can start executing the SDK! 
 ```bash
 ros2 launch tita_bringup sdk_launch.py
 ```
-- 接下来我们需要使用遥控器将机器人控制处于站立状态
-- 然后按下遥控器小屏幕右边的小按钮，朝中间按下，届时显示屏会出现名为 “mode select” 的界面。  
-![sdk4](./../_static/sdk4)
-- 使用按钮往下推，选中"use-sdk mode"按下，机器人将自动执行，由刚刚执行的SDK接管控制权限，此时遥控器将无法控制机器人，但除了使机器人站立或趴下按钮。 
-![sdk5](./../_static/sdk5)
+- Next, we need to use the remote control to put the robot in a standing position.
+- Then press the small button on the right side of the remote control's small screen towards the center, and a screen named "mode select" will appear on the display.
+![sdk5](./../_static/sdk5.jpg)
+- Push the button downwards to select "use-sdk mode" and press it. The robot will then automatically execute the transition, handing over control to the SDK that was just run. At this point, the remote control will no longer be able to control the robot, except for the buttons that make the robot stand up or lie down.
+![sdk5](./../_static/sdk6.jpg)
 
 ```{note}
-1. 如果ros2 launch tita_bringup sdk_launch.py退出后，机器人仍然会自动执行，除非释放use-sdk控制权限，届时就需要将遥控器的use-sdk模式关掉
-2. 如果出现机器人没有反应，sdk_command_node.cpp中angular.z值给太小了，应当加大angular.z的值。
-3. sdk_speed 值范围:±6 rad/s
-4. turn_speed 值范围：±3 m/s
+1. If the robot continues to operate automatically after ros2 launch tita_bringup sdk_launch.py exits, it means that the use-sdk control authority has not been released. In this case, you will need to turn off the use-sdk mode on the remote control.
+2. If the robot does not respond, it may be because the angular.z value in sdk_command_node.cpp is set too low. You should increase the value of angular.z.
+3. The range for sdk_speed should be: ±6 rad/s
+4. The range for turn_speed should be: ±3 m/s
 ```

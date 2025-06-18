@@ -1,29 +1,32 @@
-## 常见问题
+## Frequently Asked Questions
 
-### 无法ssh登陆TITA host
+### Unable to SSH into TITA host
 
-请检查以下几点：
+Please check the following:
 
-1. 确保网络连接正常。
-2. 刷机线禁止一直插着DBG口上电开机。否则导致系统进入刷机模式，无法正常使用ssh登陆，需要先拔掉，重新上电。
-3. 某些版本的windows系统无法识别USB网卡，需要重新安装驱动。
+1. Ensure the network connection is working properly.  
+2. Do not keep the flashing cable plugged into the DBG port when powering on. Otherwise, the system will enter flashing mode, and SSH login will not work. Unplug the cable and reboot the device.  
+3. Some versions of Windows cannot recognize the USB network adapter. You may need to reinstall the driver.
 
-### 如何查看系统固件版本？
+### How to check the system firmware version?
 
-在终端中输入：
+In the terminal, enter:
 
 ```
 uname -a
 ```
-即可查看系统版本信息。
 
-### ros系统正常运行，但是使用遥控器控制无响应？
+This will display system version information.
 
-1. 可以通过ros2 topic echo /tita_namespace/joint_states查看当前关节状态,如果关节状态处于offline状态，则说明locomotion 离线，主要原因是机器人受到外力影响，比如碰撞、撞击，导致48V 电源供电不足，导致电机无法正常工作。需要重启机器人。
+### ROS system is running, but the remote controller has no response?
 
-### 如何查看ros deb 包版本？
+1. You can use the following command to check joint states:  
+   `ros2 topic echo /tita_namespace/joint_states`  
+   If the joint state is shown as "offline", it indicates that the locomotion system is offline. This usually happens due to external forces (e.g., collisions or impacts) causing insufficient 48V power supply, making the motors unresponsive. In this case, reboot the robot.
 
-在终端中输入：
+### How to check the version of the ROS deb package?
+
+In the terminal, enter:
 
 ```
 apt info tita-ros2

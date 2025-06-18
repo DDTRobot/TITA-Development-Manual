@@ -1,4 +1,5 @@
-# 系统状态监测器
+# System Status Monitor
+
 
 ```{toctree}
 :maxdepth: 1
@@ -7,7 +8,7 @@
 
 ------
 
-**功能描述**：订阅系统各个设备的数据节点，评估判断数据以及数据状态是否正常。
+Description: Subscribe to data nodes from various devices within the system, assess and determine whether the data and its status are normal.
 
 ## Basic Information
 
@@ -21,17 +22,19 @@
 
 |            ROS Topic            |            Interface             |       Frame ID       |    Description    |
 | :-----------------------------: | :------------------------------: | :------------------: | :---------------: |
-|  `imu_sensor_broadcaster/imu`   |     `sensor_msgs::msg::Imu`      |        `body`        |   机身的IMU数据   |
-| `perception/camera/image/right` |    `sensor_msgs::msg::Image`     |     `right_img`      | 发布右目相机图像  |
-| `perception/devices/face_point` | `sensor_msgs::msg::PointCloud2`  |        `spad`        | 前脸Tof传感器点云 |
-| `perception/devices/neck_point` | `sensor_msgs::msg::PointCloud2`  |       `spad1`        | 下方Tof传感器点云 |
-|      `system/battery/left`      | `sensor_msgs::msg::BatteryState` | `left_battery_info`  |   左侧电池信息    |
-|     `system/battery/right`      | `sensor_msgs::msg::BatteryState` | `right_battery_info` |   右侧电池信息    |
+|  `imu_sensor_broadcaster/imu`   |     `sensor_msgs::msg::Imu`      |        `body`        |   body's IMU data   |
+| `perception/camera/image/right` |    `sensor_msgs::msg::Image`     |     `right_img`      | published right camera image  |
+| `perception/devices/face_point` | `sensor_msgs::msg::PointCloud2`  |        `spad`        | face_Tof Pointcloud |
+| `perception/devices/neck_point` | `sensor_msgs::msg::PointCloud2`  |       `spad1`        | neck_Tof PointCloud |
+|      `system/battery/left`      | `sensor_msgs::msg::BatteryState` | `left_battery_info`  |   left battery massage   |
+|     `system/battery/right`      | `sensor_msgs::msg::BatteryState` | `right_battery_info` |   right battery massage    |
 
 ## Published
 
 |          ROS Topic           |                Interface                | Frame ID | Description  |
 | :--------------------------: | :-------------------------------------: | :------: | :----------: |
-| `imu_sensor_broadcaster/imu` | `diagnostic_msgs::msg::DiagnosticArray` |   `/`    | 系统状态信息 |
+| `imu_sensor_broadcaster/imu` | `diagnostic_msgs::msg::DiagnosticArray` |   `/`    | system status massage |
+
+
 
 

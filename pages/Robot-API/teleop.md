@@ -1,4 +1,4 @@
-# 遥控器指令模块
+# Remote Control Command Module
 
 ```{toctree}
 :maxdepth: 1
@@ -6,7 +6,8 @@
 ```
 
 ------
-​**功能描述**：用于解析接收机的数据，动态设置各个功能模块的参数。该节点可以通过修改配置文件，改变按键的映射关系。
+
+​	Description: Used to parse the data from the receiver and dynamically set the parameters for various functional modules. This node can modify the mapping relationship of buttons by changing the configuration file.
 
 ## Basic Information
 
@@ -20,30 +21,28 @@
 
 |       ROS Topic        |            Interface             |       Frame ID       |       Description        |
 | :--------------------: | :------------------------------: | :------------------: | :----------------------: |
-|         `/joy`         |     `sensor_msgs::msg::Joy`      |        `joy`         | 用于接收第三方遥控器节点 |
-| `system/battery/left`  | `sensor_msgs::msg::BatteryState` | `left_battery_info`  |  遥控器显示左侧电池信息  |
-| `system/battery/right` | `sensor_msgs::msg::BatteryState` | `right_battery_info` |  遥控器显示右侧电池信息  |
+|         `/joy`         |     `sensor_msgs::msg::Joy`      |        `joy`         | For receiving nodes from third-party remote controllers |
+| `system/battery/left`  | `sensor_msgs::msg::BatteryState` | `left_battery_info`  |  Remote Control Displaying Left Battery Information |
+| `system/battery/right` | `sensor_msgs::msg::BatteryState` | `right_battery_info` |  Remote Control Displaying Right Battery Information  |
 
 ## Published
 
 |        ROS Topic         |        Interface        | Frame ID |              Description               |
 | :----------------------: | :---------------------: | :------: | :------------------------------------: |
-| `command/teleop/command` | `sensor_msgs::msg::Joy` |  `joy`   | 发布改变按键顺序的消息到active_command |
-|          `/joy`          | `sensor_msgs::msg::Joy` |  `joy`   |        发布数据到 Joy 消息接口         |
+| `command/teleop/command` | `sensor_msgs::msg::Joy` |  `joy`   | Publish the message to change the button order to `active_command`|
+|          `/joy`          | `sensor_msgs::msg::Joy` |  `joy`   |        Publish data to the Joy message interface        |
 
 ## Config
-
-|     Param      |     Range      | Default |              Description               |
-| :------------: | :------------: | :-----: | :------------------------------------: |
-|  `DebugMode`   |  `true/false`  | `false` |              调试使用开关              |
-|   `AxesSize`   |     `1-8`      |   `8`   |            被处理的按键数量            |
-|   `MoveAxes`   | `a/b` \| `0-7` |  `a0`   |  对应消息中第一个数值，模拟量，前进轴  |
-|   `TurnAxes`   | `a/b` \|`0-7`  |  `a1`   |  对应消息中第二个数值，模拟量，转向轴  |
-|  `PitchAxes`   |  `a/b`\|`0-7`  |  `a2`   |  对应消息中第三个数值，模拟量，俯仰角  |
-|   `RollAxes`   | `a/b` \|`0-7`  |  `a3`   |  对应消息中第四个数值，模拟量，滚动轴  |
-|   `StandUp`    | `a/b` \|`0-7`  |  `b4`   | 对应消息中第五个数值，开关量，站立开关 |
-| `HeightSwitch` | `a/b` \|`0-7`  |  `b5`   | 对应消息中第六个数值，开关量，高度调节 |
-|  `JumpButton`  | `a/b` \|`0-7`  |  `b6`   | 对应消息中第七个数值，开关量，跳跃开关 |
-| `SpeedButton`  | `a/b` \|`0-7`  |  `b7`   | 对应消息中第八个数值，开关量，速度调节 |
-|   `AxesBias`   |    `浮点数`    | 0.0013  |        遥控器模拟量轴的死区范围        |
-
+| Param        | Range          | Default | Description                             |
+|--------------|----------------|---------|-----------------------------------------|
+| DebugMode    | true/false     | false   | Debugging using switches                         |
+| AxesSize     | 1-8            | 8       |The number of processed keys             |
+| MoveAxes     | a/b \| 0-7     | a0      | Corresponding to the first numerical value in the message, analog quantity, forward axis   |
+| TurnAxes     | a/b \| 0-7     | a1      | Corresponding to the second numerical value in the message, analog quantity, steering axis   |
+| PitchAxes    | a/b \| 0-7     | a2      | Corresponding to the third numerical value in the message, analog quantity, pitch angle   |
+| RollAxes     | a/b \| 0-7     | a3      | Corresponding to the fourth numerical value in the message, analog quantity, roll axis   |
+| StandUp      | a/b \| 0-7     | b4      | orresponding to the fifth numerical value in the message, switch quantity, standing switch |
+| HeightSwitch | a/b \| 0-7     | b5      | Corresponding to the sixth numerical value in the message, switch quantity, height adjustment  |
+| JumpButton   | a/b \| 0-7     | b6      | Corresponding to the seventh numerical value in the message, switch quantity, jump switch |
+| SpeedButton  | a/b \| 0-7     | b7      | Corresponding to the eighth numerical value in the message, switch quantity, speed adjustment  |
+| AxesBias     | float       | 0.0013  | Dead zone range of the remote control analog axis              |

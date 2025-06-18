@@ -1,4 +1,4 @@
-# 运动控制模块
+# Locmotion Unit
 
 ```{toctree}
 :maxdepth: 1
@@ -7,15 +7,15 @@
 ------
 
 ​
-机器人运动控制管理。主要分为以下4个模块:
+Robot motion control management. It is mainly divided into the following 4 modules:
 
-- **device**：硬件`bridge`, 目前处理遥控器下发mcu, 读取mcu的`motors`及`imu sensor`信息．
-- **libraries**：第三方库, ．
-- **locomotion_bringup**：机器人运动控制启动文件．
-- **locomotion_msgs**: 机器人运动控制消息定义, 目前仅为调试信息。
-- **tita_controllers**：继承于`ros2_control`框架中`controller_interface`，处理`hardware_interface`数据并得到控制指令发送到`hardware_interface`。
-- **tita_description**：机器人描述文件存放位置。
-- **tita_webots_ros2**：存放机器人仿真环境的位置, 托管在`git@git.ddt.dev:rbt/alg/tita_webots_ros2.git`
+- **device**：Hardware bridge, currently handles the MCU commands sent by the remote controller, and reads the motor and IMU sensor information from the MCU．
+- **libraries**：Third-party Library
+- **locomotion_bringup**：Robot motion control bringup file.
+- **locomotion_msgs**: Robot motion control message definition, currently only for debugging information.
+- **tita_controllers**：Inherited from `controller_interface` in the ros2_control framework, it processes `hardware_interface` data and obtains control commands to be sent to `hardware_interface`.
+- **tita_description**：Location for storing robot description files.
+- **tita_webots_ros2**：Location for storing the robot simulation environment, hosted at `git@git.ddt.dev:rbt/alg/tita_webots_ros2.git`.
 
 ## Basic Information
 
@@ -26,16 +26,16 @@
 ------
 
 ## Subscribed
-1. `/${tita_ns}/command/manager/cmd_key` (TODO: 现在不好使)
+1. `/${tita_ns}/command/manager/cmd_key` 
 Topic type: `std_msgs/msg/String`
-机器人状态机切换: 状态机包含: `transform_up`, `transform_down`, `balance`, `jump`, `idle`
+Robot state machine transition: The state machine includes: `transform_up`, `transform_down`, `balance`, `jump`, `idle`
     ``` bash
     ros2 topic pub -1 /${tita_ns}/command/manager/cmd_key std_msgs/msg/String "data: 'idle'"
     ```
 
 2. `/${tita_ns}/command/manager/cmd_pose`    
 Topic type: `geometry_msgs/msg/PoseStamped`
-机器人头部位置姿态控制指令,包括调节高度,调节劈叉,`roll`, `pitch`等
+Robot head position and posture control commands, including adjusting height and yaw,`roll`, `pitch`
     ``` bash
     ros2 topic pub -1 /${tita_ns}/command/manager/cmd_pose geometry_msgs/msg/PoseStamped "{
         header: {
@@ -45,16 +45,25 @@ Topic type: `geometry_msgs/msg/PoseStamped`
             frame_id: 'world'}, 
         pose: 
         {
-            position: {x: 0.0, y: 0.0, z: 0.1}, # only valid in z , range in 0.1 to 0.3
+            position: {x: 0.0, y: 0.0, z: 0.1}, 
             orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}
         }
-        }" 
+        }"
+    ```
+
+3. `/${tita_ns}/command/manager/cmd_twist` 
+Topic type: `geometry_msgs/msg/Twist`
+Robot speed control commands, including `linear` and `angular`, with only `linear.x` and `angular.z` being effective.
+    ``` bash
+    ros2 topic pub -1 /${tita_ns}/command/manager/cmd_twist geometry_msgs/msg/Twist "{
+        linear: {x: 0.1, y: 0.0, z: 0.0}, 
+        angular: {x: 0.0, y: 0.0, z: 0.1}}"
     ```
 
 ## Published
 1. `/${tita_ns}/joint_states`
 Topic type: `sensor_msgs/msg/JointState`
-打印机器人关节信息, 包含`position`, `velocity`, `effort`
+Print robot joint information, including:`position`, `velocity`, `effort`
 
     ``` bash
     # ros2 topic echo /${tita_ns}/joint_states
@@ -104,7 +113,7 @@ Topic type: `sensor_msgs/msg/JointState`
 
 1. `/${tita_ns}/imu_sensor_broadcaster/imu`
 Topic type: `sensor_msgs/msg/Imu`
-打印机器人`imu sensor`信息, 包含`orientation`, `angular_velocity`, `linear_acceleration`
+Print robot IMU sensor information, include`orientation`, `angular_velocity`, `linear_acceleration`
 
     ``` bash
     # ros2 topic echo /${tita_ns}/imu_sensor_broadcaster/imu
@@ -158,4 +167,3 @@ Topic type: `sensor_msgs/msg/Imu`
     - 0.0
     ---
     ```
-
