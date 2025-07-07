@@ -6,7 +6,7 @@
 
 ------
 
-![tita_tree](/_static/tita_tree.png)
+![tita_tree](../../_static/tita_tree.png)
 
 ------
 
