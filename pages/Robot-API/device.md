@@ -15,7 +15,7 @@
 
 ## Basic Information
 
-| Installation method | Supported platform[s]    |
+| Installation method | Supported platform[s]    
 | ------------------- | ------------------------ |
 | Source              | Jetpack 6.0 , ros-humble |
 
@@ -32,11 +32,7 @@
 
 ## Build Package
 
-```bash
-# if have extra dependencies
-apt install libpcl-dev
-colcon build --packages-select dual_tof_device
-```
+
 ---
 <p align="center"><strong>ultrawave_device</strong></p>
 
@@ -60,11 +56,7 @@ colcon build --packages-select dual_tof_device
 
 ## Build Package
 
-```bash
-# if have extra dependencies
-# apt install <libdepend-dev>
-colcon build --packages-select ultrawave_device
-```
+
 ---
 <p align="center"><strong>stereo_camera_device</strong></p>
 

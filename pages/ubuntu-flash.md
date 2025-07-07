@@ -81,6 +81,7 @@ sudo apt install tita-ros2
 - 进入/opt/ros/humble/local_setup.bash后找到添加ROS_DOMAIN_ID字段，例如：
 ```bash
 export ROS_DOMAIN_ID=42
+source /opt/ros/humble/setup.bash 
 ```
 - 保存退出后需要 `source /opt/ros/humble/local_setup.bash`
 #### 3. 自检
@@ -93,6 +94,7 @@ export ROS_DOMAIN_ID=42
 **注意：** 此配置自针对购买TITA Tower的客户或者想对机器人进行网络配置的客户。若您是仅购买TITA的客户，请忽略此部分。
 ```bash
 sudo apt install network-manager
+
 ```
 2. 安装完依赖后需要克隆AutoNetworkManager的仓
 ```
