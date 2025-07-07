@@ -6,8 +6,7 @@
 
 ------
 
-![tita_tree](../../_static/tita_tree.png)
-
+![tree](../../_static/tita_tree.png)
 ------
 
 TITA是基于ros2的软件框架。其中描述了tita所包含的各个模块之间的消息连接。
