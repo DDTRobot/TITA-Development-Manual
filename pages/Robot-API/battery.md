@@ -14,19 +14,10 @@ The battery device module implements the "battery data topic" and the "power man
 
 <u>**Not recommended**</u>users making any requests to the power management command service，because the power management command service is designed to respond to requests from other internal modules of the TITA robot, it is not intended to serve as a user interface.
 
-## Preparation
-
-Run the battery device module：
-``` bash
-ros2 run battery_device battery_device_node
-
-ros2 launch battery_device battery_device_node.launch.py
-```
-
 Print battery device data：
 ``` bash
 ros2 topic echo /your_tita_name/system/batteries/left
-
+or
 ros2 topic echo /your_tita_name/system/batteries/right
 ```
 

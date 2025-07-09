@@ -8,11 +8,15 @@ pages/TITA-Tower
 pages/ubuntu-flash
 pages/quickstart
 pages/controller
+pages/pic_back
+pages/four_foot
+pages/FAQ
+pages/TITA_Arm
 ```
 
 ## Introdution
 
-TITA is the second-generation bipedal-wheeled robot developed by Direct Drive Technology Limited, with 8 degrees of freedom (DoF). The TITA robot is a quasi-direct-drive wheel-legged robot with high perceptual and decision-making capabilities, perfectly combining the speed and agility of wheeled robots with the strong adaptability of legged robots. It features a modular structure and open interfaces, allowing for the integration of visual modules, communication modules, AI hosts, edge processors, and various sensors. It can be applied in smart parks, mines, and various complex industrial environments to perform efficient patrols, load transportation, data collection, scanning and mapping, and other tasks.
+TITA is the second-generation bipedal-wheeled robot developed by Direct Drive Technology Inc, with 8 degrees of freedom (DoF). The TITA robot is a quasi-direct-drive wheel-legged robot with high perceptual and decision-making capabilities, perfectly combining the speed and agility of wheeled robots with the strong adaptability of legged robots. It features a modular structure and open interfaces, allowing for the integration of visual modules, communication modules, AI hosts, edge processors, and various sensors. It can be applied in smart parks, mines, and various complex industrial environments to perform efficient patrols, load transportation, data collection, scanning and mapping, and other tasks.
 ![tita](./_static/tita6.jpg)
 
 ### Acknowledgments

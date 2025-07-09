@@ -26,23 +26,25 @@ The naming of firmware is case-insensitive; sometimes the provided firmware name
 ![u6](../../_static/up6.PNG)
 ![u7](../../_static/up7.PNG)
 
-（4）Then restart and press the small button on the right side of the small screen, press towards the center to display the "mode select" interface.
+ (4) Restart and press the small button on the right side of the small screen, press towards the center to display the "mode select" interface.
 ![u8](../../_static/up8.JPEG)
-（5） After the remote control is turned on, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> wifi connectiving -> Enable wifi.  
+
+3. Update the receiver
+After completing the above steps, the Phase 1 firmware update is finished!
+Next, proceed to update the receiver.
+（1） After the remote control is turned on, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> wifi connectiving -> Enable wifi.  
 ![u9](../../_static/up9.PNG)
 ![u10](../../_static/up10.jpg)
 ![u11](../../_static/up11.png)
 ![u12](../../_static/up12.png)
-（6） Connect the computer to wifi, wifi account name: ExpressLRS TX, the password is: expresslrs. 
-![u13](../../_static/up13.png)
- （7）At this time, the browser will pop up the update web interface, if it does not pop up, manually enter 10.0.0.1, and ensure that the wifi is connected normally.
+（2） Connect the computer to wifi, wifi account name: ExpressLRS TX, the password is: expresslrs. At this time, the browser will pop up the update web interface, if it does not pop up, manually enter 10.0.0.1, and ensure that the wifi is connected normally.
  ![u14](../../_static/up14.png)
- （8）And then select the file to be updated.
+（3）And then select the file to be updated.
  ![u15](../../_static/up15.png)
- （9）Click UPDATE, if the update is not successful, as shown in the diagram above, first update the modules in the first folder.
-  ![u16](../../_static/up16.png)
- （10）After the above steps, restart the controller, configure the remote control rate, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> Telemetry Ratio -> 1:128 (press to select, it will flash, indicating it is selected)
+（4）Click UPDATE, if the update is not successful, as shown in the diagram above, first update the modules in the first folder.
+ ![u16](../../_static/up16.png)
+（5）After the above steps, restart the controller, configure the remote control rate, push the button on the right to the left to enter the interface, then press the buttons in sequence to go to Tools -> ExpressLRS -> Telemetry Ratio -> 1:128 (press to select, it will flash, indicating it is selected)
  ![u17](../../_static/u17.png)
- (11) push down to 1:8, press the middle to confirm, configuration is complete, restart once!
-  ![u18](../../_static/up18.png)
+ (6) push down to 1:8, press the middle to confirm, configuration is complete, restart once!
+ ![u18](../../_static/up18.png)
   <h3>With this, the remote joystick upgrade process is successfully completed.</h3>

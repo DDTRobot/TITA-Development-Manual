@@ -16,7 +16,7 @@ This operation requires downloading the flashing package to the computer (a Linu
 ```bash
 0. sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler dosfstools
         lbzip2 libxml2-utils nfs-kernel-server openssl python3-yaml qemu-user-static
-        sshpass udev uuid-runtime whois rsync zstd lz4 (in your computer system which to flash the robot)
+        sshpass udev uuid-runtime whois rsync zstd lz4 (Complete copy. These are the dependencies required for NVIDIA firmware flashing. Please install these dependencies on the flashing computer first, not on the robot.)
 1. Download apollo-ubuntu-${date}.tar （Download the system software package corresponding to the date）
 2. mkdir apollo-ubuntu（You can create a folder at any location in your computer's system）
 3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （Extract the system software package into the newly created folder）
@@ -32,13 +32,8 @@ Attention! Some Ubuntu systems may lack the sshpass and nfs-kernel-server plugin
 
 ## Termination Indicator
 When the flashing is complete, you should see the following information:
-```{bash}
-1. Flash is successful
-2. Reboot device
-3. Cleaning up...
-4. Log is saved to Linux_for_Tegra/initrdlog/flash_3-1_0_20240821-140503.log
-``` 
-And by entering the command `lsusb`, you can see this information.
+
+By entering the command `lsusb`, you can see this information.
 ![f3](.././_static/flash3.JPEG)
 
 ## Connect TITA Robot System
@@ -61,109 +56,66 @@ After flashing, you will need to download ROS packages and other dependencies, s
 In the new system, to ensure that the ROS2 packages can run properly, you need to install the following dependencies:
 #### Install ROS Dependencies
 1. Open Terminal and input：`ssh robot@192.168.42.1`，Password: `apollo`, connect Robot
-2. Download ROS2 package：`sudo wget  http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241227153817.deb
-3. Execute `sudo apt-get update` to update the package sources.
-4. Execute `sudo dpkg -i tita-ros2-20241227153817.deb`. This installation will not succeed, but it will inform the system of the dependencies needed.
-5. Execute `sudo apt install -f` to download the required dependencies.
-Run the installation command again with `sudo dpkg -i tita-ros2-20241227153817.deb`. If successful, the installation is complete.
-7. If you find it troublesome to copy each command separately, you can create a bash script from the following code and run it:
-```{bash} 
-#!/bin/bash
-
-# download deb
-sudo wget http://webdav:qwVNGwbCzjKRWFx0@61.145.190.130:10088/cdFile/ros2_deb/tita-ros2-20241227153817.deb
-
-# update package source
+```bash
 sudo apt-get update
-
-# Attempt to install the .deb package (this will not succeed yet)
-sudo dpkg -i tita-ros2-20241017000618.deb
-
-# Install the dependencies needed for the .deb package
-sudo apt install -f
-
-# Retry installing the .deb package
-sudo dpkg -i tita-ros2-20241017000618.deb
+sudo apt install tita-sound
+sudo apt install libopencv-dev=4.5.4+dfsg-9ubuntu4
+sudo apt install tita-ros2
 ```
-
 ## Setting up the ROS2 environment
-If after the first flash you use ROS2 commands such as `ros2 topic list` or `ros2 service list` and there are no topics or services showing up, we need to set up the environment. Setting up the ROS2 environment requires manipulation of three files, which are `~/.bashrc`, `local_setup.bash`, and `tita-bringup.service`.
-####  1. ~/.bashrc
-- Enter the following command: `sudo vim ~/.bashrc`
-- After opening the `~/.bashrc` file, add the following two lines at the end:
+If after the first flash you use ROS2 commands such as `ros2 topic list` or `ros2 service list` and there are no topics or services showing up, we need to set up the environment. Setting up the ROS2 environment requires to edit `/opt/ros/humble/local_setup.bash`.
+
+####  Modifying ROS_DOMAIN_ID
+- Enter the following command: `sudo vim /opt/ros/humble/local_setup.bash`
+- After entering the /opt/ros/humble/local_setup.bash file, add the following line at the end:
 ```bash
 export ROS_DOMAIN_ID=42
-source /opt/ros/humble/setup.bash
 ```
-- After saving and exiting, you need to: `source ~/.bashrc`
-![f5](.././_static/flash5.JPEG)
-#### 2. tita-bringip.service
-- enter `sudo vim /usr/lib/systemd/system/tita-bringup.service`
-- Ensure that `ROS_DOMAIN_ID=42`, and change `ROS_LOCALHOST_ONLY=1` to `ROS_LOCALHOST_ONLY=0`, as shown in the figure.
-- After making the changes, save and exit.
-![f4](.././_static/flash4.JPEG)
-#### 3. local_setup.bash
-- Enter the command: `sudo vim /opt/ros/humble/local_setup.bash`
-- Add the field `export ROS_DOMAIN_ID=42` at the end of the file.
-- After setting up, save and exit, then execute `source local_setup.bash`.
-![f6](.././_static/flash6.jpeg)
-#### 4. selfcheck
-- If all the above operations are completed, you can execute `sudo systemctl restart tita-bringup.service`.
+- After saving and exiting, you need to: `source /opt/ros/humble/local_setup.bash`
+
+#### Selfcheck
+- If all the above operations are completed, you can execute `sudo systemctl restart tita-bringup.service` and `systemctl restart tita-perception.service`.
 - After restarting the ROS2 service, you can enter `ros2 topic list` to check if the ROS2 topics on the machine are being printed, as shown in the figure.
 ![f7](.././_static/flash7.jpeg)
 
 ## Network Configuration
-This network configuration is for the network allocation of the TITA Tower accessory, allowing you to assign a unique IP for use with the TITA Tower in coordination with the robot.
-1. Install Dependencies
+Note: This configuration is exclusively for customers who have purchased the TITA Tower or those who need to configure the robot's network settings. If you have only purchased the TITA (without the Tower), please disregard this section.
 ```bash
 sudo apt install network-manager
-sudo apt install systemd-networkd
 ```
 2. After installing the dependencies, you need to clone the AutoNetworkManager repository:
-` git clone http://git.ddt.dev:9281/wuyunzhou/AutoNetworkManager.git`
+```bash
+sudo apt-get install git  #If you haven't installed git yet, do it firstly
+git clone https://github.com/DDTRobot/TowerNetworkManager.git
+```
 3. Install through the script provided by AutoNetworkManager.
 ```bash
 cd AutoNetworkManager
 chmod 777 install.sh
 ./install.sh
+sudo rm -rf /etc/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf   #Delete the existing Wi-Fi configuration file to avoid affecting network connectivity, and later connect using the command sudo nmcli device wifi connect "example" password "1111111".
 ```
 After completing the above steps, you should be able to see that eth0 has been automatically assigned an IP of `192.168.19.97` using the `ifconfig` command, and you should be able to ping the default IP of the TITA Tower, which is `192.168.19.97`.
 
 
 ## How to pair Controller
-**（Perform this operation in the robot）**
-The latest robotic systems now come with built-in remote control pairing software, and there are two methods to quickly pair the remote control.
+(Perform this operation on the robot) The latest robot system now comes with built-in remote control pairing software. There are two quick methods to pair the remote controller:
 ```{note}
 For older system versions, you can contact the FAE to obtain the remote control pairing software installation package.
 ```
-**Method One**
-1. sudo dpkg -i crsf_deb.deb   (If it is already included or installed, please skip this step.)
-2. Execute the command `crsf-app -bind`, you can observe the return：   
-```{bash}
-robot@tita:~$ crsf-app -bind
-Checking uart status...
-Uart connect success
-Entering bind mode...
-Bind mode success
-Please enter TOOLS->ExpressLRS->[Bind] and binding in remote control
-```
-![f9](.././_static/flash9.jpg)
-3. After powering on the remote control, push the button on the right side to the left to enter the interface, then press the buttons in sequence to go to `Tools -> ExpressLRS -> bind mode` for pairing the receiver.
- ![controller2](./../_static/controller2.JPEG)
- ![controller3](.././_static/controller3.JPEG)
-4. Pairing completed, return "pair success"
-![controller4](.././_static/controller4.jpg)
+For the corresponding tutorial, please refer to the `Remote Control Pairing Guide`.
 
-**Method Two**
-1. First, you need a dual-headed Type-C data cable, like this:
-![f11](.././_static/flash11.jpg)
-2. Connect the data cable to the EXT port on the robot and the data port on the remote control, like this:
-![f12](.././_static/flash12.jpg)
-![f13](.././_static/flash13.jpg)
-```{note}
-The robot and the controller must be powered on.
+## How to Upgrade Motion Control and Motor Drivers in Ubuntu
+```bash
+1. First, install the OTA application.
+sudo apt-get install motor-upgrade
+Ps.Notice that if you have installed python3-pip in your pc
+2. Command for upgrading the motion control board and motor firmware.
+otafifth_demo -f $BIN_PATH
+3. After the upgrade is complete, you can check the motion control version.
+can-app -Version
+Ps. Please note! To ensure a successful upgrade, first make sure the robot is operating normally (all 8 motors are communicating properly) and set the robot to the prone position.
 ```
-3. The remote control will display the `Select mode` interface, and select the third option `USB Serial`.
-![f14](.././_static/flash16.jpg)
-4.Wait patiently for the pairing. If the pairing is successful, the robot's battery information will be displayed in the upper right corner of the remote control interface.
-![f14](.././_static/flash15.jpg)
+```{note}
+The robot's camera status detection is slow and may initially report "Camera timeout" at startup. After a short delay (once detection completes), it will confirm "Camera OK." If the correct status is not reported within a reasonable time, contact our FAE immediately.
+```

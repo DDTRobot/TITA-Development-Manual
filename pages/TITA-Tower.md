@@ -17,6 +17,9 @@ Before using the navigation tower, the following preparatory work needs to be do
 The navigation tower is powered through TITA's DB25 external interface and requires the use of an officially certified DB25 connection cable.
 Note that hot-plugging of the DB25 interface is prohibited, as it may cause abnormal power off of the navigation tower.
 
+**Network Configuration**
+- If you are using TITA in conjunction with Tower, you need to properly configure the ROS2 environment for TITA. For detailed operations, please refer to the relevant documentation《[Ubuntu System Flashing Process](https://tita-ubuntu-manual-english.readthedocs.io/en/latest/pages/ubuntu-flash.html)》
+
 **Debugging**
 The navigation tower supports Ethernet interfaces, and can be connected to a laptop via an Ethernet cable, supporting multi-machine interactive visual debugging.
 
@@ -33,7 +36,6 @@ To view the IP, you can connect to the navigation tower's device information web
 ### 1.2 Environmental Configuration
 
 - **TITA Tower's ROS_DOMAIN_ID defult value is 42**，to implement multi-machine interaction, you need to set the ROS_DOMAIN_ID on the debugging machine to 42 as well. After setting it, execute source ~/.bashrc.
-- If you are using TITA in conjunction with Tower, you need to properly configure the ROS2 environment for TITA. For detailed operations, please refer to the relevant documentation《[Ubuntu System Flashing Process](https://tita-ubuntu-manual-english.readthedocs.io/en/latest/pages/ubuntu-flash.html)》
 
 #### 1.2.1 Testing Device Communication
 
@@ -111,6 +113,22 @@ If you want to see PointCloud from TITA Tower,you can use `rviz2` in your comput
 ```
  ![t6](./../_static/t6.PNG)
 
+### Common Problem
+After powering on, the perception tower's indicator shows a blue standby state, but running `ros2 topic list` on the TITA host terminal does not display topics such as /tower/imu/data. How to resolve this?
+
+Possible Causes:
+
+    Incorrect ROS_DOMAIN_ID setting.
+
+    Misconfigured eth0 IP address on the TITA.
+
+Solution:
+
+    Verify ROS_DOMAIN_ID:
+
+`echo $ROS_DOMAIN_ID`  Ensure the output is 42 or another expected value.
+
+Check eth0 IP configuration: `ifconfig eth0` Confirm the IP address is correctly set to 192.168.19.90.
 
 
 
