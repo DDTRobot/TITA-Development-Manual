@@ -1,4 +1,4 @@
-# Manipulator Configuration and Usage Tutorial
+# Robitic Arm Configuration and Usage Tutorial
 ```{toctree}
 :maxdepth: 1
 :glob:
