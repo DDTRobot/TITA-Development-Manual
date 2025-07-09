@@ -81,9 +81,17 @@ sudo apt install tita-ros2
 - 进入/opt/ros/humble/local_setup.bash后找到添加ROS_DOMAIN_ID字段，例如：
 ```bash
 export ROS_DOMAIN_ID=42
-source /opt/ros/humble/setup.bash 
 ```
 - 保存退出后需要 `source /opt/ros/humble/local_setup.bash`
+
+### 添加 `source /opt/ros/humble/setup.bash `
+- 输入:`sudo vim ~/.bashrc`
+在文件末尾处添加以下字段
+```bash
+source /opt/ros/humble/setup.bash 
+```
+
+
 #### 3. 自检
 - 如果以上操作都完成后可以执行 `sudo systemctl restart tita-bringup.service`和`systemctl restart tita-perception.service `
 - 让ROS2服务重启后可以输入 `ros2 topic list`查看是否能print机器里的ros2 topic，如图
