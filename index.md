@@ -11,7 +11,7 @@ pages/controller
 pages/pic_back
 pages/four_foot
 pages/FAQ
-pages/TITA_Arm
+pages/TITA-Arm
 ```
 
 ## Introdution

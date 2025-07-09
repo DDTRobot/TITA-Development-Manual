@@ -1,4 +1,4 @@
-# 机Manipulator Configuration and Usage Tutorial
+# Manipulator Configuration and Usage Tutorial
 ```{toctree}
 :maxdepth: 1
 :glob:
@@ -13,7 +13,7 @@ The upper-layer SOC communicates with the lower-layer MCU via CANBUS. This metho
 ### Configuration
 Airbot natively supports Ubuntu 20.04 and provides ROS1 compatibility. Install Docker on the NX using the tutorial: [Docker Installation on ARM](docker_on_arm.md), If the system comes with Docker pre-installed, skip this step.
 
-### Docker镜像
+### Docker image
 - pull docker image
 ```bash
 docker pull registry.cn-guangzhou.aliyuncs.com/ddt_robot/airbot_on_tita:v1.0
