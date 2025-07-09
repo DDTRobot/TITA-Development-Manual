@@ -66,7 +66,7 @@ password: apollo
 
 #### 安装ROS依赖
 1. 打开终端输入指令：`ssh robot@192.168.42.1`，Password: apollo,进入机器
-```{bash} 
+```
 sudo apt-get update
 sudo apt install tita-sound
 sudo apt install libopencv-dev=4.5.4+dfsg-9ubuntu4
@@ -74,19 +74,14 @@ sudo apt install tita-ros2
 
 ```
 ## 设置ROS2环境
-若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要对两个文件做操作，分别是 `~/.bashrc`；`/opt/ros/humble/local_setup.bash `。
-####  1. ~/.bashrc
-- 输入:`sudo vim ~/.bashrc`
-- 进入~/.bashrc后在最后的位置添加字段
-```bash
-source /opt/ros/humble/setup.bash
-```
-- 保存退出后需要 `source ~/.bashrc`
+若第一次刷机后，使用ros2指令比如使用`ros2 topic list`或者 `ros2 service list` 会出现没有topic或者service的情况。这时我们需要设置环境，设置ROS2环境需要修改 `/opt/ros/humble/local_setup.bash `。
+
 ### 修改ROS_DOMAIN_ID
 - 输入:`sudo vim /opt/ros/humble/local_setup.bash`
 - 进入/opt/ros/humble/local_setup.bash后找到添加ROS_DOMAIN_ID字段，例如：
 ```bash
 export ROS_DOMAIN_ID=42
+source /opt/ros/humble/setup.bash 
 ```
 - 保存退出后需要 `source /opt/ros/humble/local_setup.bash`
 #### 3. 自检
@@ -94,10 +89,12 @@ export ROS_DOMAIN_ID=42
 - 让ROS2服务重启后可以输入 `ros2 topic list`查看是否能print机器里的ros2 topic，如图
 ![f7](.././_static/flash7.jpeg)
 
+
 ## 网络配置
 **注意：** 此配置自针对购买TITA Tower的客户或者想对机器人进行网络配置的客户。若您是仅购买TITA的客户，请忽略此部分。
 ```bash
 sudo apt install network-manager
+
 ```
 2. 安装完依赖后需要克隆AutoNetworkManager的仓
 ```

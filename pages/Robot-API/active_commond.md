@@ -75,3 +75,7 @@ pub_freq: 100--170.0Hz
 ```
 https://github.com/DDTRobot/TITA-SDK-ROS2.git
 ```
+
+```{warning}
+在机器人状态控制中，transform_up, transform_down, jump为有效控制字段，而balance、die等机器人当前状态反馈
+```
