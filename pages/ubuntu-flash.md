@@ -90,6 +90,7 @@ export ROS_DOMAIN_ID=42
 ```bash
 source /opt/ros/humble/setup.bash 
 ```
+- 生效：`source ~/.bashrc`
 
 
 #### 3. 自检
