@@ -9,6 +9,7 @@ pages/TITA-Tower
 pages/ubuntu-flash
 pages/quickstart
 pages/TITA-Arm
+pages/TITA-wifi_ap
 pages/four-foot
 pages/pic-back
 pages/docker_on_arm
