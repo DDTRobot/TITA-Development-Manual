@@ -5,7 +5,7 @@
 ```
 ------
 
-# 安装部署
+## 安装部署
 ```
 sudo apt install network-manager
 git clone https://github.com/DDTRobot/config_of_documents.git
@@ -21,7 +21,7 @@ wifi名：TITAxxxxxxx
 ip地址：10.42.0.1 
 ```
 
-# 使用指令
+## 使用指令
 
 1、由于默认开启ap热点模式，想要连外部 wifi模块需要关掉ap模式
 ```
