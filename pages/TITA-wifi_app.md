@@ -6,6 +6,7 @@
 ------
 
 ## 安装部署
+## 安装部署
 ```
 sudo apt install network-manager
 git clone https://github.com/DDTRobot/config_of_documents.git
