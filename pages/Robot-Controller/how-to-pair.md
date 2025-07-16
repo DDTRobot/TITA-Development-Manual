@@ -15,7 +15,8 @@
 1. 使用`sudo dpkg -i crsf-app`（如果已经包含或已安装，请跳过此步骤。）
 ```{note}
 如果没有安装 `crsf-app` 可以通过以下指令
-sudo apt-get install crsf-app. 
+`sudo apt-get install crsf-app.` 
+```
 2. 执行指令`crsf-app -bind`，可以观察到返回：
 ![f9](../../_static/flash9.jpg) 
 3. 遥控器开机后 右边按键向左推进入界面后 按键依次进入Tools ->ExpressLRS-> bind模式，进行配对接收机.
