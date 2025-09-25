@@ -28,3 +28,16 @@ uname -a
 ```
 apt info tita-ros2
 ```
+
+### 无法安装 sudo apt-get install python3-colcon-common-extensions 问题
+
+创建或编辑一个配置文件：
+```
+sudo vim /etc/apt/apt.conf.d/99insecure
+```
+添加以下内容：
+```
+Acquire::AllowInsecureRepositories "true";
+Acquire::AllowDowngradeToInsecureRepositories "true";
+```
+然后再次运行`sudo apt update`。
