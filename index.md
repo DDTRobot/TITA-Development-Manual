@@ -2,7 +2,7 @@
 
 ```{toctree}
 :maxdepth: 1
-pages/tita_tree
+pages/D1_remote_ctrl
 pages/Robot-API
 pages/Robot-Controller
 pages/TITA-Tower
@@ -75,5 +75,5 @@ pages/FAQ
 ### 致谢
 非常感谢您选择我们的产品，我们承诺将为您提供最优质的产品和服务。您的满意是我们最大的追求。如果您在使用过程中有任何问题或需要帮助，请随时联系我们，我们将竭诚为您服务。再次感谢您的信任和支持！
 
-快速上手请跳转[Quick Start](https://tita-development-manual-uc.readthedocs.io/zh-cn/latest/pages/quickstart.html)
+<!-- 快速上手请跳转[Quick Start](https://tita-development-manual-uc.readthedocs.io/zh-cn/latest/pages/quickstart.html) -->
 
