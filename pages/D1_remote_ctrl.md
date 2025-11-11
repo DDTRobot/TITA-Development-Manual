@@ -42,10 +42,9 @@
 
 ### 遥控器菜单页
 1、进入菜单页
-（1）按下右侧按键进入菜单页，如下图：
-![D1_ctrl_menu_enter](../_static/进入菜单页.jpg)
 
------
+- 按下右侧按键进入菜单页，如下图：
+![D1_ctrl_menu_enter](../_static/进入菜单页.jpg)
 
 ![D1_ctrl_menu](../_static/菜单页.png)
 
