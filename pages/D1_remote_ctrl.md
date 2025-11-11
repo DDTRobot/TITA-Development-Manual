@@ -44,9 +44,7 @@
 1、进入菜单页
 
 - 按下右侧按键进入菜单页，如下图：
-![D1_ctrl_menu_enter](../_static/menu.jpg)
-
-![D1_ctrl_menu](../_static/menu.jpg)
+![D1_ctrl_menu_enter](../_static/menu.png)
 
 进入菜单,界面如上, 功能分别为:
 - 01 切换四足模式（本质为上述*.service切换）
@@ -60,13 +58,7 @@
 
 ### 解锁/拼接切换
 
-1. 拼接：
-  - 趴着拼接：保持主机遥控器`left_button`弹起，`left_switch`扳下，连接器拼上后，主从机器上拼接状态灯均显示为蓝灯，进入菜单点按`01 Quadruped Mode`后等待机器切换状态，拼接成功后`01 Quadruped Mode`前标记星号*，机器进入到idle状态。
-  - 站着拼接：保持主机遥控器`left_button`按下，`left_switch`扳中，连接器拼上后，主从机器上拼接状态灯均显示为蓝灯，进入菜单点按`01 Quadruped Mode`后等待机器切换状态，拼接成功后`01 Quadruped Mode`前标记星号*，机器进入到loco状态。
-2. 分离：
-  - 趴着分离：保持主机遥控器`left_button`弹起，`left_switch`扳下，进入菜单点按`02 Unlock Bolt`后等待机器切换状态，正常工作时拼接机构会有解锁声音。结构解锁开后02 Unlock Bolt前*消失。若从四足状态分离，同时双机均进入到`06 Crawl Mode。`若两机均处于双足状态分离，两机均保持当前的状态机（当前是06 Crawl Mode就是06 Crawl Mode，若是idle那就是idle）。
-  - 站着分离：保持主机遥控器`left_button`按下，`left_switch`扳中，进入菜单点按`02 Unlock Bolt`后等待机器切换状态，正常工作时拼接机构会有解锁声音。结构解锁开后`02 Unlock Bolt`前*消失。
-  - 分离后，从机会按照当前遥控器状态切换状态（若遥控器未开机，则无状态切换，但如果从机启动了遥控器断连检测，会趴下）。
+![unlock](../_static/lock.png)
 
 
 
