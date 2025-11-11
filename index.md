@@ -1,6 +1,6 @@
 > # Welcome to D1-Robot Documentation!
 
-```toctree
+```{toctree}
 :maxdepth: 1
 pages/D1_remote_ctrl
 pages/SDK_Concepts
@@ -8,7 +8,6 @@ pages/Robot-API
 pages/lower_sdk
 pages/OTA_model
 pages/TITA-wifi_app
-
 
 
 ```
