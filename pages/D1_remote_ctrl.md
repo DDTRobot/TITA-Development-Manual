@@ -44,9 +44,9 @@
 1、进入菜单页
 
 - 按下右侧按键进入菜单页，如下图：
-![D1_ctrl_menu_enter](../_static/进入菜单页.jpg)
+![D1_ctrl_menu_enter](../_static/menu.jpg)
 
-![D1_ctrl_menu](../_static/菜单页.png)
+![D1_ctrl_menu](../_static/menu.jpg)
 
 进入菜单,界面如上, 功能分别为:
 - 01 切换四足模式（本质为上述*.service切换）
