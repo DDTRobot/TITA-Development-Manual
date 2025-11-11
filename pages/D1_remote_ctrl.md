@@ -6,10 +6,6 @@
 ------
 
 
-------
-
-
-
 ![D1_remove_ctrl](../_static/D1_remove_ctrl.png)
 
 
