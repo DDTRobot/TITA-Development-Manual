@@ -8,7 +8,7 @@
 
 ------
 
-#### 获取状态时间检测
+一、 获取状态时间检测
 ```bash 
 
 
@@ -18,7 +18,7 @@
      */
   bool data_timeout() const;
 ```
-#### 获取关节位姿
+二、 获取关节位姿
 ```bash 
   /**
      * @brief Get the current joint positions in joint space.
@@ -26,7 +26,7 @@
      */
   std::vector<double> get_joint_q() const;
 ```
-#### 获取关节速度
+三、 获取关节速度
 ```bash
   /**
      * @brief Get the current joint velocities in joint space.
@@ -34,7 +34,7 @@
      */
   std::vector<double> get_joint_v() const;
 ```
-#### 获取关节力矩
+四、 获取关节力矩
 ```bash
   /**
      * @brief Get the current joint torques in joint space.
@@ -42,7 +42,7 @@
      */
   std::vector<double> get_joint_t() const;
 ```
-#### 获取关节状态
+五、 获取关节状态
 ```bash
   /**
      * @brief Get the current joint status.
@@ -51,7 +51,7 @@
      */
   std::vector<uint16_t> get_joint_status() const;
 ```
-#### 获取机器人状态
+六、 获取机器人状态
 ```bash
   /**
      * @brief Get the current robot loco status.
@@ -60,7 +60,7 @@
   std::string get_robot_status() const;
 
 ```
-#### 获取IMU四元数
+七、 获取IMU四元数
 ```bash
   std::array<double, 4> get_imu_quaternion() const;  // x y z w
 
@@ -69,7 +69,7 @@
      * @return std::array<double, 3>: current acceleration.
      */
 ```
-#### 获取IMU加速度
+八、 获取IMU加速度
 ```bash
   std::array<double, 3> get_imu_acceleration() const;
 
@@ -78,11 +78,11 @@
      * @return std::array<double, 3>: current angular velocity.
      */
 ```
-#### 设置IMU角速度
+九、 设置IMU角速度
 ```bash
   std::array<double, 3> get_imu_angular_velocity() const;
 ```
-#### 设置控制模式
+十、  设置控制模式
 ```bash
   // /**
   //  * @brief Set mcu board control mode, maybe remove in the future.
@@ -102,7 +102,7 @@
 
  ```
 
- #### 设置RC输入
+十一、 设置RC输入
 ```bash
   /**
      * @brief Set rc input to mcu. Only used in board mode is AUTO_LOCOMOTION.
@@ -125,7 +125,7 @@
      
      */
 ```
-#### 站立
+十二、 站立
 ```bash
   bool set_robot_stand(bool stand);
 
@@ -135,13 +135,13 @@
      * @return return true if the target is set successfully
      */
 ```
-#### 软急停
+十三、 软急停
 
 ```bash
   bool set_robot_stop();
   
 ```
-#### 趴下
+十四、 趴下
 ```bash
   bool set_robot_down(bool down);
 ```
