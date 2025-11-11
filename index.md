@@ -1,19 +1,16 @@
-> # Welcome to TITA-Robot Documentation!
+> # Welcome to D1-Robot Documentation!
 
 ```{toctree}
 :maxdepth: 1
 pages/D1_remote_ctrl
+pages/SDK_Concepts
 pages/Robot-API
-pages/Robot-Controller
-pages/TITA-Tower
-pages/ubuntu-flash
-pages/quickstart
-pages/TITA-Arm
+pages/lower_sdk
+pages/OTA_model
 pages/TITA-wifi_app
-pages/four-foot
-pages/pic-back
-pages/docker_on_arm
-pages/FAQ
+
+
+
 ```
 最近更新时间：2025年11月7日
 
@@ -23,10 +20,10 @@ pages/FAQ
 
 ![tita](./_static/D1.png)
 
-### D1 规格说明
 
-# D-infinite (D1) 规格说明 V2.3
-## 一、中文规格参数表
+
+#### D-infinite (D1) 规格说明 V2.3
+##### 一、中文规格参数表
 | 类别       | 参数名                 | 参数值                                                     |
 |------------|------------------------|------------------------------------------------------------|
 | 机械参数   | 站立尺寸               | $375 / 750 × 600 × 600\ \text{mm}$                         |
