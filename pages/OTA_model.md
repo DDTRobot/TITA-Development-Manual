@@ -51,15 +51,15 @@ can-app -Version
 ```
 
 
-## 三、系统刷机升级
+## 三、系统恢复出厂设置
 
-## 注意事项
+**注意事项**
 1. 请仔细阅读使用须知即刷机文档。如开始进行刷机，即视为已阅读下述须知。
 2. 该系统的刷机是不可逆的过程，本质上是将系统恢复出厂状态，注意个人数据进行备份。
 3. 刷机过程中请勿进行任何操作，请勿断电。
 
 
-## 准备工作
+**一、准备工作**
 刷机工具：**Ubuntu22.04系统电脑**
 硬件准备：D1随包装的刷机线（标志A朝外插入DBG口，先插线再上电）；
 此操作需要将刷机包下载至电脑（必须Linux系统）中，并创建新的文件夹，将刷机包解压至新建的文件夹中。
@@ -75,7 +75,7 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 2. mkdir apollo-ubuntu（可在电脑系统的任意位置创建文件夹）
 3. tar -xf apollo-ubuntu-${date}.tar -C apollo-ubuntu （解压系统软件包至新建文件夹中）
 
-### 开始刷机
+**二、开始刷机**
 进入刚刚创建的文件夹
 1. cd  apollo-ubuntu
 2. sudo ./flash_robot.sh
@@ -83,7 +83,7 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 ![f1](.././_static/flash1.JPEG)
 ![f2](.././_static/flash2.JPEG)
 
-### 结束标志
+**三、结束标记**
 刷机完成时可以看到以下信息
 ```{bash}
 1. Flash is successful
@@ -98,14 +98,14 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 ## 遥控器固件升级
 
 **工具准备**： windows系统（11以上）、USB-C数据线
-### 操作步骤
-#### 1.使手柄进入固件更新模式
+**操作步骤**
+**1.使手柄进入固件更新模式**
 （1） 同时按下以下两个地方的按钮，如图
 ![cup1](../_static/cup1.PNG)
 ![cup2](../_static/cup2.PNG)
 （2）按下按钮后会进入如图界面，即成功进入固件更新模式
 ![cup3](../_static/cup3.PNG)
-#### 2.开始更新
+**2.开始更新**
 （1）使用USB-C数据线连接手柄与电脑，电脑会弹出U盘界面（该界面是手柄内置存储器的界面）
 ![cup4](../_static/cup4.PNG)
 （2）将最新的`firmware.bin`放到`FIRMWARE`目录下，如上图所示。（Ps.若没有手柄固件或最新固件的用户可联系我司售后工程师索要。）  
@@ -115,7 +115,7 @@ sudo apt install abootimg binfmt-support binutils cpio cpp device-tree-compiler 
 ![cup7](../_static/cup7.PNG)
 （4）随后按下开关机键重启手柄，按下右边按钮，朝中间按下，会出现`mode select`界面
 ![cup8](../_static/cup8.JPEG)
-#### 3.更新接收机
+**3.更新接收机**
 完成以上步骤就是完成了第一阶段固件更新！  
 接下来就是更新接收机的时候。  
 （1）首先遥控器开机后，右边按键向左推进入界面后 按键依次进入Tools ->ExpressLRS->wifi connectiving->Enable wifi

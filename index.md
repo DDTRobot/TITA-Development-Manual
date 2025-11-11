@@ -7,7 +7,6 @@ pages/SDK_Concepts
 pages/Robot-API
 pages/lower_sdk
 pages/OTA_model
-pages/TITA-wifi_app
 
 
 ```
