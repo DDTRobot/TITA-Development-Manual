@@ -37,7 +37,7 @@ master_doc = 'index'
 
 html_static_path = ['_static']
 
-html_logo = './_static/taial.jpg'
+html_logo = './_static/tital.jpg'
 html_show_sourcelink = False
 html_theme_options = {
     'analytics_anonymize_ip': False,
