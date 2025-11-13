@@ -22,33 +22,51 @@
 
 #include "tita_robot/tita_robot.hpp"
 
-tita_robot robot(8);
-
-
-
-void test_write()
-{
-
-    robot.set_motors_sdk(true);
-    while (1)
-    {
-      std::cout << "=================================" << std::endl;
+int main(){
+    // 创建机器人实例（如果需要使用vcan，可传入参数）
+  tita_robot robot(8); 
+    
+  std::cout << "Tita Robot测试程序启动" << std::endl;
+  robot.set_motors_sdk(true);
+  for (int i = 0; i < 10; ++i) {
+            // 等待100ms
       std::vector<double> t = {0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0};
-      robot.set_joint_torque(t);
-      sleep(1);
-    }
-}
+      robot.set_target_joint_t(t);
 
-int main(int argc, char *argv[])
-{
-  (void)argc;
-  (void)argv;
-  test_write();
+      std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
 
+  std::cout << "测试程序结束" << std::endl;
   return 0;
-}
 
 
+```
+
+创建CMakeLists.txt文件
+```bash
+cmake_minimum_required(VERSION 3.10)
+project(lower_sdk_example)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_compile_options(-Wall -Wextra -Wpedantic)
+set(LOWER_SDK "/opt/y1_ros2/")
+
+include_directories(
+    ${LOWER_SDK}/include
+)
+
+link_directories(
+    ${LOWER_SDK}/lib  
+)
+
+add_executable(lower_sdk_example lower_sdk_example.cpp)
+
+target_link_libraries(lower_sdk_example
+    tita_robot  
+    pthread     
+)
 ```
 
 二、运动控制接口
