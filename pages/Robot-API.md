@@ -78,7 +78,7 @@
      * @return std::array<double, 3>: current angular velocity.
      */
 ```
-九、 设置IMU角速度
+九、 获取IMU角速度
 ```bash
   std::array<double, 3> get_imu_angular_velocity() const;
 ```
@@ -102,7 +102,7 @@
 
  ```
 
-十一、 设置RC输入
+十一、 前进、后退、pitch、roll、height控制接口
 ```bash
   /**
      * @brief Set rc input to mcu. Only used in board mode is AUTO_LOCOMOTION.
@@ -125,7 +125,7 @@
      
      */
 ```
-十二、 站立
+十二、 站立接口
 ```bash
   bool set_robot_stand(bool stand);
 
@@ -135,13 +135,13 @@
      * @return return true if the target is set successfully
      */
 ```
-十三、 软急停
+十三、 软急停接口
 
 ```bash
   bool set_robot_stop();
   
 ```
-十四、 趴下
+十四、 趴下接口
 ```bash
   bool set_robot_down(bool down);
 ```
