@@ -12,6 +12,38 @@
 
 D1_sdk_ros2 是基于ROS2开发，将高层逻辑封装成ROS2节点，提供ROS2 API给用户使用，用户通过ROS2 topic 发送指令给机器人，完成机器人控制。
 
+查看ros话题
+```bash 
+robot@tita:~$ ros2 topic list 
+/d13043495/battery_info_broadcaster/battery/battery1 # 主机电池信息
+/d13043495/battery_info_broadcaster/battery/battery2 # 从机电池信息
+/d13043495/battery_info_broadcaster/transition_event
+/d13043495/body/fsm_mode # 本体状态机
+/d13043495/body/motors_status # 电机状态
+/d13043495/command/cmd_key # 控制指令，状态机切换
+/d13043495/command/cmd_pose # 控制指令，位姿
+/d13043495/command/cmd_twist # 控制指令，速度
+/d13043495/dynamic_joint_states
+/d13043495/imu_sensor_broadcaster/imu # imu状态
+/d13043495/imu_sensor_broadcaster/transition_event
+/d13043495/joint_state_broadcaster/transition_event
+/d13043495/joint_states # 关节信息 位置速度力据
+/d13043495/joy # 遥控器stick值相关
+/d13043495/robot_description 
+/d13043495/y1v0h_rl_controller/transition_event
+/parameter_events
+/rosout
+/tf
+/tf_static
+```
+如果没有，将下文添加在~/.bashrc结尾后执行source ~/.bashrc再输入查看ros话题命令
+```bash 
+export ROS_LOCALHOST_ONLY=1
+export ROS_DOMAIN_ID=42
+source /opt/ros/humble/setup.bash
+
+```
+
 1. `command/manager/cmad_key`
 2. Topic type: `std_msgs/msg/String`
 机器人状态机切换：状态机包含以下：`transform_up` `idle` `transforn_down` `loco` `joint_pd` `car`

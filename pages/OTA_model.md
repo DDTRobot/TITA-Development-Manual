@@ -13,18 +13,28 @@
 1. 升级前请先确认机器人运行正常，并确认机器人处于趴下状态。
 ```bash 
 
-sudo apt install ./y1-ros2_xxxxx_arm.deb
 
 sudo apt update #若安装.deb包失败，请执行此命令,再重新安装.deb包
 
-# 卸载旧版
-sudo dpkg --purge y1-ros2
-sudo rm -rf /opt/y1_ros2
+sudo apt install d1-ros2 
+# 卸载
+sudo dpkg --purge d1-ros2 
+sudo rm -rf /opt/d1_ros2
 
 #版本检查
 
-dpkg -l y1-ros2
+dpkg -l d1-ros2
 
+```
+安装后会有三个服务放在lib/systemd/system下
+```bash
+robot@tita:~$ ls /lib/systemd/system/ | grep controller
+rl8_controller.service # rl y1.0机器 8dof
+rl16_controller.service # rl y1.0机器 16dof
+joy_controller.service # 遥控器
+```
+```{warning}
+如果用户在开发控制器、新功能时，需要停止上述服务，并且不要进行双足/四足切换。
 ```
 
 ## 二、MCU模块OTA
