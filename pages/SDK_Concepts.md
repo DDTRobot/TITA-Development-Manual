@@ -74,5 +74,6 @@ ros2 topic pub -1 /$ROBOT_NS/command/manager/cmd_twist geometry_msgs/msg/Twist "
 说明：取值范围`linear.x`：-3.0 to 3.0、`angular.z`：-0.5 to 0.5
 
 
-5、 
-想要获取关节、IMU数据，请查看[数据读取](../Robot-API.md)章节
+
+
+想了解如何获取关节数据、IMU数据，请查看[数据读取接口](Robot-API.md)
