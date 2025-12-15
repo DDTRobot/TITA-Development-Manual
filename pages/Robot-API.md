@@ -8,6 +8,7 @@ Robot-API/commond
 Robot-API/device
 Robot-API/passiv_commonde
 Robot-API/rgb
+Robot-API/sound
 Robot-API/teleop
 Robot-API/tita_interface
 Robot-API/wendu
