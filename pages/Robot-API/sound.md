@@ -8,6 +8,11 @@
 ## Description
 语音播报控制器提供给用户一个语音播报功能，用户可以调用这个功能来播放一段语音。
 
+
+## 修改声音大下
+```bash
+sudo vi /opt/tita/ros2/audio_controller/share/audio_controller/config/param.yaml
+```
 ## 示例
 ```bash
 import rclpy 

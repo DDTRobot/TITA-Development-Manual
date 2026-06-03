@@ -27,9 +27,13 @@ sudo apt install ./tita-ros2-20250311164048.deb
 
 3. 设置修改 /lib/systemd/system/tita-bringup.service 并设置Environment="ROS_LOCALHOST_ONLY=1" 为 0；
 并在终端设置对应的 export ROS_DOMAIN_ID=45
+
+激活图传node 
 ```bash
-sudo apt install ./tita-ros2-20250311164048.deb
+# namespace 修改成当前本机tita namespace ,如：tita2342325
+ros2 param set /namespace/argus_camera_device img_transmission true
 ```
+
 ```{note}
 完成以上步骤后；
 启动index.html , 在 TITA Broker IP 窗口输入局域网IP地址，用户名密码为空
